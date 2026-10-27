@@ -2,6 +2,4 @@
 *.rar
 .env
 secrets/
-# permite apenas a solução limpa em solution/
 *.zip
-!solution/*.zip

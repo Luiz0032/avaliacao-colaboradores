@@ -18,7 +18,7 @@
 ## 2. Importar a solução
 
 1. Acesse [make.powerapps.com](https://make.powerapps.com) e selecione o ambiente.
-2. **Soluções → Importar solução** e escolha `solution/AvaliacaoColaboradores_1_0_0_2_managed.zip`.
+2. Baixe o `.zip` da solução gerenciada na aba **Releases** do repositório e vá em **Soluções → Importar solução**.
 3. Em **Conexões**, crie ou selecione uma conexão para:
    - SharePoint (`lf_SharePoint`)
    - Office 365 Outlook (`lf_OutlookOffice`)

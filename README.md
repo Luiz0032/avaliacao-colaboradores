@@ -25,7 +25,7 @@ Outros destaques:
 - **Controle por datas**: o app bloqueia etapas fora do período configurado.
 - **Relatório em HTML** da avaliação, pronto para impressão/PDF.
 - **Tema claro/escuro** com paleta centralizada em *Named Formulas* (`CoresLight`, `TextCoresLight`).
-- **Componentes reutilizáveis**: loading, estado vazio e toast de confirmação.
+- **Componentes reutilizáveis**: loading, estado vazio e diálogo de confirmação (`cmpConfirmacao`) com confirmação automática por tempo.
 - **Variáveis de ambiente** para site e listas — a solução muda de ambiente sem editar o app.
 
 ## Arquitetura
@@ -50,8 +50,6 @@ O modelo de dados (listas e colunas) está em [`docs/estrutura-dados.md`](docs/e
 ## Estrutura do repositório
 
 ```
-├── solution/
-│   └── AvaliacaoColaboradores_1_0_0_2_managed.zip   # solução pronta para importar
 ├── src/
 │   ├── canvas-app/              # código do app em YAML (telas e componentes)
 │   ├── flows/                   # definição dos fluxos do Power Automate (JSON)
@@ -68,7 +66,7 @@ O modelo de dados (listas e colunas) está em [`docs/estrutura-dados.md`](docs/e
 Resumo — o passo a passo completo está em [`docs/como-implantar.md`](docs/como-implantar.md):
 
 1. Crie um site do SharePoint e as 9 listas descritas em `docs/estrutura-dados.md`.
-2. Importe `solution/AvaliacaoColaboradores_1_0_0_2_managed.zip` no Power Apps (**Soluções → Importar**).
+2. Baixe a solução gerenciada na aba **[Releases](https://github.com/Luiz0032/avaliacao-colaboradores/releases)** e importe no Power Apps (**Soluções → Importar**).
 3. Na importação, crie as conexões (SharePoint, Office 365 Outlook, Usuários do Office 365) e preencha as variáveis de ambiente com o seu site e listas.
 4. Ative os fluxos e compartilhe o app.
 
@@ -78,8 +76,7 @@ Power Apps (Canvas, Power Fx, Named Formulas, componentes) · Power Automate · 
 
 ## Créditos
 
-- Os componentes de interface `cmpToastConfirm` e os botões com ícone SVG são baseados em material da **Comunidade Mundo Power** (Daniel Petrin) e mantêm o aviso de autoria original no código.
-- Ícones: [Ionic Icons](https://ionic.io/ionicons) — licença MIT.
+- Ícones: [Ionicons](https://ionic.io/ionicons) — licença MIT.
 
 ## Autor
 

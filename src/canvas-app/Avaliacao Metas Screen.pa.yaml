@@ -71,7 +71,7 @@ Screens:
                         Height: =40
                         HoverBorderColor: |+
                           =ColorFade(Cor.Primary,0.15)
-                        Image: "=With({\r\n    IconSVG:\r\n    \"\r\n    <path d='M456,192,300,180l23-89.4C329,64,322.22,48.73,300.53,42l-34.69-9.85a4,4,0,0,0-4.4,1.72l-129,202.34a8,8,0,0,1-6.81,3.81H16V448H133.61a48,48,0,0,1,15.18,2.46l76.3,25.43a80,80,0,0,0,25.3,4.11H428.32c19,0,31.5-13.52,35.23-32.16L496,305.58V232C496,209.94,478,194,456,192Z'/></svg>\r\n    \"\r\n    ,\r\n    IconText:\"Reabrir Metas\",\r\n    IconColor: TCor.TextInverted,\r\n    TextColor:TCor.TextInverted,\r\n    TextSize:14,\r\n    TextCenter:true,\r\n    PaddingText:0,\r\n    PaddingIcon:18,\r\n    varLoading:false, //If you want that the icon stay loading in some situation, just put a boolean variable\r\n    TextLoading:\"Loading\",\r\n    FontFamily:\"Arial\" //Tahoma, Verdana, Impact..\r\n},\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n//Não altere baixo\r\n//Do not change below\r\nWith({\r\n    PosicaoIcone:If(IsBlank(IconText),0,Round(Self.Width/2*-1 + Self.Height/2, 0)),\r\n    TextX:\r\n        If(TextCenter,\r\n            \"transform='translate(\" &Round(Self.Height/2/2,0)+PaddingText & \", 0)' x='50%' text-anchor='middle'\"\r\n            ,\r\n            \"x='\"&Self.Height + PaddingText&\"'\"\r\n        ),\r\n    TerminoSVG:\"</g></svg>\"\r\n    },\r\n\r\n    With({\r\n        \r\n    SVG_Loading:$\"<svg xmlns='http://www.w3.org/2000/svg'  viewBox='0 0 200 200' style='fill:{IconColor}' x='{PosicaoIcone}'><radialGradient id='a11' cx='.66' fx='.66' cy='.3125' fy='.3125' gradientTransform='scale(1.5)'><stop offset='0' stop-color='{IconColor}'></stop><stop offset='.3' stop-color='{IconColor}' stop-opacity='.9'></stop><stop offset='.6' stop-color='{IconColor}' stop-opacity='.6'></stop><stop offset='.8' stop-color='{IconColor}' stop-opacity='.3'></stop><stop offset='1' stop-color='{IconColor}' stop-opacity='0'></stop></radialGradient><circle transform-origin='center' fill='none' stroke='url(#a11)' stroke-width='15' stroke-linecap='round' stroke-dasharray='200 1000' stroke-dashoffset='0' cx='100' cy='100' r='70'><animateTransform type='rotate' attributeName='transform' calcMode='spline' dur='2' values='360;0' keyTimes='0;1' keySplines='0 0 1 1' repeatCount='indefinite'></animateTransform></circle><circle transform-origin='center' fill='none' opacity='.2' stroke='{IconColor}' stroke-width='15' stroke-linecap='round' cx='100' cy='100' r='70'></circle></svg>\",\r\n\r\n    InicioGrupoSvg:\r\n        $\"\r\n        <svg xmlns='http://www.w3.org/2000/svg' width='0'>\r\n        <g transform='translate(0,0)'>\r\n            <text {TextX} y='50%' font-family='{FontFamily}' font-size='{TextSize}' fill='{TextColor}' alignment-baseline='middle' dy='0.10em'>{If(Self.Width>Self.Height,If(varLoading,TextLoading,IconText))}</text>\",\r\n        \r\n    SVG_Ionic: $\"<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 512 512' style='fill:{IconColor}' x='{PosicaoIcone}'>\" & IconSVG\r\n    \r\n    }\r\n,\r\n\r\n\"data:image/svg+xml;utf8, \" &  EncodeUrl(InicioGrupoSvg & Substitute(If(varLoading || IsBlank(IconSVG),SVG_Loading, SVG_Ionic),\"#000\",IconColor) & TerminoSVG)\r\n)\r\n)\r\n)\r\n\r\n/*\r\n\"\r\n>\r\nEste ícone foi desenvolvido por Daniel Petrin (Mundo Power)\r\n\r\nwww.mundopower.com.br\r\n\r\n> Em relação ao licenciamento dos ícones:\r\n\r\nThe MIT License (MIT)\r\n\r\nCopyright (c) 2015-present Ionic (http://ionic.io/)\r\n\r\nPermission is hereby granted, free of charge, to any person obtaining a copy\r\nof this software and associated documentation files (the 'Software'), to deal\r\nin the Software without restriction, including without limitation the rights\r\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\r\ncopies of the Software, and to permit persons to whom the Software is\r\nfurnished to do so, subject to the following conditions:\r\n\r\n\"\r\n*/\r\n"
+                        Image: "=With({\r\n    IconSVG:\r\n    \"\r\n    <path d='M456,192,300,180l23-89.4C329,64,322.22,48.73,300.53,42l-34.69-9.85a4,4,0,0,0-4.4,1.72l-129,202.34a8,8,0,0,1-6.81,3.81H16V448H133.61a48,48,0,0,1,15.18,2.46l76.3,25.43a80,80,0,0,0,25.3,4.11H428.32c19,0,31.5-13.52,35.23-32.16L496,305.58V232C496,209.94,478,194,456,192Z'/></svg>\r\n    \"\r\n    ,\r\n    IconText:\"Reabrir Metas\",\r\n    IconColor: TCor.TextInverted,\r\n    TextColor:TCor.TextInverted,\r\n    TextSize:14,\r\n    TextCenter:true,\r\n    PaddingText:0,\r\n    PaddingIcon:18,\r\n    varLoading:false, //If you want that the icon stay loading in some situation, just put a boolean variable\r\n    TextLoading:\"Loading\",\r\n    FontFamily:\"Arial\" //Tahoma, Verdana, Impact..\r\n},\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n//Renderização do botão (autoria própria): ícone à esquerda e texto opcional\r\nWith(\r\n    {\r\n        Largura: Round(Self.Width, 0),\r\n        Altura: Round(Self.Height, 0),\r\n        TemTexto: !IsBlank(IconText) && Self.Width > Self.Height,\r\n        TamIcone: Round(Max(Self.Height - PaddingIcon * 2, 8), 0)\r\n    },\r\n    With(\r\n        {\r\n            IconeX: If(TemTexto, PaddingIcon, Round((Largura - TamIcone) / 2, 0)),\r\n            IconeY: Round((Altura - TamIcone) / 2, 0),\r\n            Centro: Round(TamIcone / 2, 0),\r\n            TextoExibido: If(varLoading, TextLoading, IconText)\r\n        },\r\n        \"data:image/svg+xml;utf8, \" & EncodeUrl(\r\n            $\"<svg xmlns='http://www.w3.org/2000/svg' width='{Largura}' height='{Altura}' viewBox='0 0 {Largura} {Altura}'>\" &\r\n            $\"<svg x='{IconeX}' y='{IconeY}' width='{TamIcone}' height='{TamIcone}' viewBox='0 0 512 512' style='fill:{IconColor}'>\" &\r\n            If(\r\n                varLoading || IsBlank(IconSVG),\r\n                $\"<circle cx='256' cy='256' r='200' fill='none' stroke='{IconColor}' stroke-width='48' stroke-linecap='round' stroke-dasharray='420 1260'><animateTransform attributeName='transform' type='rotate' from='0 256 256' to='360 256 256' dur='0.9s' repeatCount='indefinite'/></circle></svg>\",\r\n                Substitute(IconSVG, \"#000\", IconColor)\r\n            ) &\r\n            If(\r\n                TemTexto,\r\n                $\"<text x='{If(TextCenter, Round((IconeX + TamIcone + Largura) / 2, 0) + PaddingText, IconeX + TamIcone + 10 + PaddingText)}' y='50%' dominant-baseline='middle' text-anchor='{If(TextCenter, \"middle\", \"start\")}' font-family='{FontFamily}' font-size='{TextSize}' fill='{TextColor}'>{TextoExibido}</text>\"\r\n            ) &\r\n            \"</svg>\"\r\n        )\r\n    )\r\n)\r\n)\r\n"
                         OnSelect: |-
                           =If(varBaseAvaliacao.DataLimiteDefinicaoMetas<Today(),
                               UpdateContext({locMetasNaoLiberadas:true})
@@ -107,7 +107,7 @@ Screens:
                         Height: =40
                         HoverBorderColor: |+
                           =ColorFade(Cor.Primary,0.15)
-                        Image: "=With({\r\n    IconSVG:\r\n    \"\r\n    <line x1='256' y1='112' x2='256' y2='400' style='fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/><line x1='400' y1='256' x2='112' y2='256' style='fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/></svg>\r\n    \"\r\n    ,\r\n    IconText:\"Criar Item\",\r\n    IconColor: TCor.TextInverted,\r\n    TextColor:TCor.TextInverted,\r\n    TextSize:14,\r\n    TextCenter:true,\r\n    PaddingText:0,\r\n    PaddingIcon:18,\r\n    varLoading:false, //If you want that the icon stay loading in some situation, just put a boolean variable\r\n    TextLoading:\"Loading\",\r\n    FontFamily:\"Arial\" //Tahoma, Verdana, Impact..\r\n},\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n//Não altere baixo\r\n//Do not change below\r\nWith({\r\n    PosicaoIcone:If(IsBlank(IconText),0,Round(Self.Width/2*-1 + Self.Height/2, 0)),\r\n    TextX:\r\n        If(TextCenter,\r\n            \"transform='translate(\" &Round(Self.Height/2/2,0)+PaddingText & \", 0)' x='50%' text-anchor='middle'\"\r\n            ,\r\n            \"x='\"&Self.Height + PaddingText&\"'\"\r\n        ),\r\n    TerminoSVG:\"</g></svg>\"\r\n    },\r\n\r\n    With({\r\n        \r\n    SVG_Loading:$\"<svg xmlns='http://www.w3.org/2000/svg'  viewBox='0 0 200 200' style='fill:{IconColor}' x='{PosicaoIcone}'><radialGradient id='a11' cx='.66' fx='.66' cy='.3125' fy='.3125' gradientTransform='scale(1.5)'><stop offset='0' stop-color='{IconColor}'></stop><stop offset='.3' stop-color='{IconColor}' stop-opacity='.9'></stop><stop offset='.6' stop-color='{IconColor}' stop-opacity='.6'></stop><stop offset='.8' stop-color='{IconColor}' stop-opacity='.3'></stop><stop offset='1' stop-color='{IconColor}' stop-opacity='0'></stop></radialGradient><circle transform-origin='center' fill='none' stroke='url(#a11)' stroke-width='15' stroke-linecap='round' stroke-dasharray='200 1000' stroke-dashoffset='0' cx='100' cy='100' r='70'><animateTransform type='rotate' attributeName='transform' calcMode='spline' dur='2' values='360;0' keyTimes='0;1' keySplines='0 0 1 1' repeatCount='indefinite'></animateTransform></circle><circle transform-origin='center' fill='none' opacity='.2' stroke='{IconColor}' stroke-width='15' stroke-linecap='round' cx='100' cy='100' r='70'></circle></svg>\",\r\n\r\n    InicioGrupoSvg:\r\n        $\"\r\n        <svg xmlns='http://www.w3.org/2000/svg' width='0'>\r\n        <g transform='translate(0,0)'>\r\n            <text {TextX} y='50%' font-family='{FontFamily}' font-size='{TextSize}' fill='{TextColor}' alignment-baseline='middle' dy='0.10em'>{If(Self.Width>Self.Height,If(varLoading,TextLoading,IconText))}</text>\",\r\n        \r\n    SVG_Ionic: $\"<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 512 512' style='fill:{IconColor}' x='{PosicaoIcone}'>\" & IconSVG\r\n    \r\n    }\r\n,\r\n\r\n\"data:image/svg+xml;utf8, \" &  EncodeUrl(InicioGrupoSvg & Substitute(If(varLoading || IsBlank(IconSVG),SVG_Loading, SVG_Ionic),\"#000\",IconColor) & TerminoSVG)\r\n)\r\n)\r\n)\r\n\r\n/*\r\n\"\r\n>\r\nEste ícone foi desenvolvido por Daniel Petrin (Mundo Power)\r\n\r\nwww.mundopower.com.br\r\n\r\n> Em relação ao licenciamento dos ícones:\r\n\r\nThe MIT License (MIT)\r\n\r\nCopyright (c) 2015-present Ionic (http://ionic.io/)\r\n\r\nPermission is hereby granted, free of charge, to any person obtaining a copy\r\nof this software and associated documentation files (the 'Software'), to deal\r\nin the Software without restriction, including without limitation the rights\r\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\r\ncopies of the Software, and to permit persons to whom the Software is\r\nfurnished to do so, subject to the following conditions:\r\n\r\n\"\r\n*/\r\n"
+                        Image: "=With({\r\n    IconSVG:\r\n    \"\r\n    <line x1='256' y1='112' x2='256' y2='400' style='fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/><line x1='400' y1='256' x2='112' y2='256' style='fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/></svg>\r\n    \"\r\n    ,\r\n    IconText:\"Criar Item\",\r\n    IconColor: TCor.TextInverted,\r\n    TextColor:TCor.TextInverted,\r\n    TextSize:14,\r\n    TextCenter:true,\r\n    PaddingText:0,\r\n    PaddingIcon:18,\r\n    varLoading:false, //If you want that the icon stay loading in some situation, just put a boolean variable\r\n    TextLoading:\"Loading\",\r\n    FontFamily:\"Arial\" //Tahoma, Verdana, Impact..\r\n},\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n//Renderização do botão (autoria própria): ícone à esquerda e texto opcional\r\nWith(\r\n    {\r\n        Largura: Round(Self.Width, 0),\r\n        Altura: Round(Self.Height, 0),\r\n        TemTexto: !IsBlank(IconText) && Self.Width > Self.Height,\r\n        TamIcone: Round(Max(Self.Height - PaddingIcon * 2, 8), 0)\r\n    },\r\n    With(\r\n        {\r\n            IconeX: If(TemTexto, PaddingIcon, Round((Largura - TamIcone) / 2, 0)),\r\n            IconeY: Round((Altura - TamIcone) / 2, 0),\r\n            Centro: Round(TamIcone / 2, 0),\r\n            TextoExibido: If(varLoading, TextLoading, IconText)\r\n        },\r\n        \"data:image/svg+xml;utf8, \" & EncodeUrl(\r\n            $\"<svg xmlns='http://www.w3.org/2000/svg' width='{Largura}' height='{Altura}' viewBox='0 0 {Largura} {Altura}'>\" &\r\n            $\"<svg x='{IconeX}' y='{IconeY}' width='{TamIcone}' height='{TamIcone}' viewBox='0 0 512 512' style='fill:{IconColor}'>\" &\r\n            If(\r\n                varLoading || IsBlank(IconSVG),\r\n                $\"<circle cx='256' cy='256' r='200' fill='none' stroke='{IconColor}' stroke-width='48' stroke-linecap='round' stroke-dasharray='420 1260'><animateTransform attributeName='transform' type='rotate' from='0 256 256' to='360 256 256' dur='0.9s' repeatCount='indefinite'/></circle></svg>\",\r\n                Substitute(IconSVG, \"#000\", IconColor)\r\n            ) &\r\n            If(\r\n                TemTexto,\r\n                $\"<text x='{If(TextCenter, Round((IconeX + TamIcone + Largura) / 2, 0) + PaddingText, IconeX + TamIcone + 10 + PaddingText)}' y='50%' dominant-baseline='middle' text-anchor='{If(TextCenter, \"middle\", \"start\")}' font-family='{FontFamily}' font-size='{TextSize}' fill='{TextColor}'>{TextoExibido}</text>\"\r\n            ) &\r\n            \"</svg>\"\r\n        )\r\n    )\r\n)\r\n)\r\n"
                         OnSelect: |-
                           =UpdateContext({locItem:Blank()});
                           NewForm(FormItemMeta);
@@ -134,7 +134,7 @@ Screens:
                         Height: =40
                         HoverBorderColor: |+
                           =ColorFade(Cor.Primary,0.15)
-                        Image: "=With({\r\n    IconSVG:\r\n    \"\r\n    <path d='M456,192,300,180l23-89.4C329,64,322.22,48.73,300.53,42l-34.69-9.85a4,4,0,0,0-4.4,1.72l-129,202.34a8,8,0,0,1-6.81,3.81H16V448H133.61a48,48,0,0,1,15.18,2.46l76.3,25.43a80,80,0,0,0,25.3,4.11H428.32c19,0,31.5-13.52,35.23-32.16L496,305.58V232C496,209.94,478,194,456,192Z'/></svg>\r\n    \"\r\n    ,\r\n    IconText:\"Definir Metas\",\r\n    IconColor: TCor.TextInverted,\r\n    TextColor:TCor.TextInverted,\r\n    TextSize:14,\r\n    TextCenter:true,\r\n    PaddingText:0,\r\n    PaddingIcon:18,\r\n    varLoading:false, //If you want that the icon stay loading in some situation, just put a boolean variable\r\n    TextLoading:\"Loading\",\r\n    FontFamily:\"Arial\" //Tahoma, Verdana, Impact..\r\n},\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n//Não altere baixo\r\n//Do not change below\r\nWith({\r\n    PosicaoIcone:If(IsBlank(IconText),0,Round(Self.Width/2*-1 + Self.Height/2, 0)),\r\n    TextX:\r\n        If(TextCenter,\r\n            \"transform='translate(\" &Round(Self.Height/2/2,0)+PaddingText & \", 0)' x='50%' text-anchor='middle'\"\r\n            ,\r\n            \"x='\"&Self.Height + PaddingText&\"'\"\r\n        ),\r\n    TerminoSVG:\"</g></svg>\"\r\n    },\r\n\r\n    With({\r\n        \r\n    SVG_Loading:$\"<svg xmlns='http://www.w3.org/2000/svg'  viewBox='0 0 200 200' style='fill:{IconColor}' x='{PosicaoIcone}'><radialGradient id='a11' cx='.66' fx='.66' cy='.3125' fy='.3125' gradientTransform='scale(1.5)'><stop offset='0' stop-color='{IconColor}'></stop><stop offset='.3' stop-color='{IconColor}' stop-opacity='.9'></stop><stop offset='.6' stop-color='{IconColor}' stop-opacity='.6'></stop><stop offset='.8' stop-color='{IconColor}' stop-opacity='.3'></stop><stop offset='1' stop-color='{IconColor}' stop-opacity='0'></stop></radialGradient><circle transform-origin='center' fill='none' stroke='url(#a11)' stroke-width='15' stroke-linecap='round' stroke-dasharray='200 1000' stroke-dashoffset='0' cx='100' cy='100' r='70'><animateTransform type='rotate' attributeName='transform' calcMode='spline' dur='2' values='360;0' keyTimes='0;1' keySplines='0 0 1 1' repeatCount='indefinite'></animateTransform></circle><circle transform-origin='center' fill='none' opacity='.2' stroke='{IconColor}' stroke-width='15' stroke-linecap='round' cx='100' cy='100' r='70'></circle></svg>\",\r\n\r\n    InicioGrupoSvg:\r\n        $\"\r\n        <svg xmlns='http://www.w3.org/2000/svg' width='0'>\r\n        <g transform='translate(0,0)'>\r\n            <text {TextX} y='50%' font-family='{FontFamily}' font-size='{TextSize}' fill='{TextColor}' alignment-baseline='middle' dy='0.10em'>{If(Self.Width>Self.Height,If(varLoading,TextLoading,IconText))}</text>\",\r\n        \r\n    SVG_Ionic: $\"<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 512 512' style='fill:{IconColor}' x='{PosicaoIcone}'>\" & IconSVG\r\n    \r\n    }\r\n,\r\n\r\n\"data:image/svg+xml;utf8, \" &  EncodeUrl(InicioGrupoSvg & Substitute(If(varLoading || IsBlank(IconSVG),SVG_Loading, SVG_Ionic),\"#000\",IconColor) & TerminoSVG)\r\n)\r\n)\r\n)\r\n\r\n/*\r\n\"\r\n>\r\nEste ícone foi desenvolvido por Daniel Petrin (Mundo Power)\r\n\r\nwww.mundopower.com.br\r\n\r\n> Em relação ao licenciamento dos ícones:\r\n\r\nThe MIT License (MIT)\r\n\r\nCopyright (c) 2015-present Ionic (http://ionic.io/)\r\n\r\nPermission is hereby granted, free of charge, to any person obtaining a copy\r\nof this software and associated documentation files (the 'Software'), to deal\r\nin the Software without restriction, including without limitation the rights\r\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\r\ncopies of the Software, and to permit persons to whom the Software is\r\nfurnished to do so, subject to the following conditions:\r\n\r\n\"\r\n*/\r\n"
+                        Image: "=With({\r\n    IconSVG:\r\n    \"\r\n    <path d='M456,192,300,180l23-89.4C329,64,322.22,48.73,300.53,42l-34.69-9.85a4,4,0,0,0-4.4,1.72l-129,202.34a8,8,0,0,1-6.81,3.81H16V448H133.61a48,48,0,0,1,15.18,2.46l76.3,25.43a80,80,0,0,0,25.3,4.11H428.32c19,0,31.5-13.52,35.23-32.16L496,305.58V232C496,209.94,478,194,456,192Z'/></svg>\r\n    \"\r\n    ,\r\n    IconText:\"Definir Metas\",\r\n    IconColor: TCor.TextInverted,\r\n    TextColor:TCor.TextInverted,\r\n    TextSize:14,\r\n    TextCenter:true,\r\n    PaddingText:0,\r\n    PaddingIcon:18,\r\n    varLoading:false, //If you want that the icon stay loading in some situation, just put a boolean variable\r\n    TextLoading:\"Loading\",\r\n    FontFamily:\"Arial\" //Tahoma, Verdana, Impact..\r\n},\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n//Renderização do botão (autoria própria): ícone à esquerda e texto opcional\r\nWith(\r\n    {\r\n        Largura: Round(Self.Width, 0),\r\n        Altura: Round(Self.Height, 0),\r\n        TemTexto: !IsBlank(IconText) && Self.Width > Self.Height,\r\n        TamIcone: Round(Max(Self.Height - PaddingIcon * 2, 8), 0)\r\n    },\r\n    With(\r\n        {\r\n            IconeX: If(TemTexto, PaddingIcon, Round((Largura - TamIcone) / 2, 0)),\r\n            IconeY: Round((Altura - TamIcone) / 2, 0),\r\n            Centro: Round(TamIcone / 2, 0),\r\n            TextoExibido: If(varLoading, TextLoading, IconText)\r\n        },\r\n        \"data:image/svg+xml;utf8, \" & EncodeUrl(\r\n            $\"<svg xmlns='http://www.w3.org/2000/svg' width='{Largura}' height='{Altura}' viewBox='0 0 {Largura} {Altura}'>\" &\r\n            $\"<svg x='{IconeX}' y='{IconeY}' width='{TamIcone}' height='{TamIcone}' viewBox='0 0 512 512' style='fill:{IconColor}'>\" &\r\n            If(\r\n                varLoading || IsBlank(IconSVG),\r\n                $\"<circle cx='256' cy='256' r='200' fill='none' stroke='{IconColor}' stroke-width='48' stroke-linecap='round' stroke-dasharray='420 1260'><animateTransform attributeName='transform' type='rotate' from='0 256 256' to='360 256 256' dur='0.9s' repeatCount='indefinite'/></circle></svg>\",\r\n                Substitute(IconSVG, \"#000\", IconColor)\r\n            ) &\r\n            If(\r\n                TemTexto,\r\n                $\"<text x='{If(TextCenter, Round((IconeX + TamIcone + Largura) / 2, 0) + PaddingText, IconeX + TamIcone + 10 + PaddingText)}' y='50%' dominant-baseline='middle' text-anchor='{If(TextCenter, \"middle\", \"start\")}' font-family='{FontFamily}' font-size='{TextSize}' fill='{TextColor}'>{TextoExibido}</text>\"\r\n            ) &\r\n            \"</svg>\"\r\n        )\r\n    )\r\n)\r\n)\r\n"
                         OnSelect: |-
                           =If(varBaseAvaliacao.DataLimiteDefinicaoMetas<Today(),
                               UpdateContext({locMetasNaoLiberadas:true})
@@ -783,7 +783,7 @@ Screens:
                                           Height: =40
                                           HoverBorderColor: |+
                                             =ColorFade(Cor.Primary,0.15)
-                                          Image: "=With({\r\n    IconSVG:\r\n    \"\r\n    <polygon points='400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49'/></svg>\r\n    \"\r\n    ,\r\n    IconText:\"Cancelar\",\r\n    IconColor: TCor.TextInverted,\r\n    TextColor:TCor.TextInverted,\r\n    TextSize:14,\r\n    TextCenter:true,\r\n    PaddingText:0,\r\n    PaddingIcon:18,\r\n    varLoading:false, //If you want that the icon stay loading in some situation, just put a boolean variable\r\n    TextLoading:\"Loading\",\r\n    FontFamily:\"Arial\" //Tahoma, Verdana, Impact..\r\n},\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n//Não altere baixo\r\n//Do not change below\r\nWith({\r\n    PosicaoIcone:If(IsBlank(IconText),0,Round(Self.Width/2*-1 + Self.Height/2, 0)),\r\n    TextX:\r\n        If(TextCenter,\r\n            \"transform='translate(\" &Round(Self.Height/2/2,0)+PaddingText & \", 0)' x='50%' text-anchor='middle'\"\r\n            ,\r\n            \"x='\"&Self.Height + PaddingText&\"'\"\r\n        ),\r\n    TerminoSVG:\"</g></svg>\"\r\n    },\r\n\r\n    With({\r\n        \r\n    SVG_Loading:$\"<svg xmlns='http://www.w3.org/2000/svg'  viewBox='0 0 200 200' style='fill:{IconColor}' x='{PosicaoIcone}'><radialGradient id='a11' cx='.66' fx='.66' cy='.3125' fy='.3125' gradientTransform='scale(1.5)'><stop offset='0' stop-color='{IconColor}'></stop><stop offset='.3' stop-color='{IconColor}' stop-opacity='.9'></stop><stop offset='.6' stop-color='{IconColor}' stop-opacity='.6'></stop><stop offset='.8' stop-color='{IconColor}' stop-opacity='.3'></stop><stop offset='1' stop-color='{IconColor}' stop-opacity='0'></stop></radialGradient><circle transform-origin='center' fill='none' stroke='url(#a11)' stroke-width='15' stroke-linecap='round' stroke-dasharray='200 1000' stroke-dashoffset='0' cx='100' cy='100' r='70'><animateTransform type='rotate' attributeName='transform' calcMode='spline' dur='2' values='360;0' keyTimes='0;1' keySplines='0 0 1 1' repeatCount='indefinite'></animateTransform></circle><circle transform-origin='center' fill='none' opacity='.2' stroke='{IconColor}' stroke-width='15' stroke-linecap='round' cx='100' cy='100' r='70'></circle></svg>\",\r\n\r\n    InicioGrupoSvg:\r\n        $\"\r\n        <svg xmlns='http://www.w3.org/2000/svg' width='0'>\r\n        <g transform='translate(0,0)'>\r\n            <text {TextX} y='50%' font-family='{FontFamily}' font-size='{TextSize}' fill='{TextColor}' alignment-baseline='middle' dy='0.10em'>{If(Self.Width>Self.Height,If(varLoading,TextLoading,IconText))}</text>\",\r\n        \r\n    SVG_Ionic: $\"<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 512 512' style='fill:{IconColor}' x='{PosicaoIcone}'>\" & IconSVG\r\n    \r\n    }\r\n,\r\n\r\n\"data:image/svg+xml;utf8, \" &  EncodeUrl(InicioGrupoSvg & Substitute(If(varLoading || IsBlank(IconSVG),SVG_Loading, SVG_Ionic),\"#000\",IconColor) & TerminoSVG)\r\n)\r\n)\r\n)\r\n\r\n/*\r\n\"\r\n>\r\nEste ícone foi desenvolvido por Daniel Petrin (Mundo Power)\r\n\r\nwww.mundopower.com.br\r\n\r\n> Em relação ao licenciamento dos ícones:\r\n\r\nThe MIT License (MIT)\r\n\r\nCopyright (c) 2015-present Ionic (http://ionic.io/)\r\n\r\nPermission is hereby granted, free of charge, to any person obtaining a copy\r\nof this software and associated documentation files (the 'Software'), to deal\r\nin the Software without restriction, including without limitation the rights\r\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\r\ncopies of the Software, and to permit persons to whom the Software is\r\nfurnished to do so, subject to the following conditions:\r\n\r\n\"\r\n*/\r\n"
+                                          Image: "=With({\r\n    IconSVG:\r\n    \"\r\n    <polygon points='400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49'/></svg>\r\n    \"\r\n    ,\r\n    IconText:\"Cancelar\",\r\n    IconColor: TCor.TextInverted,\r\n    TextColor:TCor.TextInverted,\r\n    TextSize:14,\r\n    TextCenter:true,\r\n    PaddingText:0,\r\n    PaddingIcon:18,\r\n    varLoading:false, //If you want that the icon stay loading in some situation, just put a boolean variable\r\n    TextLoading:\"Loading\",\r\n    FontFamily:\"Arial\" //Tahoma, Verdana, Impact..\r\n},\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n//Renderização do botão (autoria própria): ícone à esquerda e texto opcional\r\nWith(\r\n    {\r\n        Largura: Round(Self.Width, 0),\r\n        Altura: Round(Self.Height, 0),\r\n        TemTexto: !IsBlank(IconText) && Self.Width > Self.Height,\r\n        TamIcone: Round(Max(Self.Height - PaddingIcon * 2, 8), 0)\r\n    },\r\n    With(\r\n        {\r\n            IconeX: If(TemTexto, PaddingIcon, Round((Largura - TamIcone) / 2, 0)),\r\n            IconeY: Round((Altura - TamIcone) / 2, 0),\r\n            Centro: Round(TamIcone / 2, 0),\r\n            TextoExibido: If(varLoading, TextLoading, IconText)\r\n        },\r\n        \"data:image/svg+xml;utf8, \" & EncodeUrl(\r\n            $\"<svg xmlns='http://www.w3.org/2000/svg' width='{Largura}' height='{Altura}' viewBox='0 0 {Largura} {Altura}'>\" &\r\n            $\"<svg x='{IconeX}' y='{IconeY}' width='{TamIcone}' height='{TamIcone}' viewBox='0 0 512 512' style='fill:{IconColor}'>\" &\r\n            If(\r\n                varLoading || IsBlank(IconSVG),\r\n                $\"<circle cx='256' cy='256' r='200' fill='none' stroke='{IconColor}' stroke-width='48' stroke-linecap='round' stroke-dasharray='420 1260'><animateTransform attributeName='transform' type='rotate' from='0 256 256' to='360 256 256' dur='0.9s' repeatCount='indefinite'/></circle></svg>\",\r\n                Substitute(IconSVG, \"#000\", IconColor)\r\n            ) &\r\n            If(\r\n                TemTexto,\r\n                $\"<text x='{If(TextCenter, Round((IconeX + TamIcone + Largura) / 2, 0) + PaddingText, IconeX + TamIcone + 10 + PaddingText)}' y='50%' dominant-baseline='middle' text-anchor='{If(TextCenter, \"middle\", \"start\")}' font-family='{FontFamily}' font-size='{TextSize}' fill='{TextColor}'>{TextoExibido}</text>\"\r\n            ) &\r\n            \"</svg>\"\r\n        )\r\n    )\r\n)\r\n)\r\n"
                                           OnSelect: =Select(btnCriarItemMeta)
                                           PaddingBottom: =10
                                           PaddingTop: =10
@@ -806,7 +806,7 @@ Screens:
                                           Height: =40
                                           HoverBorderColor: |+
                                             =ColorFade(Cor.Primary,0.15)
-                                          Image: "=With({\r\n    IconSVG:\r\n    \"<polyline points='416 128 192 384 96 288' style='fill:none;stroke:#000;stroke-linecap:square;stroke-miterlimit:10;stroke-width:44px'/></svg>\"\r\n    ,\r\n    IconText:\"Confirmar\",\r\n    IconColor: TCor.TextInverted,\r\n    TextColor:TCor.TextInverted,\r\n    TextSize:14,\r\n    TextCenter:true,\r\n    PaddingText:0,\r\n    PaddingIcon:18,\r\n    varLoading:false, //If you want that the icon stay loading in some situation, just put a boolean variable\r\n    TextLoading:\"Loading\",\r\n    FontFamily:\"Arial\" //Tahoma, Verdana, Impact..\r\n},\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n//Não altere baixo\r\n//Do not change below\r\nWith({\r\n    PosicaoIcone:If(IsBlank(IconText),0,Round(Self.Width/2*-1 + Self.Height/2, 0)),\r\n    TextX:\r\n        If(TextCenter,\r\n            \"transform='translate(\" &Round(Self.Height/2/2,0)+PaddingText & \", 0)' x='50%' text-anchor='middle'\"\r\n            ,\r\n            \"x='\"&Self.Height + PaddingText&\"'\"\r\n        ),\r\n    TerminoSVG:\"</g></svg>\"\r\n    },\r\n\r\n    With({\r\n        \r\n    SVG_Loading:$\"<svg xmlns='http://www.w3.org/2000/svg'  viewBox='0 0 200 200' style='fill:{IconColor}' x='{PosicaoIcone}'><radialGradient id='a11' cx='.66' fx='.66' cy='.3125' fy='.3125' gradientTransform='scale(1.5)'><stop offset='0' stop-color='{IconColor}'></stop><stop offset='.3' stop-color='{IconColor}' stop-opacity='.9'></stop><stop offset='.6' stop-color='{IconColor}' stop-opacity='.6'></stop><stop offset='.8' stop-color='{IconColor}' stop-opacity='.3'></stop><stop offset='1' stop-color='{IconColor}' stop-opacity='0'></stop></radialGradient><circle transform-origin='center' fill='none' stroke='url(#a11)' stroke-width='15' stroke-linecap='round' stroke-dasharray='200 1000' stroke-dashoffset='0' cx='100' cy='100' r='70'><animateTransform type='rotate' attributeName='transform' calcMode='spline' dur='2' values='360;0' keyTimes='0;1' keySplines='0 0 1 1' repeatCount='indefinite'></animateTransform></circle><circle transform-origin='center' fill='none' opacity='.2' stroke='{IconColor}' stroke-width='15' stroke-linecap='round' cx='100' cy='100' r='70'></circle></svg>\",\r\n\r\n    InicioGrupoSvg:\r\n        $\"\r\n        <svg xmlns='http://www.w3.org/2000/svg' width='0'>\r\n        <g transform='translate(0,0)'>\r\n            <text {TextX} y='50%' font-family='{FontFamily}' font-size='{TextSize}' fill='{TextColor}' alignment-baseline='middle' dy='0.10em'>{If(Self.Width>Self.Height,If(varLoading,TextLoading,IconText))}</text>\",\r\n        \r\n    SVG_Ionic: $\"<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 512 512' style='fill:{IconColor}' x='{PosicaoIcone}'>\" & IconSVG\r\n    \r\n    }\r\n,\r\n\r\n\"data:image/svg+xml;utf8, \" &  EncodeUrl(InicioGrupoSvg & Substitute(If(varLoading || IsBlank(IconSVG),SVG_Loading, SVG_Ionic),\"#000\",IconColor) & TerminoSVG)\r\n)\r\n)\r\n)\r\n\r\n/*\r\n\"\r\n>\r\nEste ícone foi desenvolvido por Daniel Petrin (Mundo Power)\r\n\r\nwww.mundopower.com.br\r\n\r\n> Em relação ao licenciamento dos ícones:\r\n\r\nThe MIT License (MIT)\r\n\r\nCopyright (c) 2015-present Ionic (http://ionic.io/)\r\n\r\nPermission is hereby granted, free of charge, to any person obtaining a copy\r\nof this software and associated documentation files (the 'Software'), to deal\r\nin the Software without restriction, including without limitation the rights\r\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\r\ncopies of the Software, and to permit persons to whom the Software is\r\nfurnished to do so, subject to the following conditions:\r\n\r\n\"\r\n*/\r\n"
+                                          Image: "=With({\r\n    IconSVG:\r\n    \"<polyline points='416 128 192 384 96 288' style='fill:none;stroke:#000;stroke-linecap:square;stroke-miterlimit:10;stroke-width:44px'/></svg>\"\r\n    ,\r\n    IconText:\"Confirmar\",\r\n    IconColor: TCor.TextInverted,\r\n    TextColor:TCor.TextInverted,\r\n    TextSize:14,\r\n    TextCenter:true,\r\n    PaddingText:0,\r\n    PaddingIcon:18,\r\n    varLoading:false, //If you want that the icon stay loading in some situation, just put a boolean variable\r\n    TextLoading:\"Loading\",\r\n    FontFamily:\"Arial\" //Tahoma, Verdana, Impact..\r\n},\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n//Renderização do botão (autoria própria): ícone à esquerda e texto opcional\r\nWith(\r\n    {\r\n        Largura: Round(Self.Width, 0),\r\n        Altura: Round(Self.Height, 0),\r\n        TemTexto: !IsBlank(IconText) && Self.Width > Self.Height,\r\n        TamIcone: Round(Max(Self.Height - PaddingIcon * 2, 8), 0)\r\n    },\r\n    With(\r\n        {\r\n            IconeX: If(TemTexto, PaddingIcon, Round((Largura - TamIcone) / 2, 0)),\r\n            IconeY: Round((Altura - TamIcone) / 2, 0),\r\n            Centro: Round(TamIcone / 2, 0),\r\n            TextoExibido: If(varLoading, TextLoading, IconText)\r\n        },\r\n        \"data:image/svg+xml;utf8, \" & EncodeUrl(\r\n            $\"<svg xmlns='http://www.w3.org/2000/svg' width='{Largura}' height='{Altura}' viewBox='0 0 {Largura} {Altura}'>\" &\r\n            $\"<svg x='{IconeX}' y='{IconeY}' width='{TamIcone}' height='{TamIcone}' viewBox='0 0 512 512' style='fill:{IconColor}'>\" &\r\n            If(\r\n                varLoading || IsBlank(IconSVG),\r\n                $\"<circle cx='256' cy='256' r='200' fill='none' stroke='{IconColor}' stroke-width='48' stroke-linecap='round' stroke-dasharray='420 1260'><animateTransform attributeName='transform' type='rotate' from='0 256 256' to='360 256 256' dur='0.9s' repeatCount='indefinite'/></circle></svg>\",\r\n                Substitute(IconSVG, \"#000\", IconColor)\r\n            ) &\r\n            If(\r\n                TemTexto,\r\n                $\"<text x='{If(TextCenter, Round((IconeX + TamIcone + Largura) / 2, 0) + PaddingText, IconeX + TamIcone + 10 + PaddingText)}' y='50%' dominant-baseline='middle' text-anchor='{If(TextCenter, \"middle\", \"start\")}' font-family='{FontFamily}' font-size='{TextSize}' fill='{TextColor}'>{TextoExibido}</text>\"\r\n            ) &\r\n            \"</svg>\"\r\n        )\r\n    )\r\n)\r\n)\r\n"
                                           OnSelect: |-
                                             =If((Sum(Filter(colMetasAvaliacaoColaboradores,ID<>locItem.ID),Peso)+Value(DataCardValue13.Text))>100,
                                                 Notify("Você excedeu o valor dos pesos!",NotificationType.Error,2000)
@@ -1305,48 +1305,19 @@ Screens:
                                                 Y: =Container48_9.Y+Container48_9.Height+5
       - cmpToast_7:
           Control: CanvasComponent
-          ComponentName: cmpToastConfirm
+          ComponentName: cmpConfirmacao
           Properties:
-            BackgroundColor: =TCor.TransparentBlack
-            BarTimer: =false
-            BottomHeight: =100
-            BtnCancel: =true
-            BtnWidth: =150
-            BtnWidthFlex: =false
-            CenterHeight: =350
-            CenterWidth: =600
-            FadeColor: =0.1
-            Fill: =ColorValue(Self.BackgroundColor)
+            CorDestaque: =TCor.Delete
+            CorFundo: =TCor.TransparentBlack
+            Fill: =ColorValue(Self.CorFundo)
             Height: =Max(App.Height, App.MinScreenHeight)
-            Info: |-
-              ="
-              > Em relação ao componente de Power Apps
-
-              Este componente foi desenvolvido por Daniel Petrin (Mundo Power) e é de uso exclusivo dos alunos da Comunidade Mundo Power.
-
-              Versão 1.0.0
-              Publicada em 25/01/2024
-
-              www.mundopower.com.br
-
-              > Em relação ao licenciamento dos ícones:
-
-              The MIT License (MIT)
-
-              Copyright (c) 2015-present Ionic (http://ionic.io/)
-
-              Permission is hereby granted, free of charge, to any person obtaining a copy
-              of this software and associated documentation files (the 'Software'), to deal
-              in the Software without restriction, including without limitation the rights
-              to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-              copies of the Software, and to permit persons to whom the Software is
-              furnished to do so, subject to the following conditions:
-
-              "
-            MainColor: =TCor.Delete
-            OnSelect_Cancel: |+
+            IconeSVG: ="<path d='M449.07,399.08,278.64,82.58c-12.08-22.44-44.26-22.44-56.35,0L51.87,399.08A32,32,0,0,0,80,446.25H420.89A32,32,0,0,0,449.07,399.08Zm-198.6-1.83a20,20,0,1,1,20-20A20,20,0,0,1,250.47,397.25ZM272.19,196.1l-5.74,122a16,16,0,0,1-32,0l-5.74-121.95v0a21.73,21.73,0,0,1,21.5-22.69h.21a21.74,21.74,0,0,1,21.73,22.7Z'/></svg>"
+            Mensagem: ="Você quer mesmo excluir esta meta?"
+            MostrarBarraTempo: =false
+            MostrarCancelar: =true
+            OnCancelar: |+
               =UpdateContext({locExcluirItemMeta:false})
-            OnSelect_Main: |-
+            OnConfirmar: |-
               =Set(varCarregando,true);
 
                   Remove(colMetasAvaliacaoColaboradores,locItem);
@@ -1360,15 +1331,10 @@ Screens:
 
               UpdateContext({locExcluirItemMeta:false});
               UpdateContext({locItem:Blank()});
-            SVG: ="<path d='M449.07,399.08,278.64,82.58c-12.08-22.44-44.26-22.44-56.35,0L51.87,399.08A32,32,0,0,0,80,446.25H420.89A32,32,0,0,0,449.07,399.08Zm-198.6-1.83a20,20,0,1,1,20-20A20,20,0,0,1,250.47,397.25ZM272.19,196.1l-5.74,122a16,16,0,0,1-32,0l-5.74-121.95v0a21.73,21.73,0,0,1,21.5-22.69h.21a21.74,21.74,0,0,1,21.73,22.7Z'/></svg>"
-            Text1: ="Atenção"
-            Text1Size: =20
-            Text2: ="Você quer mesmo excluir esta meta?"
-            Text2Size: =12
-            TextBtnCancel: ="Cancelar"
-            TextBtnMain: ="Excluir"
-            TextColor: ="#ffffff"
-            TimerSeconds: =0
+            SegundosAutoConfirmar: =0
+            TextoCancelar: ="Cancelar"
+            TextoConfirmar: ="Excluir"
+            Titulo: ="Atenção"
             Visible: =locExcluirItemMeta
             Width: =Max(App.Width, App.MinScreenWidth)
       - cmpLoading_13:
@@ -1389,109 +1355,41 @@ Screens:
             Width: =Max(App.Width, App.MinScreenWidth)
       - cmpToast_8:
           Control: CanvasComponent
-          ComponentName: cmpToastConfirm_2
+          ComponentName: cmpConfirmacao
           Properties:
-            BackgroundColor: =TCor.TransparentBlack
-            BarTimer: =true
-            BottomHeight: =100
-            BtnCancel: =false
-            BtnWidth: =150
-            BtnWidthFlex: =false
-            CenterHeight: =350
-            CenterWidth: =600
-            FadeColor: =0.1
-            Fill: =ColorValue(Self.BackgroundColor)
+            CorDestaque: =TCor.Warning
+            CorFundo: =TCor.TransparentBlack
+            Fill: =ColorValue(Self.CorFundo)
             Height: =Max(App.Height, App.MinScreenHeight)
-            Info: |-
-              ="
-              > Em relação ao componente de Power Apps
-
-              Este componente foi desenvolvido por Daniel Petrin (Mundo Power) e é de uso exclusivo dos alunos da Comunidade Mundo Power.
-
-              Versão 1.0.0
-              Publicada em 25/01/2024
-
-              www.mundopower.com.br
-
-              > Em relação ao licenciamento dos ícones:
-
-              The MIT License (MIT)
-
-              Copyright (c) 2015-present Ionic (http://ionic.io/)
-
-              Permission is hereby granted, free of charge, to any person obtaining a copy
-              of this software and associated documentation files (the 'Software'), to deal
-              in the Software without restriction, including without limitation the rights
-              to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-              copies of the Software, and to permit persons to whom the Software is
-              furnished to do so, subject to the following conditions:
-
-              "
-            MainColor: =TCor.Warning
-            OnSelect_Cancel: =
-            OnSelect_Main: =Back()
-            SVG: ="<path d='M449.07,399.08,278.64,82.58c-12.08-22.44-44.26-22.44-56.35,0L51.87,399.08A32,32,0,0,0,80,446.25H420.89A32,32,0,0,0,449.07,399.08Zm-198.6-1.83a20,20,0,1,1,20-20A20,20,0,0,1,250.47,397.25ZM272.19,196.1l-5.74,122a16,16,0,0,1-32,0l-5.74-121.95v0a21.73,21.73,0,0,1,21.5-22.69h.21a21.74,21.74,0,0,1,21.73,22.7Z'/></svg>"
-            Text1: ="Atenção!"
-            Text1Size: =20
-            Text2: ="Ainda não é permitido criar essas metas!"
-            Text2Size: =12
-            TextBtnCancel: ="Cancelar"
-            TextBtnMain: ="Ok"
-            TextColor: ="#ffffff"
-            TimerSeconds: =0
+            IconeSVG: ="<path d='M449.07,399.08,278.64,82.58c-12.08-22.44-44.26-22.44-56.35,0L51.87,399.08A32,32,0,0,0,80,446.25H420.89A32,32,0,0,0,449.07,399.08Zm-198.6-1.83a20,20,0,1,1,20-20A20,20,0,0,1,250.47,397.25ZM272.19,196.1l-5.74,122a16,16,0,0,1-32,0l-5.74-121.95v0a21.73,21.73,0,0,1,21.5-22.69h.21a21.74,21.74,0,0,1,21.73,22.7Z'/></svg>"
+            Mensagem: ="Ainda não é permitido criar essas metas!"
+            MostrarBarraTempo: =true
+            MostrarCancelar: =false
+            OnCancelar: =
+            OnConfirmar: =Back()
+            SegundosAutoConfirmar: =0
+            TextoCancelar: ="Cancelar"
+            TextoConfirmar: ="Ok"
+            Titulo: ="Atenção!"
             Visible: =varBaseAvaliacao.DataAberturaDefinicaoMetas>Today()
             Width: =Max(App.Width, App.MinScreenWidth)
       - cmpToast_9:
           Control: CanvasComponent
-          ComponentName: cmpToastConfirm_2
+          ComponentName: cmpConfirmacao
           Properties:
-            BackgroundColor: =TCor.TransparentBlack
-            BarTimer: =true
-            BottomHeight: =100
-            BtnCancel: =false
-            BtnWidth: =150
-            BtnWidthFlex: =false
-            CenterHeight: =350
-            CenterWidth: =600
-            FadeColor: =0.1
-            Fill: =ColorValue(Self.BackgroundColor)
+            CorDestaque: =TCor.Warning
+            CorFundo: =TCor.TransparentBlack
+            Fill: =ColorValue(Self.CorFundo)
             Height: =Max(App.Height, App.MinScreenHeight)
-            Info: |-
-              ="
-              > Em relação ao componente de Power Apps
-
-              Este componente foi desenvolvido por Daniel Petrin (Mundo Power) e é de uso exclusivo dos alunos da Comunidade Mundo Power.
-
-              Versão 1.0.0
-              Publicada em 25/01/2024
-
-              www.mundopower.com.br
-
-              > Em relação ao licenciamento dos ícones:
-
-              The MIT License (MIT)
-
-              Copyright (c) 2015-present Ionic (http://ionic.io/)
-
-              Permission is hereby granted, free of charge, to any person obtaining a copy
-              of this software and associated documentation files (the 'Software'), to deal
-              in the Software without restriction, including without limitation the rights
-              to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-              copies of the Software, and to permit persons to whom the Software is
-              furnished to do so, subject to the following conditions:
-
-              "
-            MainColor: =TCor.Warning
-            OnSelect_Cancel: =
-            OnSelect_Main: =UpdateContext({locMetasNaoLiberadas:false})
-            SVG: ="<path d='M449.07,399.08,278.64,82.58c-12.08-22.44-44.26-22.44-56.35,0L51.87,399.08A32,32,0,0,0,80,446.25H420.89A32,32,0,0,0,449.07,399.08Zm-198.6-1.83a20,20,0,1,1,20-20A20,20,0,0,1,250.47,397.25ZM272.19,196.1l-5.74,122a16,16,0,0,1-32,0l-5.74-121.95v0a21.73,21.73,0,0,1,21.5-22.69h.21a21.74,21.74,0,0,1,21.73,22.7Z'/></svg>"
-            Text1: ="Atenção!"
-            Text1Size: =20
-            Text2: ="Data limite expirada! Converse com o RH"
-            Text2Size: =12
-            TextBtnCancel: ="Cancelar"
-            TextBtnMain: ="Ok"
-            TextColor: ="#ffffff"
-            TimerSeconds: =0
+            IconeSVG: ="<path d='M449.07,399.08,278.64,82.58c-12.08-22.44-44.26-22.44-56.35,0L51.87,399.08A32,32,0,0,0,80,446.25H420.89A32,32,0,0,0,449.07,399.08Zm-198.6-1.83a20,20,0,1,1,20-20A20,20,0,0,1,250.47,397.25ZM272.19,196.1l-5.74,122a16,16,0,0,1-32,0l-5.74-121.95v0a21.73,21.73,0,0,1,21.5-22.69h.21a21.74,21.74,0,0,1,21.73,22.7Z'/></svg>"
+            Mensagem: ="Data limite expirada! Converse com o RH"
+            MostrarBarraTempo: =true
+            MostrarCancelar: =false
+            OnCancelar: =
+            OnConfirmar: =UpdateContext({locMetasNaoLiberadas:false})
+            SegundosAutoConfirmar: =0
+            TextoCancelar: ="Cancelar"
+            TextoConfirmar: ="Ok"
+            Titulo: ="Atenção!"
             Visible: =locMetasNaoLiberadas
             Width: =Max(App.Width, App.MinScreenWidth)

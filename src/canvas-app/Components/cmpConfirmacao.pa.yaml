@@ -1,0 +1,267 @@
+# Componente de diálogo de confirmação — autoria: Luiz Fernando
+# Substitui os antigos cmpToastConfirm, cmpToastConfirm_1, _2 e _3 (cópias do mesmo componente).
+#
+# Uso:
+#   Visible               -> variável que abre o diálogo (ex.: locExcluirItemMeta)
+#   Titulo / Mensagem     -> textos do diálogo
+#   CorDestaque           -> cor hexadecimal da faixa, do ícone e do botão principal (ex.: TCor.Delete)
+#   IconeSVG              -> conteúdo do SVG em viewBox 0 0 512 512, terminando em </svg>; "#000" vira CorDestaque
+#   MostrarCancelar       -> false para diálogos só de aviso
+#   SegundosAutoConfirmar -> > 0 executa OnConfirmar sozinho ao fim da contagem
+#   OnConfirmar / OnCancelar
+ComponentDefinitions:
+  cmpConfirmacao:
+    DefinitionType: CanvasComponent
+    AccessAppScope: true
+    CustomProperties:
+      CorDestaque:
+        PropertyKind: Input
+        DisplayName: Cor de destaque
+        Description: Cor hexadecimal da faixa, do ícone e do botão principal
+        DataType: Text
+        Default: =TCor.Primary
+      CorFundo:
+        PropertyKind: Input
+        DisplayName: Cor do fundo
+        Description: Cor hexadecimal da camada escura atrás do diálogo
+        DataType: Text
+        Default: =TCor.TransparentBlack
+      IconeSVG:
+        PropertyKind: Input
+        DisplayName: Ícone SVG
+        Description: Elementos SVG em viewBox 0 0 512 512, terminando em </svg>
+        DataType: Text
+        Default: ="<circle cx='256' cy='256' r='176' fill='none' stroke='#000' stroke-width='32'/><rect x='240' y='150' width='32' height='140' rx='16'/><circle cx='256' cy='350' r='22'/></svg>"
+      Mensagem:
+        PropertyKind: Input
+        DisplayName: Mensagem
+        Description: Texto explicativo do diálogo
+        DataType: Text
+        Default: ="Deseja continuar?"
+      MostrarBarraTempo:
+        PropertyKind: Input
+        DisplayName: Mostrar barra de tempo
+        Description: Mostra a barra de progresso da confirmação automática
+        DataType: Boolean
+        Default: =true
+      MostrarCancelar:
+        PropertyKind: Input
+        DisplayName: Mostrar botão cancelar
+        Description: Exibe o botão secundário
+        DataType: Boolean
+        Default: =true
+      OnCancelar:
+        PropertyKind: Event
+        DisplayName: Ao cancelar
+        Description: Executado pelo botão cancelar
+        ReturnType: Boolean
+        Default: =
+      OnConfirmar:
+        PropertyKind: Event
+        DisplayName: Ao confirmar
+        Description: Executado pelo botão principal ou ao fim da contagem automática
+        ReturnType: Boolean
+        Default: =
+      SegundosAutoConfirmar:
+        PropertyKind: Input
+        DisplayName: Segundos para confirmar sozinho
+        Description: 0 desativa; maior que 0 executa OnConfirmar ao fim da contagem
+        DataType: Number
+        Default: =0
+      TextoCancelar:
+        PropertyKind: Input
+        DisplayName: Texto do botão cancelar
+        Description: Rótulo do botão secundário
+        DataType: Text
+        Default: ="Cancelar"
+      TextoConfirmar:
+        PropertyKind: Input
+        DisplayName: Texto do botão confirmar
+        Description: Rótulo do botão principal
+        DataType: Text
+        Default: ="Confirmar"
+      Titulo:
+        PropertyKind: Input
+        DisplayName: Título
+        Description: Título do diálogo
+        DataType: Text
+        Default: ="Atenção"
+    Properties:
+      Fill: =ColorValue(Self.CorFundo)
+      Height: =Max(App.Height, App.MinScreenHeight)
+      Width: =Max(App.Width, App.MinScreenWidth)
+    Children:
+      - conCartaoConfirmacao:
+          Control: GroupContainer@1.5.0
+          Variant: AutoLayout
+          Properties:
+            DropShadow: =DropShadow.Bold
+            Fill: =Cor.BackgroundStandard
+            Height: =260
+            LayoutDirection: =LayoutDirection.Vertical
+            RadiusBottomLeft: =12
+            RadiusBottomRight: =12
+            RadiusTopLeft: =12
+            RadiusTopRight: =12
+            Width: =Min(520, Parent.Width - 32)
+            X: =(Parent.Width - Self.Width) / 2
+            Y: =(Parent.Height - Self.Height) / 2
+          Children:
+            - recFaixaConfirmacao:
+                Control: Rectangle@2.3.0
+                Properties:
+                  AlignInContainer: =AlignInContainer.Stretch
+                  Fill: =ColorValue(cmpConfirmacao.CorDestaque)
+                  FillPortions: =0
+                  FocusedBorderThickness: =0
+                  Height: =6
+            - conCorpoConfirmacao:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.Stretch
+                  DropShadow: =DropShadow.None
+                  Fill: =Color.Transparent
+                  FillPortions: =1
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutGap: =16
+                  PaddingBottom: =8
+                  PaddingLeft: =24
+                  PaddingRight: =24
+                  PaddingTop: =24
+                Children:
+                  - imgIconeConfirmacao:
+                      Control: Image@2.2.3
+                      Properties:
+                        AlignInContainer: =AlignInContainer.Start
+                        FocusedBorderThickness: =0
+                        Height: =56
+                        Image: |-
+                          ="data:image/svg+xml;utf8, " & EncodeUrl(
+                              "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'>" &
+                              "<circle cx='32' cy='32' r='32' fill='" & cmpConfirmacao.CorDestaque & "' fill-opacity='0.15'/>" &
+                              "<svg x='16' y='16' width='32' height='32' viewBox='0 0 512 512' style='fill:" & cmpConfirmacao.CorDestaque & "'>" &
+                              Substitute(cmpConfirmacao.IconeSVG, "#000", cmpConfirmacao.CorDestaque) &
+                              "</svg>"
+                          )
+                        Width: =56
+                  - conTextosConfirmacao:
+                      Control: GroupContainer@1.5.0
+                      Variant: AutoLayout
+                      Properties:
+                        AlignInContainer: =AlignInContainer.Stretch
+                        DropShadow: =DropShadow.None
+                        Fill: =Color.Transparent
+                        FillPortions: =1
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutGap: =6
+                      Children:
+                        - lblTituloConfirmacao:
+                            Control: Label@2.5.1
+                            Properties:
+                              AlignInContainer: =AlignInContainer.Stretch
+                              Color: =Cor.TextStandard
+                              FillPortions: =0
+                              Font: =Font.'Open Sans'
+                              FontWeight: =FontWeight.Bold
+                              Height: =32
+                              Size: =18
+                              Text: =cmpConfirmacao.Titulo
+                        - lblMensagemConfirmacao:
+                            Control: Label@2.5.1
+                            Properties:
+                              AlignInContainer: =AlignInContainer.Stretch
+                              Color: =Cor.NeutralL30
+                              FillPortions: =1
+                              Font: =Font.'Open Sans'
+                              Size: =12
+                              Text: =cmpConfirmacao.Mensagem
+                              VerticalAlign: =VerticalAlign.Top
+            - conAcoesConfirmacao:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.Stretch
+                  DropShadow: =DropShadow.None
+                  Fill: =Color.Transparent
+                  FillPortions: =0
+                  Height: =72
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutGap: =12
+                  LayoutJustifyContent: =LayoutJustifyContent.End
+                  PaddingLeft: =24
+                  PaddingRight: =24
+                Children:
+                  - btnCancelarConfirmacao:
+                      Control: Classic/Button@2.2.0
+                      Properties:
+                        BorderColor: =Cor.Border
+                        BorderThickness: =1
+                        Color: =Cor.TextStandard
+                        Fill: =Color.Transparent
+                        Font: =Font.'Open Sans'
+                        Height: =40
+                        HoverBorderColor: =Cor.Border
+                        HoverColor: =Cor.TextStandard
+                        HoverFill: =Cor.NeutralL95
+                        OnSelect: =cmpConfirmacao.OnCancelar()
+                        PressedBorderColor: =Cor.Border
+                        PressedColor: =Cor.TextStandard
+                        PressedFill: =Cor.NeutralL90
+                        RadiusBottomLeft: =8
+                        RadiusBottomRight: =8
+                        RadiusTopLeft: =8
+                        RadiusTopRight: =8
+                        Size: =11
+                        Text: =cmpConfirmacao.TextoCancelar
+                        Visible: =cmpConfirmacao.MostrarCancelar
+                        Width: =130
+                  - btnConfirmarConfirmacao:
+                      Control: Classic/Button@2.2.0
+                      Properties:
+                        BorderColor: =Self.Fill
+                        BorderThickness: =0
+                        Color: =Cor.TextInverted
+                        Fill: =ColorValue(cmpConfirmacao.CorDestaque)
+                        Font: =Font.'Open Sans'
+                        FontWeight: =FontWeight.Semibold
+                        Height: =40
+                        HoverBorderColor: =Self.HoverFill
+                        HoverColor: =Self.Color
+                        HoverFill: =ColorFade(Self.Fill, -10%)
+                        OnSelect: =cmpConfirmacao.OnConfirmar()
+                        PressedBorderColor: =Self.PressedFill
+                        PressedFill: =ColorFade(Self.Fill, -25%)
+                        RadiusBottomLeft: =8
+                        RadiusBottomRight: =8
+                        RadiusTopLeft: =8
+                        RadiusTopRight: =8
+                        Size: =11
+                        Text: |-
+                          =cmpConfirmacao.TextoConfirmar &
+                          If(
+                              cmpConfirmacao.SegundosAutoConfirmar > 0,
+                              " (" & RoundUp((tmrAutoConfirmar.Duration - tmrAutoConfirmar.Value) / 1000, 0) & ")"
+                          )
+                        Width: =150
+            - recProgressoConfirmacao:
+                Control: Rectangle@2.3.0
+                Properties:
+                  AlignInContainer: =AlignInContainer.Start
+                  Fill: =ColorValue(cmpConfirmacao.CorDestaque)
+                  FillPortions: =0
+                  FocusedBorderThickness: =0
+                  Height: =4
+                  LayoutMinWidth: =0
+                  Visible: =cmpConfirmacao.MostrarBarraTempo && cmpConfirmacao.SegundosAutoConfirmar > 0
+                  Width: =Parent.Width * If(tmrAutoConfirmar.Duration > 0, 1 - tmrAutoConfirmar.Value / tmrAutoConfirmar.Duration, 0)
+      - tmrAutoConfirmar:
+          Control: Timer@2.1.0
+          Properties:
+            AutoStart: =false
+            Duration: =Max(cmpConfirmacao.SegundosAutoConfirmar, 0) * 1000
+            OnTimerEnd: =cmpConfirmacao.OnConfirmar()
+            Reset: =!Parent.Visible
+            Start: =Parent.Visible && cmpConfirmacao.SegundosAutoConfirmar > 0
+            Visible: =false

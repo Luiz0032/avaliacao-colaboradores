@@ -858,49 +858,20 @@ Screens:
                               Width: =Parent.Width
       - cmpToast_6:
           Control: CanvasComponent
-          ComponentName: cmpToastConfirm_1
+          ComponentName: cmpConfirmacao
           Properties:
-            BackgroundColor: =TCor.TransparentBlack
-            BarTimer: =false
-            BottomHeight: =100
-            BtnCancel: =true
-            BtnWidth: =150
-            BtnWidthFlex: =false
-            CenterHeight: =350
-            CenterWidth: =600
-            FadeColor: =0.1
-            Fill: =ColorValue(Self.BackgroundColor)
+            CorDestaque: =TCor.Delete
+            CorFundo: =TCor.TransparentBlack
+            Fill: =ColorValue(Self.CorFundo)
             Height: =Max(App.Height, App.MinScreenHeight)
-            Info: |-
-              ="
-              > Em relação ao componente de Power Apps
-
-              Este componente foi desenvolvido por Daniel Petrin (Mundo Power) e é de uso exclusivo dos alunos da Comunidade Mundo Power.
-
-              Versão 1.0.0
-              Publicada em 25/01/2024
-
-              www.mundopower.com.br
-
-              > Em relação ao licenciamento dos ícones:
-
-              The MIT License (MIT)
-
-              Copyright (c) 2015-present Ionic (http://ionic.io/)
-
-              Permission is hereby granted, free of charge, to any person obtaining a copy
-              of this software and associated documentation files (the 'Software'), to deal
-              in the Software without restriction, including without limitation the rights
-              to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-              copies of the Software, and to permit persons to whom the Software is
-              furnished to do so, subject to the following conditions:
-
-              "
-            MainColor: =TCor.Delete
-            OnSelect_Cancel: |-
+            IconeSVG: ="<path d='M449.07,399.08,278.64,82.58c-12.08-22.44-44.26-22.44-56.35,0L51.87,399.08A32,32,0,0,0,80,446.25H420.89A32,32,0,0,0,449.07,399.08Zm-198.6-1.83a20,20,0,1,1,20-20A20,20,0,0,1,250.47,397.25ZM272.19,196.1l-5.74,122a16,16,0,0,1-32,0l-5.74-121.95v0a21.73,21.73,0,0,1,21.5-22.69h.21a21.74,21.74,0,0,1,21.73,22.7Z'/></svg>"
+            Mensagem: ="Você quer mesmo excluir este convite?"
+            MostrarBarraTempo: =false
+            MostrarCancelar: =true
+            OnCancelar: |-
               =UpdateContext({locPP_ExcluirConvite:false});
               UpdateContext({locConviteColab:Blank()});
-            OnSelect_Main: |-
+            OnConfirmar: |-
               =Set(varCarregando,true);
 
                   Remove(colAvaliacoesColaboradores,locConviteColab);
@@ -912,15 +883,10 @@ Screens:
 
               UpdateContext({locPP_ExcluirConvite:false});
               UpdateContext({locConviteColab:Blank()});
-            SVG: ="<path d='M449.07,399.08,278.64,82.58c-12.08-22.44-44.26-22.44-56.35,0L51.87,399.08A32,32,0,0,0,80,446.25H420.89A32,32,0,0,0,449.07,399.08Zm-198.6-1.83a20,20,0,1,1,20-20A20,20,0,0,1,250.47,397.25ZM272.19,196.1l-5.74,122a16,16,0,0,1-32,0l-5.74-121.95v0a21.73,21.73,0,0,1,21.5-22.69h.21a21.74,21.74,0,0,1,21.73,22.7Z'/></svg>"
-            Text1: ="Atenção"
-            Text1Size: =20
-            Text2: ="Você quer mesmo excluir este convite?"
-            Text2Size: =12
-            TextBtnCancel: ="Cancelar"
-            TextBtnMain: ="Excluir"
-            TextColor: ="#ffffff"
-            TimerSeconds: =0
+            SegundosAutoConfirmar: =0
+            TextoCancelar: ="Cancelar"
+            TextoConfirmar: ="Excluir"
+            Titulo: ="Atenção"
             Visible: =locPP_ExcluirConvite
             Width: =Max(App.Width, App.MinScreenWidth)
       - cmpLoading_12:
