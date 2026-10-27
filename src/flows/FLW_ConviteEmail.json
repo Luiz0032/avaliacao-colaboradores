@@ -1,0 +1,165 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_sharepointonline_1": {
+        "runtimeSource": "invoker",
+        "connection": {
+          "connectionReferenceLogicalName": "lf_SharePoint"
+        },
+        "api": {
+          "name": "shared_sharepointonline"
+        }
+      },
+      "shared_office365_1": {
+        "runtimeSource": "invoker",
+        "connection": {
+          "connectionReferenceLogicalName": "lf_OutlookOffice"
+        },
+        "api": {
+          "name": "shared_office365"
+        }
+      },
+      "shared_office365users_1": {
+        "runtimeSource": "invoker",
+        "connection": {
+          "connectionReferenceLogicalName": "lf_Office365Users"
+        },
+        "api": {
+          "name": "shared_office365users"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "SiteAppAvaliacao (lf_SiteAppAvaliacao)": {
+          "defaultValue": "https://contoso.sharepoint.com/sites/AvaliacaoColaboradores",
+          "type": "String",
+          "metadata": {
+            "schemaName": "lf_SiteAppAvaliacao"
+          }
+        },
+        "BaseAvaliacoes (lf_BaseAvaliacoes2)": {
+          "defaultValue": "213b6da5-685f-41ae-9397-6270c78e175d",
+          "type": "String",
+          "metadata": {
+            "schemaName": "lf_BaseAvaliacoes2"
+          }
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "300a51ce-3d53-4e42-be12-4b03fb2fcff1"
+          },
+          "type": "Request",
+          "kind": "PowerAppV2",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "number": {
+                  "title": "IdAvaliacao",
+                  "type": "number",
+                  "x-ms-dynamically-added": true,
+                  "description": "Insira um número",
+                  "x-ms-content-hint": "NUMBER"
+                },
+                "text": {
+                  "title": "Emails",
+                  "type": "string",
+                  "x-ms-dynamically-added": true,
+                  "description": "Insira sua entrada",
+                  "x-ms-content-hint": "TEXT"
+                }
+              },
+              "required": [
+                "number",
+                "text"
+              ]
+            }
+          }
+        }
+      },
+      "actions": {
+        "Obter_item": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "d3fd72a9-4b15-4d52-8772-6107c8da636e"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_sharepointonline_1",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+            },
+            "parameters": {
+              "dataset": "@parameters('SiteAppAvaliacao (lf_SiteAppAvaliacao)')",
+              "table": "@parameters('BaseAvaliacoes (lf_BaseAvaliacoes2)')",
+              "id": "@triggerBody()['number']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Enviar_um_email_(V2)": {
+          "runAfter": {
+            "Obter_meu_perfil_(V2)": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "ae02b051-9f39-4797-aa2d-e2e5dd89dba1"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_office365_1",
+              "operationId": "SendEmailV2",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365"
+            },
+            "parameters": {
+              "emailMessage/To": "@outputs('Obter_meu_perfil_(V2)')?['body/mail']",
+              "emailMessage/Subject": "Convite @{outputs('Obter_item')?['body/NomeAvaliacao']} - @{outputs('Obter_item')?['body/PeriodoAvaliacao']}",
+              "emailMessage/Body": "<p>Olá,<br>\n<br>\nVocê foi convidado para participar da <strong>@{outputs('Obter_item')?['body/NomeAvaliacao']}</strong><strong></strong>, referente ao período <strong>@{outputs('Obter_item')?['body/PeriodoAvaliacao']}</strong><strong>.<br>\n<br>\n</strong>Clique no link abaixo para acessar o aplicativo.</p>",
+              "emailMessage/Bcc": "@triggerBody()['text']",
+              "emailMessage/Importance": "Normal"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Obter_meu_perfil_(V2)": {
+          "runAfter": {
+            "Obter_item": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "e9f524b4-94ae-46c4-8b7d-3dbc2e5a09fb"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_office365users_1",
+              "operationId": "MyProfile_V2",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365users"
+            },
+            "parameters": {},
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

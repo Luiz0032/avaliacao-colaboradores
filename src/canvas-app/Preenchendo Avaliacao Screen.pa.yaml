@@ -1,0 +1,863 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+Screens:
+  Preenchendo Avaliacao Screen:
+    Properties:
+      Fill: =Cor.BackgroundScreen
+      LoadingSpinnerColor: =Cor.Primary
+    Children:
+      - cMaster2:
+          Control: GroupContainer@1.5.0
+          Variant: AutoLayout
+          Properties:
+            DropShadow: =DropShadow.None
+            Fill: =Cor.Transparent
+            Height: =768
+            LayoutDirection: =LayoutDirection.Vertical
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Width: =1366
+          Children:
+            - cTopo_4:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  DropShadow: =DropShadow.None
+                  Fill: =Cor.BackgroundTop
+                  FillPortions: =0
+                  Height: =80
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutGap: =20
+                  PaddingLeft: =20
+                  PaddingRight: =20
+                  RadiusBottomLeft: =0
+                  RadiusBottomRight: =0
+                  RadiusTopLeft: =0
+                  RadiusTopRight: =0
+                Children:
+                  - Icon1_5:
+                      Control: Classic/Icon@2.5.0
+                      Properties:
+                        BorderColor: =Cor.Border
+                        Color: =Cor.Primary
+                        DisabledBorderColor: =Cor.Disabled
+                        DisabledColor: =Cor.Disabled
+                        FocusedBorderThickness: =0
+                        Height: =50
+                        HoverColor: =ColorFade(Self.Color, 10%)
+                        Icon: =Icon.BackArrow
+                        OnSelect: =Back()
+                        PaddingBottom: =10
+                        PaddingTop: =10
+                        Width: =50
+                  - Button3:
+                      Control: Classic/Button@2.2.0
+                      Properties:
+                        BorderColor: =Self.Fill
+                        BorderThickness: =Metadados.EspessuraBordaBotao
+                        Color: =Cor.TextInverted
+                        DisabledBorderColor: =Cor.Disabled
+                        DisabledColor: =Cor.DisabledText
+                        DisabledFill: =Cor.DisabledButton
+                        Fill: =Cor.Primary
+                        FocusedBorderThickness: =Metadados.EspessuraBordaBotao
+                        Font: =Font.'Open Sans'
+                        HoverBorderColor: =Self.HoverFill
+                        HoverColor: =Self.Color
+                        HoverFill: =ColorFade(Self.Fill, -10%)
+                        OnSelect: "=Set(varCarregando,true);\r\n\r\nWith({QtdVazios:\r\n    CountRows(Filter(colAvaliacoesColaboradoresRespostas,RespostaCalibrada=Blank()))+\r\n    CountRows(Filter(colMetasAvaliacaoColaboradores,Resposta=Blank()))\r\n    \r\n    },\r\n\r\n    If(QtdVazios>0,\r\n\r\n        Notify(\"Você ainda não preencheu toda a avaliação!\",NotificationType.Warning,2000)\r\n\r\n        ,\r\n\r\n        Patch(colAvaliacoes,varAvaliacao,\r\n            {\r\n                Status:40,\r\n                TerminoAvaliacaoCalibracao:Blank()\r\n            }\r\n        );\r\n\r\n        Patch(AvaliacoesColaboradores,{ID:varAvaliacao.ID},\r\n            {\r\n                Status:40,\r\n                TerminoAvaliacaoCalibracao:Blank()\r\n            }\r\n        );\r\n\r\n        Set(varAvaliacao,LookUp(colAvaliacoes,ID=varAvaliacao.ID));\r\n\r\n        Notify(\"Parabéns, a avaliação foi concluída com sucesso!\",NotificationType.Success,2000);\r\n\r\n    )\r\n);\r\n\r\nSet(varCarregando,false)"
+                        PressedBorderColor: =Self.PressedFill
+                        PressedFill: =ColorFade(Self.Fill, -30%)
+                        RadiusBottomLeft: =5
+                        RadiusBottomRight: =5
+                        RadiusTopLeft: =5
+                        RadiusTopRight: =5
+                        Size: =8
+                        Text: ="Reabrir Avaliação"
+                        Visible: =varAvaliacao.Status = 50
+                  - Label1_5:
+                      Control: Label@2.5.1
+                      Properties:
+                        Align: =Align.Right
+                        BorderColor: =Cor.Border
+                        Color: =Cor.TextInverted
+                        DisabledColor: =Cor.DisabledText
+                        FillPortions: =1
+                        Font: =Font.'Open Sans'
+                        Size: =14
+                        Text: =LookUp(colBaseAvaliacoes,ID=varAvaliacao.IdBaseAvaliacao,NomeAvaliacao) & " | " & LookUp(colBaseAvaliacoes,ID=varAvaliacao.IdBaseAvaliacao,PeriodoAvaliacao) & " - " & LookUp(colBaseColaboradores,CodColaborador=Text(varAvaliacao.CodColaborador),NomeColaborador)
+                  - icoTopMenu_7:
+                      Control: Image@2.2.3
+                      Properties:
+                        BorderColor: =Cor.Border
+                        DisabledBorderColor: =Cor.Disabled
+                        DisabledFill: =Cor.Disabled
+                        FocusedBorderThickness: =0
+                        Height: =30
+                        HoverFill: =Cor.TransparentLight
+                        Image: "=If(varDark,\r\n\"data:image/svg+xml;utf8, \" &  EncodeUrl(\r\n\"<svg xmlns='http://www.w3.org/2000/svg' width='1.2rem' data-refresh='\"&varRefresh&\"' height='1.2rem' viewBox='0 0 24 24'>\r\n    <g fill='\"&TCor.TextInverted&\"' fill-opacity='0'>\r\n        <path d='m15.22 6.03l2.53-1.94L14.56 4L13.5 1l-1.06 3l-3.19.09l2.53 1.94l-.91 3.06l2.63-1.81l2.63 1.81z'>\r\n            <animate id='lineMdMoonFilledLoop0' fill='freeze' attributeName='fill-opacity' begin='1.61s;lineMdMoonFilledLoop0.begin+13.8s' dur='0.92s' values='0;1' />\r\n            <animate fill='freeze' attributeName='fill-opacity' begin='lineMdMoonFilledLoop0.begin+5.06s' dur='0.92s' values='1;0' />\r\n        </path>\r\n        <path d='M13.61 5.25L15.25 4l-2.06-.05L12.5 2l-.69 1.95L9.75 4l1.64 1.25l-.59 1.98l1.7-1.17l1.7 1.17z'>\r\n            <animate fill='freeze' attributeName='fill-opacity' begin='lineMdMoonFilledLoop0.begin+6.9s' dur='0.92s' values='0;1' />\r\n            <animate fill='freeze' attributeName='fill-opacity' begin='lineMdMoonFilledLoop0.begin+11.96s' dur='0.92s' values='1;0' />\r\n        </path>\r\n        <path d='M19.61 12.25L21.25 11l-2.06-.05L18.5 9l-.69 1.95l-2.06.05l1.64 1.25l-.59 1.98l1.7-1.17l1.7 1.17z'>\r\n            <animate fill='freeze' attributeName='fill-opacity' begin='lineMdMoonFilledLoop0.begin+0.92s' dur='0.92s' values='0;1' />\r\n            <animate fill='freeze' attributeName='fill-opacity' begin='lineMdMoonFilledLoop0.begin+6.44s' dur='0.92s' values='1;0' />\r\n        </path>\r\n        <path d='m20.828 9.731l1.876-1.439l-2.366-.067L19.552 6l-.786 2.225l-2.366.067l1.876 1.439L17.601 12l1.951-1.342L21.503 12z'>\r\n            <animate fill='freeze' attributeName='fill-opacity' begin='lineMdMoonFilledLoop0.begin+7.82s' dur='0.92s' values='0;1' />\r\n            <animate fill='freeze' attributeName='fill-opacity' begin='lineMdMoonFilledLoop0.begin+12.88s' dur='0.92s' values='1;0' />\r\n        </path>\r\n    </g>\r\n    <g fill-opacity='0' stroke='\"&TCor.TextInverted&\"' stroke-linecap='round' stroke-linejoin='round' stroke-width='0.95'>\r\n        <path fill='\"&TCor.TextInverted&\"' stroke-dasharray='56' stroke-dashoffset='56' d='M7 6 C7 12.08 11.92 17 18 17 C18.53 17 19.05 16.96 19.56 16.89 C17.95 19.36 15.17 21 12 21 C7.03 21 3 16.97 3 12 C3 8.83 4.64 6.05 7.11 4.44 C7.04 4.95 7 5.47 7 6 Z'>\r\n            <animate fill='freeze' attributeName='stroke-dashoffset' dur='1.38s' values='56;0' />\r\n            <animate fill='freeze' attributeName='fill-opacity' begin='1.45s' dur='1.15s' values='0;1' />\r\n        </path>\r\n    </g>\r\n</svg>\"\r\n)\r\n    ,\r\n    \r\n\r\n\"data:image/svg+xml;utf8, \" &  EncodeUrl(\"\r\n    <svg xmlns='http://www.w3.org/2000/svg' width='1.2rem' data-refresh='\"&varRefresh&\"' height='1.2rem' viewBox='0 0 24 24'>\r\n    <g fill='none' stroke='\"&TCor.TextInverted&\"' stroke-dasharray='2' stroke-dashoffset='2' stroke-linecap='round' stroke-width='0.95'>\r\n        <path d='M0 0'>\r\n            <animate fill='freeze' attributeName='d' begin='2.76s' dur='0.46s' values='M12 19v1M19 12h1M12 5v-1M5 12h-1;M12 21v1M21 12h1M12 3v-1M3 12h-1'/>\r\n            <animate fill='freeze' attributeName='stroke-dashoffset' begin='2.76s' dur='0.46s' values='2;0'/>\r\n        </path>\r\n        <path d='M0 0'>\r\n            <animate fill='freeze' attributeName='d' begin='3.45s' dur='0.46s' values='M17 17l0.5 0.5M17 7l0.5 -0.5M7 7l-0.5 -0.5M7 17l-0.5 0.5;M18.5 18.5l0.5 0.5M18.5 5.5l0.5 -0.5M5.5 5.5l-0.5 -0.5M5.5 18.5l-0.5 0.5'/>\r\n            <animate fill='freeze' attributeName='stroke-dashoffset' begin='3.45s' dur='2.76s' values='2;0'/>\r\n        </path>\r\n        <animateTransform attributeName='transform' dur='69s' repeatCount='indefinite' type='rotate' values='0 12 12;360 12 12'/>\r\n    </g>\r\n    <g fill='\"&TCor.TextInverted&\"'>\r\n        <path d='M15.22 6.03L17.75 4.09L14.56 4L13.5 1L12.44 4L9.25 4.09L11.78 6.03L10.87 9.09L13.5 7.28L16.13 9.09L15.22 6.03Z'>\r\n            <animate fill='freeze' attributeName='fill-opacity' dur='0.92s' values='1;0'/>\r\n        </path>\r\n        <path d='M19.61 12.25L21.25 11L19.19 10.95L18.5 9L17.81 10.95L15.75 11L17.39 12.25L16.8 14.23L18.5 13.06L20.2 14.23L19.61 12.25Z'>\r\n            <animate fill='freeze' attributeName='fill-opacity' begin='0.46s' dur='0.92s' values='1;0'/>\r\n        </path>\r\n    </g>\r\n    <g fill='\"&TCor.TextInverted&\"' stroke='\"&TCor.TextInverted&\"' stroke-linecap='round' stroke-linejoin='round' stroke-width='0.95'>\r\n        <path d='M7 6 C7 12.08 11.92 17 18 17 C18.53 17 19.05 16.96 19.56 16.89 C17.95 19.36 15.17 21 12 21 C7.03 21 3 16.97 3 12 C3 8.83 4.64 6.05 7.11 4.44 C7.04 4.95 7 5.47 7 6 Z'/>\r\n        <set attributeName='opacity' begin='1.38s' to='0'/>\r\n    </g>\r\n    <mask id='lineMdMoonFilledToSunnyFilledLoopTransition0'>\r\n        <circle cx='12' cy='12' r='12' fill='#fff'/>\r\n            <circle cx='18' cy='6' r='12' fill='#fff'>\r\n                <animate fill='freeze' attributeName='cx' begin='1.38s' dur='0.92s' values='18;22'/>\r\n                <animate fill='freeze' attributeName='cy' begin='1.38s' dur='0.92s' values='6;2'/>\r\n                <animate fill='freeze' attributeName='r' begin='1.38s' dur='0.92s' values='12;3'/>\r\n            </circle>\r\n        <circle cx='18' cy='6' r='10'>\r\n            <animate fill='freeze' attributeName='cx' begin='1.38s' dur='0.92s' values='18;22'/>\r\n            <animate fill='freeze' attributeName='cy' begin='1.38s' dur='0.92s' values='6;2'/>\r\n            <animate fill='freeze' attributeName='r' begin='1.38s' dur='0.92s' values='10;1'/>\r\n        </circle>\r\n    </mask>\r\n        <circle cx='12' cy='12' r='10' fill='\"&TCor.TextInverted&\"' mask='url(#lineMdMoonFilledToSunnyFilledLoopTransition0)' opacity='0'>\r\n            <set attributeName='opacity' begin='1.38s' to='1'/>\r\n            <animate fill='freeze' attributeName='r' begin='1.38s' dur='0.92s' values='10;6'/>\r\n        </circle>\r\n</svg>\")\r\n)"
+                        OnSelect: |-
+                          =Set(varRefresh,Text(Now(),""));
+                          Set(varDark,!varDark);
+                          If(varDark,
+                              Set(Cor,CoresDark);
+                              Set(TCor,TextCoresDark)
+                              ,
+                              Set(Cor,CoresLight);
+                              Set(TCor,TextCoresLight)
+                          )
+                        RadiusBottomLeft: =1000
+                        RadiusBottomRight: =1000
+                        RadiusTopLeft: =1000
+                        RadiusTopRight: =1000
+                        TabIndex: =0
+                        Width: =30
+                        X: =878
+                        Y: =645
+            - cCentral2:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  DropShadow: =DropShadow.None
+                  Fill: =Cor.BackgroundScreen
+                  LayoutDirection: =LayoutDirection.Vertical
+                  LayoutGap: =10
+                  LayoutJustifyContent: =LayoutJustifyContent.Center
+                  RadiusBottomLeft: =0
+                  RadiusBottomRight: =0
+                  RadiusTopLeft: =0
+                  RadiusTopRight: =0
+                  Visible: =varAvaliacao.Status<>50
+                Children:
+                  - Container5:
+                      Control: GroupContainer@1.5.0
+                      Variant: AutoLayout
+                      Properties:
+                        AlignInContainer: =AlignInContainer.Center
+                        DropShadow: =DropShadow.Semibold
+                        Fill: =Cor.BackgroundStandard
+                        FillPortions: =0
+                        Height: =100
+                        LayoutDirection: =LayoutDirection.Horizontal
+                        LayoutGap: =20
+                        PaddingRight: =20
+                        RadiusBottomLeft: =10
+                        RadiusBottomRight: =10
+                        RadiusTopLeft: =10
+                        RadiusTopRight: =10
+                        Width: =1000
+                      Children:
+                        - Image2:
+                            Control: Image@2.2.3
+                            Properties:
+                              BorderColor: =Cor.Border
+                              DisabledBorderColor: =Cor.Disabled
+                              DisabledFill: =Cor.Disabled
+                              FocusedBorderThickness: =0
+                              Image: =LookUp(colBaseColaboradores,CodColaborador=Text(varAvaliacao.CodColaborador),FotoUser)
+                        - HtmlText5:
+                            Control: HtmlViewer@2.1.0
+                            Properties:
+                              AlignInContainer: =AlignInContainer.Center
+                              Color: =Cor.TextStandard
+                              DisabledBorderColor: =Cor.Disabled
+                              FillPortions: =1
+                              Font: =Font.'Open Sans'
+                              Height: =50
+                              HtmlText: |-
+                                ="Colaborador:<br><b>" &
+                                LookUp(colBaseColaboradores,CodColaborador=Text(varAvaliacao.CodColaborador),NomeColaborador)
+                              Size: =10
+                        - HtmlText5_1:
+                            Control: HtmlViewer@2.1.0
+                            Properties:
+                              AlignInContainer: =AlignInContainer.Center
+                              Color: =Cor.TextStandard
+                              DisabledBorderColor: =Cor.Disabled
+                              FillPortions: =1
+                              Font: =Font.'Open Sans'
+                              Height: =50
+                              HtmlText: |-
+                                ="Cargo:<br><b>" &
+                                LookUp(colBaseCargos,CodCargo=Text(varAvaliacao.Cargo),NomeCargo)
+                              Size: =10
+                        - HtmlText5_2:
+                            Control: HtmlViewer@2.1.0
+                            Properties:
+                              AlignInContainer: =AlignInContainer.Center
+                              Color: =Cor.TextStandard
+                              DisabledBorderColor: =Cor.Disabled
+                              FillPortions: =1
+                              Font: =Font.'Open Sans'
+                              Height: =50
+                              HtmlText: |-
+                                ="Dpto:<br><b>" &
+                                LookUp(colBaseDptos,CodDpto=Text(varAvaliacao.Dpto),NomeDpto)
+                              Size: =10
+                        - btnM2:
+                            Control: GroupContainer@1.5.0
+                            Variant: ManualLayout
+                            Properties:
+                              AlignInContainer: =AlignInContainer.Center
+                              Fill: =Cor.BackgroundStandard
+                              FillPortions: =0
+                              Height: =40
+                              LayoutMinHeight: =0
+                              Width: =180
+                            Children:
+                              - Image6_57:
+                                  Control: Image@2.2.3
+                                  Properties:
+                                    BorderColor: =Cor.Primary
+                                    DisabledBorderColor: =Cor.Disabled
+                                    DisabledFill: =Cor.Disabled
+                                    DisplayMode: =If(varAvaliacao.Status=50 || varAvaliacao.CodColaborador<>Value(varColab.CodColaborador) ,DisplayMode.View, DisplayMode.Edit)
+                                    Fill: =If(varAvaliacao.AvaliacaoColabConcluida,Cor.Success, Cor.Transparent)
+                                    FocusedBorderThickness: =0
+                                    Height: =Parent.Height
+                                    HoverFill: |-
+                                      =If(varDark,
+                                          Cor.BackgroundInputHover,
+                                          If(varAvaliacao.AvaliacaoColabConcluida,
+                                              ColorFade(Cor.Success,0.15)
+                                              ,
+                                              ColorFade(Cor.Success,0.95)
+                                          )
+
+                                      )
+                                    Image: "=With({\r\n    IconSVG:\r\n    \"<polyline points='416 128 192 384 96 288' style='fill:none;stroke:#000;stroke-linecap:square;stroke-miterlimit:10;stroke-width:44px'/></svg>\"\r\n    ,\r\n    IconText:If(varAvaliacao.AvaliacaoColabConcluida,\"Avaliação Concluída\",\"Concluir Avaliação\"),\r\n    IconColor:If(varAvaliacao.AvaliacaoColabConcluida,TCor.TextInverted,TCor.Success),\r\n    TextColor:If(varAvaliacao.AvaliacaoColabConcluida,TCor.TextInverted,TCor.Success),\r\n    TextSize:14,\r\n    TextCenter:true,\r\n    PaddingText:0,\r\n    PaddingIcon:18,\r\n    varLoading:false, //If you want that the icon stay loading in some situation, just put a boolean variable\r\n    TextLoading:\"Loading\",\r\n    FontFamily:\"Arial\" //Tahoma, Verdana, Impact..\r\n},\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n//Não altere baixo\r\n//Do not change below\r\nWith({\r\n    PosicaoIcone:If(IsBlank(IconText),0,Round(Self.Width/2*-1 + Self.Height/2, 0)),\r\n    TextX:\r\n        If(TextCenter,\r\n            \"transform='translate(\" &Round(Self.Height/2/2,0)+PaddingText & \", 0)' x='50%' text-anchor='middle'\"\r\n            ,\r\n            \"x='\"&Self.Height + PaddingText&\"'\"\r\n        ),\r\n    TerminoSVG:\"</g></svg>\"\r\n    },\r\n\r\n    With({\r\n        \r\n    SVG_Loading:$\"<svg xmlns='http://www.w3.org/2000/svg'  viewBox='0 0 200 200' style='fill:{IconColor}' x='{PosicaoIcone}'><radialGradient id='a11' cx='.66' fx='.66' cy='.3125' fy='.3125' gradientTransform='scale(1.5)'><stop offset='0' stop-color='{IconColor}'></stop><stop offset='.3' stop-color='{IconColor}' stop-opacity='.9'></stop><stop offset='.6' stop-color='{IconColor}' stop-opacity='.6'></stop><stop offset='.8' stop-color='{IconColor}' stop-opacity='.3'></stop><stop offset='1' stop-color='{IconColor}' stop-opacity='0'></stop></radialGradient><circle transform-origin='center' fill='none' stroke='url(#a11)' stroke-width='15' stroke-linecap='round' stroke-dasharray='200 1000' stroke-dashoffset='0' cx='100' cy='100' r='70'><animateTransform type='rotate' attributeName='transform' calcMode='spline' dur='2' values='360;0' keyTimes='0;1' keySplines='0 0 1 1' repeatCount='indefinite'></animateTransform></circle><circle transform-origin='center' fill='none' opacity='.2' stroke='{IconColor}' stroke-width='15' stroke-linecap='round' cx='100' cy='100' r='70'></circle></svg>\",\r\n\r\n    InicioGrupoSvg:\r\n        $\"\r\n        <svg xmlns='http://www.w3.org/2000/svg' width='0'>\r\n        <g transform='translate(0,0)'>\r\n            <text {TextX} y='50%' font-family='{FontFamily}' font-size='{TextSize}' fill='{TextColor}' alignment-baseline='middle' dy='0.10em'>{If(Self.Width>Self.Height,If(varLoading,TextLoading,IconText))}</text>\",\r\n        \r\n    SVG_Ionic: $\"<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 512 512' style='fill:{IconColor}' x='{PosicaoIcone}'>\" & IconSVG\r\n    \r\n    }\r\n,\r\n\r\n\"data:image/svg+xml;utf8, \" &  EncodeUrl(InicioGrupoSvg & Substitute(If(varLoading || IsBlank(IconSVG),SVG_Loading, SVG_Ionic),\"#000\",IconColor) & TerminoSVG)\r\n)\r\n)\r\n)\r\n\r\n/*\r\n\"\r\n>\r\nEste ícone foi desenvolvido por Daniel Petrin (Mundo Power)\r\n\r\nwww.mundopower.com.br\r\n\r\n> Em relação ao licenciamento dos ícones:\r\n\r\nThe MIT License (MIT)\r\n\r\nCopyright (c) 2015-present Ionic (http://ionic.io/)\r\n\r\nPermission is hereby granted, free of charge, to any person obtaining a copy\r\nof this software and associated documentation files (the 'Software'), to deal\r\nin the Software without restriction, including without limitation the rights\r\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\r\ncopies of the Software, and to permit persons to whom the Software is\r\nfurnished to do so, subject to the following conditions:\r\n\r\n\"\r\n*/\r\n"
+                                    OnSelect: |-
+                                      =Set(varCarregando,true);
+
+                                      With({QtdVazios:CountRows(Filter(colAvaliacoesColaboradoresRespostas,RespostaColab=Blank()))},
+
+                                          If(QtdVazios>0,
+
+                                              Notify("Você ainda não preencheu toda a sua avaliação!",NotificationType.Warning,2000)
+
+                                              ,
+
+                                              Patch(colAvaliacoes,varAvaliacao,
+                                                  Patch(AvaliacoesColaboradores,{ID:varAvaliacao.ID},
+                                                      {
+                                                          AvaliacaoColabConcluida:!varAvaliacao.AvaliacaoColabConcluida,
+                                                          TerminoAvaliacaoColab:Now()
+                                                      }
+                                                  )
+                                              );
+
+                                              Set(varAvaliacao,LookUp(colAvaliacoes,ID=varAvaliacao.ID));
+
+                                              Notify("Parabéns, sua avaliação foi concluída com sucesso!",NotificationType.Success,2000);
+
+                                          )
+                                      );
+
+                                      Set(varCarregando,false)
+                                    PaddingBottom: =10
+                                    PaddingTop: =10
+                                    PressedFill: |-
+                                      =If(varDark,
+                                          ColorFade(Cor.BackgroundInputHover,0.05),
+                                          If(varAvaliacao.AvaliacaoColabConcluida,
+                                              ColorFade(Cor.Success,0.25)
+                                              ,
+                                              ColorFade(Cor.Success,0.85)
+                                          )
+                                      )
+                                    RadiusBottomLeft: =4
+                                    RadiusBottomRight: =4
+                                    RadiusTopLeft: =4
+                                    RadiusTopRight: =4
+                                    TabIndex: =If(varAvaliacao.Status=50,-1,0)
+                                    Width: =Parent.Width
+                  - Container5_1:
+                      Control: GroupContainer@1.5.0
+                      Variant: AutoLayout
+                      Properties:
+                        AlignInContainer: =AlignInContainer.Center
+                        DropShadow: =DropShadow.Semibold
+                        Fill: =Cor.BackgroundStandard
+                        FillPortions: =0
+                        Height: =100
+                        LayoutDirection: =LayoutDirection.Horizontal
+                        LayoutGap: =20
+                        PaddingRight: =20
+                        RadiusBottomLeft: =10
+                        RadiusBottomRight: =10
+                        RadiusTopLeft: =10
+                        RadiusTopRight: =10
+                        Width: =1000
+                      Children:
+                        - Image2_5:
+                            Control: Image@2.2.3
+                            Properties:
+                              BorderColor: =Cor.Border
+                              DisabledBorderColor: =Cor.Disabled
+                              DisabledFill: =Cor.Disabled
+                              FocusedBorderThickness: =0
+                              Image: =LookUp(colBaseColaboradores,CodColaborador=Text(varAvaliacao.CodGestor),FotoUser)
+                        - HtmlText5_4:
+                            Control: HtmlViewer@2.1.0
+                            Properties:
+                              AlignInContainer: =AlignInContainer.Center
+                              Color: =Cor.TextStandard
+                              DisabledBorderColor: =Cor.Disabled
+                              FillPortions: =1
+                              Font: =Font.'Open Sans'
+                              Height: =50
+                              HtmlText: |-
+                                ="Gestor:<br><b>" &
+                                LookUp(colBaseColaboradores,CodColaborador=Text(varAvaliacao.CodGestor),NomeColaborador)
+                              Size: =10
+                        - HtmlText5_3:
+                            Control: HtmlViewer@2.1.0
+                            Properties:
+                              AlignInContainer: =AlignInContainer.Center
+                              Color: =Cor.TextStandard
+                              DisabledBorderColor: =Cor.Disabled
+                              FillPortions: =1
+                              Font: =Font.'Open Sans'
+                              Height: =50
+                              HtmlText: |-
+                                ="Cargo:<br><b>" &
+                                LookUp(colBaseCargos,CodCargo=LookUp(colBaseColaboradores,CodColaborador=Text(varAvaliacao.CodGestor),CodCargo),NomeCargo)
+                              Size: =10
+                        - HtmlText5_5:
+                            Control: HtmlViewer@2.1.0
+                            Properties:
+                              AlignInContainer: =AlignInContainer.Center
+                              Color: =Cor.TextStandard
+                              DisabledBorderColor: =Cor.Disabled
+                              FillPortions: =1
+                              Font: =Font.'Open Sans'
+                              Height: =50
+                              HtmlText: |-
+                                ="Dpto:<br><b>" &
+                                LookUp(colBaseDptos,CodDpto=LookUp(colBaseColaboradores,CodColaborador=Text(varAvaliacao.CodGestor),CodDpto),NomeDpto)
+                              Size: =10
+                        - btnM2_1:
+                            Control: GroupContainer@1.5.0
+                            Variant: ManualLayout
+                            Properties:
+                              AlignInContainer: =AlignInContainer.Center
+                              Fill: =Cor.BackgroundStandard
+                              FillPortions: =0
+                              Height: =40
+                              LayoutMinHeight: =0
+                              Width: =180
+                            Children:
+                              - Image6_58:
+                                  Control: Image@2.2.3
+                                  Properties:
+                                    BorderColor: =Cor.Primary
+                                    DisabledBorderColor: =Cor.Disabled
+                                    DisabledFill: =Cor.Disabled
+                                    DisplayMode: =If(varAvaliacao.Status=50 || varAvaliacao.CodGestor<>Value(varColab.CodColaborador),DisplayMode.View, DisplayMode.Edit)
+                                    Fill: =If(varAvaliacao.AvaliacaoGestorConcluida,Cor.Success, Cor.Transparent)
+                                    FocusedBorderThickness: =0
+                                    Height: =Parent.Height
+                                    HoverFill: |-
+                                      =If(varDark,
+                                          Cor.BackgroundInputHover,
+                                          If(varAvaliacao.AvaliacaoGestorConcluida,
+                                              ColorFade(Cor.Success,0.15)
+                                              ,
+                                              ColorFade(Cor.Success,0.95)
+                                          )
+
+                                      )
+                                    Image: "=With({\r\n    IconSVG:\r\n    \"<polyline points='416 128 192 384 96 288' style='fill:none;stroke:#000;stroke-linecap:square;stroke-miterlimit:10;stroke-width:44px'/></svg>\"\r\n    ,\r\n    IconText:If(varAvaliacao.AvaliacaoGestorConcluida,\"Avaliação Concluída\",\"Concluir Avaliação\"),\r\n    IconColor:If(varAvaliacao.AvaliacaoGestorConcluida,TCor.TextInverted,TCor.Success),\r\n    TextColor:If(varAvaliacao.AvaliacaoGestorConcluida,TCor.TextInverted,TCor.Success),\r\n    TextSize:14,\r\n    TextCenter:true,\r\n    PaddingText:0,\r\n    PaddingIcon:18,\r\n    varLoading:false, //If you want that the icon stay loading in some situation, just put a boolean variable\r\n    TextLoading:\"Loading\",\r\n    FontFamily:\"Arial\" //Tahoma, Verdana, Impact..\r\n},\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n//Não altere baixo\r\n//Do not change below\r\nWith({\r\n    PosicaoIcone:If(IsBlank(IconText),0,Round(Self.Width/2*-1 + Self.Height/2, 0)),\r\n    TextX:\r\n        If(TextCenter,\r\n            \"transform='translate(\" &Round(Self.Height/2/2,0)+PaddingText & \", 0)' x='50%' text-anchor='middle'\"\r\n            ,\r\n            \"x='\"&Self.Height + PaddingText&\"'\"\r\n        ),\r\n    TerminoSVG:\"</g></svg>\"\r\n    },\r\n\r\n    With({\r\n        \r\n    SVG_Loading:$\"<svg xmlns='http://www.w3.org/2000/svg'  viewBox='0 0 200 200' style='fill:{IconColor}' x='{PosicaoIcone}'><radialGradient id='a11' cx='.66' fx='.66' cy='.3125' fy='.3125' gradientTransform='scale(1.5)'><stop offset='0' stop-color='{IconColor}'></stop><stop offset='.3' stop-color='{IconColor}' stop-opacity='.9'></stop><stop offset='.6' stop-color='{IconColor}' stop-opacity='.6'></stop><stop offset='.8' stop-color='{IconColor}' stop-opacity='.3'></stop><stop offset='1' stop-color='{IconColor}' stop-opacity='0'></stop></radialGradient><circle transform-origin='center' fill='none' stroke='url(#a11)' stroke-width='15' stroke-linecap='round' stroke-dasharray='200 1000' stroke-dashoffset='0' cx='100' cy='100' r='70'><animateTransform type='rotate' attributeName='transform' calcMode='spline' dur='2' values='360;0' keyTimes='0;1' keySplines='0 0 1 1' repeatCount='indefinite'></animateTransform></circle><circle transform-origin='center' fill='none' opacity='.2' stroke='{IconColor}' stroke-width='15' stroke-linecap='round' cx='100' cy='100' r='70'></circle></svg>\",\r\n\r\n    InicioGrupoSvg:\r\n        $\"\r\n        <svg xmlns='http://www.w3.org/2000/svg' width='0'>\r\n        <g transform='translate(0,0)'>\r\n            <text {TextX} y='50%' font-family='{FontFamily}' font-size='{TextSize}' fill='{TextColor}' alignment-baseline='middle' dy='0.10em'>{If(Self.Width>Self.Height,If(varLoading,TextLoading,IconText))}</text>\",\r\n        \r\n    SVG_Ionic: $\"<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 512 512' style='fill:{IconColor}' x='{PosicaoIcone}'>\" & IconSVG\r\n    \r\n    }\r\n,\r\n\r\n\"data:image/svg+xml;utf8, \" &  EncodeUrl(InicioGrupoSvg & Substitute(If(varLoading || IsBlank(IconSVG),SVG_Loading, SVG_Ionic),\"#000\",IconColor) & TerminoSVG)\r\n)\r\n)\r\n)\r\n\r\n/*\r\n\"\r\n>\r\nEste ícone foi desenvolvido por Daniel Petrin (Mundo Power)\r\n\r\nwww.mundopower.com.br\r\n\r\n> Em relação ao licenciamento dos ícones:\r\n\r\nThe MIT License (MIT)\r\n\r\nCopyright (c) 2015-present Ionic (http://ionic.io/)\r\n\r\nPermission is hereby granted, free of charge, to any person obtaining a copy\r\nof this software and associated documentation files (the 'Software'), to deal\r\nin the Software without restriction, including without limitation the rights\r\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\r\ncopies of the Software, and to permit persons to whom the Software is\r\nfurnished to do so, subject to the following conditions:\r\n\r\n\"\r\n*/\r\n"
+                                    OnSelect: |-
+                                      =Set(varCarregando,true);
+
+                                      With({QtdVazios:CountRows(Filter(colAvaliacoesColaboradoresRespostas,RespostaGestor=Blank()))},
+
+                                          If(QtdVazios>0,
+
+                                              Notify("Você ainda não preencheu toda a sua avaliação!",NotificationType.Warning,2000)
+
+                                              ,
+
+                                              Patch(colAvaliacoes,varAvaliacao,
+                                                  Patch(AvaliacoesColaboradores,{ID:varAvaliacao.ID},
+                                                      {
+                                                          AvaliacaoGestorConcluida:!varAvaliacao.AvaliacaoGestorConcluida,
+                                                          TerminoAvaliacaoGestor:Now()
+                                                      }
+                                                  )
+                                              );
+
+                                              Set(varAvaliacao,LookUp(colAvaliacoes,ID=varAvaliacao.ID));
+
+                                              Notify("Parabéns, sua avaliação foi concluída com sucesso!",NotificationType.Success,2000);
+
+                                          )
+                                      );
+
+                                      Set(varCarregando,false)
+                                    PaddingBottom: =10
+                                    PaddingTop: =10
+                                    PressedFill: |-
+                                      =If(varDark,
+                                          ColorFade(Cor.BackgroundInputHover,0.05),
+                                          If(varAvaliacao.AvaliacaoGestorConcluida,
+                                              ColorFade(Cor.Success,0.25)
+                                              ,
+                                              ColorFade(Cor.Success,0.85)
+                                          )
+                                      )
+                                    RadiusBottomLeft: =4
+                                    RadiusBottomRight: =4
+                                    RadiusTopLeft: =4
+                                    RadiusTopRight: =4
+                                    TabIndex: =If(varAvaliacao.Status=50 || varAvaliacao.CodGestor<>Value(varColab.CodColaborador),-1,0)
+                                    Width: =Parent.Width
+                  - Container7:
+                      Control: GroupContainer@1.5.0
+                      Variant: AutoLayout
+                      Properties:
+                        AlignInContainer: =AlignInContainer.Center
+                        DropShadow: =DropShadow.Semibold
+                        Fill: =Cor.BackgroundStandard
+                        FillPortions: =0
+                        Height: =100
+                        LayoutDirection: =LayoutDirection.Horizontal
+                        LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                        PaddingLeft: =20
+                        PaddingRight: =20
+                        RadiusBottomLeft: =10
+                        RadiusBottomRight: =10
+                        RadiusTopLeft: =10
+                        RadiusTopRight: =10
+                        Width: =1000
+                      Children:
+                        - Button3_17:
+                            Control: Classic/Button@2.2.0
+                            Properties:
+                              AlignInContainer: =AlignInContainer.Center
+                              BorderColor: =Self.Fill
+                              BorderThickness: =Metadados.EspessuraBordaBotao
+                              Color: |-
+                                =Switch(Self.Text,
+
+                                //cinza
+                                "Definindo Metas",If(varDark,RGBA(229,229,229,1),RGBA(124,124,124,1)),
+
+                                //Roxo
+                                "Metas Definidas",If(varDark, RGBA(220,224,240,1),RGBA(126,96,177,1)),
+
+                                //vermelho
+                                "Vermelho",If(varDark,ColorFade(Cor.Delete,80%),Cor.Delete),
+
+                                //amarelo
+                                "Convite Enviado",If(varDark,RGBA(255,235,192,1),RGBA(156,114,23,1)),
+
+                                //verde
+                                "Concluída",If(varDark,ColorFade(Cor.Success,80%),Cor.Success),
+
+                                //azul
+                                "Em Avaliação Individual",If(varDark,ColorFade(Cor.Primary,80%),Cor.Primary)
+
+                                )
+                              DisabledBorderColor: =Cor.Disabled
+                              DisabledColor: =Cor.DisabledText
+                              DisabledFill: =Cor.DisabledButton
+                              DisplayMode: =DisplayMode.View
+                              Fill: |-
+                                =Switch(Self.Text,
+
+                                //cinza
+                                "Definindo Metas",If(varDark,RGBA(124,124,124,1),RGBA(229,229,229,1)),
+
+                                //Roxo
+                                "Metas Definidas",If(varDark,RGBA(126,96,177,1),RGBA(220,224,240,1)),
+
+                                //vermelhor
+                                "Vermelho",If(varDark,Cor.Delete,ColorFade(Cor.Delete,80%)),
+
+                                //amarelo
+                                "Convite Enviado",If(varDark,Cor.Warning,RGBA(255,235,192,1)),
+
+                                //verde
+                                "Concluída",If(varDark,Cor.Success,ColorFade(Cor.Success,80%)),
+
+
+                                //azul
+                                "Em Avaliação Individual",If(varDark,Cor.Primary,ColorFade(Cor.Primary,80%))
+
+                                )
+                              FocusedBorderThickness: =Metadados.EspessuraBordaBotao
+                              Font: =Font.'Open Sans'
+                              HoverBorderColor: =Self.HoverFill
+                              HoverColor: =Self.Color
+                              HoverFill: =ColorFade(Self.Fill, -10%)
+                              PressedBorderColor: =Self.PressedFill
+                              PressedFill: =ColorFade(Self.Fill, -30%)
+                              RadiusBottomLeft: =100
+                              RadiusBottomRight: =100
+                              RadiusTopLeft: =100
+                              RadiusTopRight: =100
+                              Size: =8
+                              Text: =LookUp(colStatusAvaliacoes,Ordem=varAvaliacao.Status,NomeStatus)
+                              Width: =200
+                        - btnM2_2:
+                            Control: GroupContainer@1.5.0
+                            Variant: ManualLayout
+                            Properties:
+                              AlignInContainer: =AlignInContainer.Center
+                              Fill: =Cor.BackgroundStandard
+                              FillPortions: =0
+                              Height: =40
+                              LayoutMinHeight: =0
+                              Width: =180
+                            Children:
+                              - Image6_59:
+                                  Control: Image@2.2.3
+                                  Properties:
+                                    BorderColor: =Cor.Primary
+                                    DisabledBorderColor: =Cor.Disabled
+                                    DisabledFill: =Cor.Disabled
+                                    DisplayMode: '=If(varAvaliacao.Status=50 || varAvaliacao.CodGestor<>Value(varColab.CodColaborador),DisplayMode.View, DisplayMode.Edit) '
+                                    Fill: =If(varAvaliacao.Status=50,Cor.Success, Cor.Transparent)
+                                    FocusedBorderThickness: =0
+                                    Height: =Parent.Height
+                                    HoverFill: |-
+                                      =If(varDark,
+                                          Cor.BackgroundInputHover,
+                                          If(varAvaliacao.Status=50,
+                                              ColorFade(Cor.Success,0.15)
+                                              ,
+                                              ColorFade(Cor.Success,0.95)
+                                          )
+
+                                      )
+                                    Image: "=With({\r\n    IconSVG:\r\n    \"<polyline points='416 128 192 384 96 288' style='fill:none;stroke:#000;stroke-linecap:square;stroke-miterlimit:10;stroke-width:44px'/></svg>\"\r\n    ,\r\n    IconText:If(varAvaliacao.Status=50,\"Avaliação Concluída\",\"Concluir Avaliação\"),\r\n    IconColor:If(varAvaliacao.Status=50,TCor.TextInverted,TCor.Success),\r\n    TextColor:If(varAvaliacao.Status=50,TCor.TextInverted,TCor.Success),\r\n    TextSize:14,\r\n    TextCenter:true,\r\n    PaddingText:0,\r\n    PaddingIcon:18,\r\n    varLoading:false, //If you want that the icon stay loading in some situation, just put a boolean variable\r\n    TextLoading:\"Loading\",\r\n    FontFamily:\"Arial\" //Tahoma, Verdana, Impact..\r\n},\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n//Não altere baixo\r\n//Do not change below\r\nWith({\r\n    PosicaoIcone:If(IsBlank(IconText),0,Round(Self.Width/2*-1 + Self.Height/2, 0)),\r\n    TextX:\r\n        If(TextCenter,\r\n            \"transform='translate(\" &Round(Self.Height/2/2,0)+PaddingText & \", 0)' x='50%' text-anchor='middle'\"\r\n            ,\r\n            \"x='\"&Self.Height + PaddingText&\"'\"\r\n        ),\r\n    TerminoSVG:\"</g></svg>\"\r\n    },\r\n\r\n    With({\r\n        \r\n    SVG_Loading:$\"<svg xmlns='http://www.w3.org/2000/svg'  viewBox='0 0 200 200' style='fill:{IconColor}' x='{PosicaoIcone}'><radialGradient id='a11' cx='.66' fx='.66' cy='.3125' fy='.3125' gradientTransform='scale(1.5)'><stop offset='0' stop-color='{IconColor}'></stop><stop offset='.3' stop-color='{IconColor}' stop-opacity='.9'></stop><stop offset='.6' stop-color='{IconColor}' stop-opacity='.6'></stop><stop offset='.8' stop-color='{IconColor}' stop-opacity='.3'></stop><stop offset='1' stop-color='{IconColor}' stop-opacity='0'></stop></radialGradient><circle transform-origin='center' fill='none' stroke='url(#a11)' stroke-width='15' stroke-linecap='round' stroke-dasharray='200 1000' stroke-dashoffset='0' cx='100' cy='100' r='70'><animateTransform type='rotate' attributeName='transform' calcMode='spline' dur='2' values='360;0' keyTimes='0;1' keySplines='0 0 1 1' repeatCount='indefinite'></animateTransform></circle><circle transform-origin='center' fill='none' opacity='.2' stroke='{IconColor}' stroke-width='15' stroke-linecap='round' cx='100' cy='100' r='70'></circle></svg>\",\r\n\r\n    InicioGrupoSvg:\r\n        $\"\r\n        <svg xmlns='http://www.w3.org/2000/svg' width='0'>\r\n        <g transform='translate(0,0)'>\r\n            <text {TextX} y='50%' font-family='{FontFamily}' font-size='{TextSize}' fill='{TextColor}' alignment-baseline='middle' dy='0.10em'>{If(Self.Width>Self.Height,If(varLoading,TextLoading,IconText))}</text>\",\r\n        \r\n    SVG_Ionic: $\"<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 512 512' style='fill:{IconColor}' x='{PosicaoIcone}'>\" & IconSVG\r\n    \r\n    }\r\n,\r\n\r\n\"data:image/svg+xml;utf8, \" &  EncodeUrl(InicioGrupoSvg & Substitute(If(varLoading || IsBlank(IconSVG),SVG_Loading, SVG_Ionic),\"#000\",IconColor) & TerminoSVG)\r\n)\r\n)\r\n)\r\n\r\n/*\r\n\"\r\n>\r\nEste ícone foi desenvolvido por Daniel Petrin (Mundo Power)\r\n\r\nwww.mundopower.com.br\r\n\r\n> Em relação ao licenciamento dos ícones:\r\n\r\nThe MIT License (MIT)\r\n\r\nCopyright (c) 2015-present Ionic (http://ionic.io/)\r\n\r\nPermission is hereby granted, free of charge, to any person obtaining a copy\r\nof this software and associated documentation files (the 'Software'), to deal\r\nin the Software without restriction, including without limitation the rights\r\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\r\ncopies of the Software, and to permit persons to whom the Software is\r\nfurnished to do so, subject to the following conditions:\r\n\r\n\"\r\n*/\r\n"
+                                    OnSelect: "=Set(varCarregando,true);\r\n\r\nWith({QtdVazios:\r\n    CountRows(Filter(colAvaliacoesColaboradoresRespostas,RespostaCalibrada=Blank()))+\r\n    CountRows(Filter(colMetasAvaliacaoColaboradores,Resposta=Blank()))\r\n    \r\n    },\r\n\r\n    If(QtdVazios>0,\r\n\r\n        Notify(\"Você ainda não preencheu toda a avaliação!\",NotificationType.Warning,2000)\r\n\r\n        ,\r\n\r\n        Patch(colAvaliacoes,varAvaliacao,\r\n            Patch(AvaliacoesColaboradores,{ID:varAvaliacao.ID},\r\n                {\r\n                    Status:50,\r\n                    TerminoAvaliacaoCalibracao:Now()\r\n                }\r\n            )\r\n        );\r\n\r\n        Set(varAvaliacao,LookUp(colAvaliacoes,ID=varAvaliacao.ID));\r\n\r\n        Notify(\"Parabéns, a avaliação foi concluída com sucesso!\",NotificationType.Success,2000);\r\n\r\n    )\r\n);\r\n\r\nSet(varCarregando,false)"
+                                    PaddingBottom: =10
+                                    PaddingTop: =10
+                                    PressedFill: |-
+                                      =If(varDark,
+                                          ColorFade(Cor.BackgroundInputHover,0.05),
+                                          If(varAvaliacao.Status=50,
+                                              ColorFade(Cor.Success,0.25)
+                                              ,
+                                              ColorFade(Cor.Success,0.85)
+                                          )
+                                      )
+                                    RadiusBottomLeft: =4
+                                    RadiusBottomRight: =4
+                                    RadiusTopLeft: =4
+                                    RadiusTopRight: =4
+                                    TabIndex: =If(varAvaliacao.Status=50 || varAvaliacao.CodGestor<>Value(varColab.CodColaborador),-1,0)
+                                    Width: =Parent.Width
+                  - Container6:
+                      Control: GroupContainer@1.5.0
+                      Variant: AutoLayout
+                      Properties:
+                        AlignInContainer: =AlignInContainer.Center
+                        DropShadow: =DropShadow.Semibold
+                        Fill: =Cor.BackgroundStandard
+                        FillPortions: =0
+                        Height: =300
+                        LayoutAlignItems: =LayoutAlignItems.Center
+                        LayoutDirection: =LayoutDirection.Horizontal
+                        LayoutGap: =20
+                        LayoutJustifyContent: =LayoutJustifyContent.Center
+                        PaddingBottom: =20
+                        PaddingLeft: =20
+                        PaddingRight: =20
+                        PaddingTop: =20
+                        RadiusBottomLeft: =10
+                        RadiusBottomRight: =10
+                        RadiusTopLeft: =10
+                        RadiusTopRight: =10
+                        Width: =1000
+                      Children:
+                        - Container9:
+                            Control: GroupContainer@1.5.0
+                            Variant: ManualLayout
+                            Properties:
+                              DropShadow: =DropShadow.Semibold
+                              Fill: =Cor.BackgroundStandard
+                              RadiusBottomLeft: =8
+                              RadiusBottomRight: =8
+                              RadiusTopLeft: =8
+                              RadiusTopRight: =8
+                            Children:
+                              - Button4:
+                                  Control: Classic/Button@2.2.0
+                                  Properties:
+                                    BorderColor: =Self.Fill
+                                    BorderThickness: =Metadados.EspessuraBordaBotao
+                                    Color: =Cor.TextStandard
+                                    DisabledBorderColor: =Cor.Disabled
+                                    DisabledColor: =Cor.DisabledText
+                                    DisabledFill: =Cor.DisabledButton
+                                    Fill: =Cor.TransparentPrimaryLight
+                                    FocusedBorderThickness: =Metadados.EspessuraBordaBotao
+                                    Font: =Font.'Open Sans'
+                                    Height: =260
+                                    HoverBorderColor: =Self.HoverFill
+                                    HoverColor: =Self.Color
+                                    HoverFill: =ColorFade(Self.Fill, -10%)
+                                    OnSelect: =Navigate('Avaliacao Metas Screen',ScreenTransition.Fade)
+                                    PressedBorderColor: =Self.PressedFill
+                                    PressedFill: =ColorFade(Self.Fill, -30%)
+                                    RadiusBottomLeft: =5
+                                    RadiusBottomRight: =5
+                                    RadiusTopLeft: =5
+                                    RadiusTopRight: =5
+                                    Size: =20
+                                    Text: |-
+                                      ="Avaliação
+                                      Desempenho de Metas"
+                                    Width: =Parent.Width
+                        - Container9_1:
+                            Control: GroupContainer@1.5.0
+                            Variant: ManualLayout
+                            Properties:
+                              DropShadow: =DropShadow.Semibold
+                              Fill: =Cor.BackgroundStandard
+                              RadiusBottomLeft: =8
+                              RadiusBottomRight: =8
+                              RadiusTopLeft: =8
+                              RadiusTopRight: =8
+                            Children:
+                              - Button4_1:
+                                  Control: Classic/Button@2.2.0
+                                  Properties:
+                                    BorderColor: =Self.Fill
+                                    BorderThickness: =Metadados.EspessuraBordaBotao
+                                    Color: =Cor.TextStandard
+                                    DisabledBorderColor: =Cor.Disabled
+                                    DisabledColor: =Cor.DisabledText
+                                    DisabledFill: =Cor.DisabledButton
+                                    Fill: =Cor.TransparentPrimaryLight
+                                    FocusedBorderThickness: =Metadados.EspessuraBordaBotao
+                                    Font: =Font.'Open Sans'
+                                    Height: =260
+                                    HoverBorderColor: =Self.HoverFill
+                                    HoverColor: =Self.Color
+                                    HoverFill: =ColorFade(Self.Fill, -10%)
+                                    OnSelect: |-
+                                      =If(varBaseAvaliacao.DataAberturaAvaliacao>Today(),
+
+                                          Notify("O período de avaliação inicia em " & varBaseAvaliacao.DataAberturaAvaliacao & ", e finaliza em " & varBaseAvaliacao.DataLimiteAvaliacao,NotificationType.Warning,2000)
+                                          ,
+                                          Navigate('Avaliacao Competencias Screen',ScreenTransition.Fade)
+                                      )
+                                    PaddingLeft: =20
+                                    PaddingRight: =20
+                                    PressedBorderColor: =Self.PressedFill
+                                    PressedFill: =ColorFade(Self.Fill, -30%)
+                                    RadiusBottomLeft: =5
+                                    RadiusBottomRight: =5
+                                    RadiusTopLeft: =5
+                                    RadiusTopRight: =5
+                                    Size: =20
+                                    Text: |-
+                                      ="Avaliação
+                                      Comportamental"
+                                    Width: =Parent.Width
+            - cRelatorio:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  DropShadow: =DropShadow.None
+                  Fill: =Cor.Transparent
+                  LayoutDirection: =LayoutDirection.Vertical
+                  RadiusBottomLeft: =0
+                  RadiusBottomRight: =0
+                  RadiusTopLeft: =0
+                  RadiusTopRight: =0
+                  Visible: =varAvaliacao.Status=50
+                Children:
+                  - Container4:
+                      Control: GroupContainer@1.5.0
+                      Variant: ManualLayout
+                      Properties:
+                        AlignInContainer: =AlignInContainer.Center
+                        DropShadow: =DropShadow.None
+                        Fill: =Cor.BackgroundStandard
+                        FillPortions: =0
+                        Height: =40
+                        RadiusBottomLeft: =0
+                        RadiusBottomRight: =0
+                        RadiusTopLeft: =0
+                        RadiusTopRight: =0
+                        Width: =HtmlText6.Width
+                      Children:
+                        - DataCardValue5_1:
+                            Control: Attachments@2.3.0
+                            Properties:
+                              BorderColor: =
+                              BorderThickness: =0
+                              Color: =Cor.TextStandard
+                              DisabledBorderColor: =Cor.Disabled
+                              DisabledColor: =Cor.DisabledText
+                              DisabledFill: =Cor.Disabled
+                              DisplayMode: =Parent.DisplayMode
+                              DropTargetBackgroundColor: =Self.HoverFill
+                              DropTargetBorderColor: =Self.BorderColor
+                              DropTargetBorderThickness: =1
+                              DropTargetTextColor: =Cor.TextStandard
+                              Fill: =Cor.BackgroundInput
+                              FocusedBorderThickness: =0
+                              Font: =Font.'Open Sans'
+                              Height: =40
+                              HoverColor: =Cor.TextStandard
+                              HoverFill: =ColorFade(Self.Fill, -15%)
+                              ItemColor: =Cor.TextInverted
+                              ItemFill: =Cor.Primary
+                              ItemHoverColor: =Cor.TextStandard
+                              ItemHoverFill: =Cor.BackgroundInputHover
+                              Items: |-
+                                ={
+                                    Name:varBaseAvaliacao.NomeAvaliacao & " - " & varBaseAvaliacao.PeriodoAvaliacao & " - " & LookUp(colBaseColaboradores,CodColaborador=Text(varAvaliacao.CodColaborador),NomeColaborador),
+                                    Value:"data:text/html," &
+                                        EncodeUrl(HtmlText6.HtmlText)
+                                }
+                              Items.Name: =Name
+                              Items.Value: =Value
+                              PaddingBottom: =5
+                              PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                              PaddingRight: =5
+                              PaddingTop: =5
+                              PressedColor: =Cor.TextInverted
+                              PressedFill: =ColorFade(Self.Fill, -30%)
+                              Size: =10
+                              Tooltip: =
+                              Width: =Parent.Width-Self.X+40
+                              Y: =
+                  - HtmlText6:
+                      Control: HtmlViewer@2.1.0
+                      Properties:
+                        AlignInContainer: =AlignInContainer.Center
+                        Color: =Cor.TextStandard
+                        DisabledBorderColor: =Cor.Disabled
+                        Fill: =Cor.BackgroundStandard
+                        FillPortions: =1
+                        Font: =Font.'Open Sans'
+                        Height: =768
+                        HtmlText: "=With({Base64Img:\r\n\r\n\"data:image/png;base64,"},\r\n\r\n\"\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n    <head>\r\n        <meta charset='utf-8'>\r\n    <title>AVALIAÇÃO</title>\r\n        <meta name='viewport' content='width=device-width, initial-scale=1'>\r\n    </head>\r\n\r\n<style>\r\n    * {\r\n        box-sizing: border-box;\r\n    }\r\n\r\n    body {\r\n        font-family: 'Segoe UI', sans-serif;\r\n    }\r\n\r\n    table {\r\n        font-size: 12px;\r\n        border-style: dashed;\r\n        border-width: 1px;\r\n        border-spacing: 1;\r\n        border-collapse: collapse;\r\n    }\r\n\r\n    table th {\r\n        background-color: gainsboro;\r\n        color: solid gray;\r\n        border-style: solid;\r\n        border-width: 1px;\r\n        border-spacing: 1;\r\n        padding: 7px;\r\n\r\n    }\r\n\r\n    table td {\r\n        border-style: solid;\r\n        border-width: 1px;\r\n        border-spacing: 1;\r\n        text-align: center;\r\n        padding: 7px;\r\n    }\r\n\r\n    table tbody tr td:first-child {\r\n        text-align: left;\r\n    }\r\n</style>\r\n\r\n\r\n<!-- Esta DIV determinar a largura máxima -->\r\n<div style='max-width: 1100px; width: 100%; margin: 0 auto; border: 0px solid gray; padding-top: 0px;'>\r\n\r\n    <!-- Esta DIV tem a imagem da empresa -->\r\n    <div style='width: 100%; height:50px; background-color:transparent; color:white; display:flex; justify-content:right; padding:10px; align-items:center;'>\r\n       \r\n    </div>\r\n\r\n    <br>\r\n\r\n    <!-- Esta DIV tem um título -->\r\n    <div style='width: 100%; height:30px; background-color:#333; color:white; display:flex; justify-content:center; padding:10px; align-items:center;'>\r\n    <h3>\"&varBaseAvaliacao.NomeAvaliacao&\"</h3>\r\n    </div>\r\n<div style='width: 100%; height:30px; background-color:transparent; color:333; display:flex; justify-content:center; padding:10px; align-items:center;'>\r\n    <h5>\"&varBaseAvaliacao.PeriodoAvaliacao&\"</h5>\r\n    </div>\r\n    <br>\r\n\r\n    <!-- Esta DIV tem as informações do topo do documento -->\r\n    <div style='width: 100%; margin: 0 auto; border: 0px solid gray; padding-top: 0px;'>\r\n        <table style='border-collapse: collapse; border: 1px solid #ddd; width: 100%;'>\r\n            <tr>\r\n                <td style='border: 1px solid #ddd; padding: 10px; width: 50%;'>Colaborador: <b>\" & LookUp(colBaseColaboradores,CodColaborador=Text(varAvaliacao.CodGestor),NomeColaborador)  & \"</td>\r\n                <td style='border: 1px solid #ddd; padding: 10px; width: 25%;'>Cargo: <b>\" & LookUp(colBaseCargos,CodCargo=LookUp(colBaseColaboradores,CodColaborador=Text(varAvaliacao.CodGestor),CodCargo),NomeCargo)  & \"</td>\r\n                <td style='border: 1px solid #ddd; padding: 10px; width: 25%;'>Dpto: <b>\" & LookUp(colBaseDptos,CodDpto=LookUp(colBaseColaboradores,CodColaborador=Text(varAvaliacao.CodGestor),CodDpto),NomeDpto)  & \"</td>\r\n            </tr>\r\n            <tr>\r\n                                <td style='border: 1px solid #ddd; padding: 10px; width: 50%;'>Gestor: <b>\" & LookUp(colBaseColaboradores,CodColaborador=Text(varAvaliacao.CodColaborador),NomeColaborador)  & \"</td>\r\n                <td style='border: 1px solid #ddd; padding: 10px; width: 25%;'>Cargo: <b>\" & LookUp(colBaseCargos,CodCargo=Text(varAvaliacao.Cargo),NomeCargo)  & \"</td>\r\n                <td style='border: 1px solid #ddd; padding: 10px; width: 25%;'>Dpto: <b>\" & LookUp(colBaseDptos,CodDpto=Text(varAvaliacao.Dpto),NomeDpto)  & \"</td>\r\n            </tr>\r\n        </table>\r\n    </div>\r\n\r\n    <br><br>\r\n\r\n    <h3 style='text-align: center;'>DESEMPENHO METAS</h3>\" &\r\n\r\n    html_acelerometro.HtmlText &  \r\n\r\n    \"<br>\r\n\r\n    <h3 style='text-align: center;'>COMPETÊNCIAS</h3>\" &    \r\n    html_Radar.HtmlText &   \r\n\r\n    \"<br><br>\r\n\r\n    <h2 style='break-before: page;'>METAS</h2>\r\n    \r\n    <!-- Esta DIV tem as informações do conteúdo -->\r\n    <div style='width: 100%; margin: 0 auto; border: 0px solid gray; padding-top: 0px;'>\r\n        <table width='100%' cellpadding='10' border=1 style='border:1px solid #BDBDBD ; border-collapse:collapse'>\r\n            <tr style='border 1px solid #BDBDBD; background-color:#f0f0f0'>\r\n                <th> ITENS </th>\r\n            </tr>\" &\r\n                \r\n            Concat(colMetasAvaliacaoColaboradores,\r\n                    \"\r\n            <tr>\r\n                <td align='left' style='border: 1px solid #BDBDBD'>\r\n                \r\n                    <b>META: \" & TituloMeta & \"</b> - (Peso: \" & Peso & \")\" &\r\n                    If(!IsBlank(DescricaoMeta),\"<p>\" & DescricaoMeta & \"<br>\") &\r\n                    \"<br><br><p><b> Comentário Colaborador: </b><p>\" &\r\n                    Coalesce(ComentarioColab, \"<i>Nenhum comentário</i>\") &\r\n                    \"<br><br><br><p><b> Comentário Gestor: </b><p>\" &\r\n                    Coalesce(ComentarioGestor,\"<i>Nenhum comentário</i>\") &\r\n                    \"<br><br><br><p><b><font size=2><span style='background-color:#D1FFF1;border-radius: 7px;margin-right: 5px;padding-left: 5px;padding-right: 5px;padding-bottom:5px;padding-top: 5px;display: inline-block;'>Resposta: \" &\r\n                    LookUp(colRespostasMetas,Nota=Resposta,Texto) & \"</b></span>\r\n                    \r\n                    \r\n                </td>\r\n            </tr>\"\r\n            )&\r\n        \"</table>\r\n    </div>\r\n\r\n    <br><br>\r\n\r\n    \r\n    <h2 style='break-before: page;'>COMPETÊNCIAS</h2>\r\n    <!-- Esta DIV tem as informações do conteúdo -->\r\n    <div style='width: 100%; margin: 0 auto; border: 0px solid gray; padding-top: 0px;'>\r\n        <table width='100%' cellpadding='10' border=1 style='border:1px solid #BDBDBD ; border-collapse:collapse'>\r\n            <tr style='border 1px solid #BDBDBD; background-color:#f0f0f0'>\r\n                <th> ITENS </th>\r\n            </tr>\" &\r\n                \r\n            Concat(colAvaliacoesColaboradoresRespostas,\r\n                    \"\r\n            <tr>\r\n                <td align='left' style='border: 1px solid #BDBDBD'>\r\n                \r\n                    <font size=4><b>\" & CategoriaPergunta & \" - \" & LookUp(colBaseAvaliacoesItens,ID=IdItem,TituloItem) & \"</b></font><br>\"  &\r\n                    LookUp(colBaseAvaliacoesItens,ID=IdItem,DescricaoItem) & \"<br>\" &\r\n                    \"<br><br><p><b> Comentário Colaborador: </b><p>\" &\r\n                    Coalesce(ComentarioColab, \"<i>Nenhum comentário</i>\") &\r\n                    \"<br><br><b>Avaliação: </b>\" & RespostaColab &\r\n                    \"<br><br><br><p><b> Comentário Gestor: </b><p>\" &\r\n                    Coalesce(ComentarioGestor,\"<i>Nenhum comentário</i>\") &\r\n                    \"<br><br><b>Avaliação: </b>\" & RespostaGestor &\r\n                    \"<br><br><br><p><b><font size=2><span style='background-color:#D1FFF1;border-radius: 7px;margin-right: 5px;padding-left: 5px;padding-right: 5px;padding-bottom:5px;padding-top: 5px;display: inline-block;'> Avaliação Calibrada: \" & RespostaCalibrada & \"</b></span>\r\n                                       \r\n                </td>\r\n            </tr>\"\r\n            )&\r\n        \"</table>\r\n    </div>\r\n\r\n<br><br>\r\n\r\n\r\n<h2 style='break-before: page;'>MATRIZ 9BOX</h2>\r\n<hr><br><br>\r\n\"\r\n\r\n&\r\n\r\nhtml_9box.HtmlText\r\n\r\n&\r\n\r\n\"</div>\"\r\n\r\n)\r\n\r\n\r\n\r\n\r\n"
+                        Size: =8
+                        Width: =845
+                        X: =519
+      - html_acelerometro:
+          Control: HtmlViewer@2.1.0
+          Properties:
+            Color: =Cor.TextStandard
+            DisabledBorderColor: =Cor.Disabled
+            Font: =Font.'Open Sans'
+            Height: =91
+            HtmlText: |-
+              ="<div style='width: 100%; height: 100%;display: flex;justify-content: center;'>
+              <img src='" &
+
+              With({Max:3},
+                  With(
+                      {
+                          Value:Substitute(Sum(colMetasAvaliacaoColaboradores,Peso*Resposta/100),",","."),
+                          Color:"getGradientFillHelper('horizontal', ['red', 'orange', 'green','green'])"
+                      },
+
+              "https://quickchart.io/chart?c=" & EncodeUrl("
+
+              {
+                  type: 'gauge',
+                  data: {
+                      labels: [],
+                      datasets: [
+                      {
+                          data: ["&Concat(Sequence(Max),Value,",")&"],
+                          value: "&Value&",
+                          minValue: 0,
+                          backgroundColor: "&Color&",
+                          borderWidth: 1,
+                      },
+                      ],
+                  },
+                  options: {
+                      cutoutPercentage: 80,
+                      legend: {
+                      display: false,
+                      },
+                      needle: {
+                      radiusPercentage: 1,
+                      widthPercentage: 1,
+                      lengthPercentage: 60,
+                      color: '"&TCor.TextStandard &"',
+                      },
+                      valueLabel: {
+                      fontSize: 32,
+                      backgroundColor: 'transparent',
+                      color: '"&TCor.TextStandard &"',
+                      formatter: function (value, context) {
+                          return value;
+                      },
+                      bottomMarginPercentage: 10,
+                      },
+                      plugins: {
+                      datalabels: {
+                          'align': 'center',
+                          'anchor': 'top',
+                          display: 'auto',
+                          formatter: function (value, context) {
+                          return context.chart.data.labels[context.dataIndex];
+                          },
+                          color: '#fff',
+                          font: {
+                          size: 18,
+                          weight: 'normal',
+                          },
+                      },
+                      },
+                  },
+                  }
+                  "
+              )))
+
+
+               & "' style='width: 50%; height: auto;'/>
+              </div>"
+            Size: =8
+            Visible: =false
+            Width: =129
+            X: =24
+            Y: =264
+      - html_Radar:
+          Control: HtmlViewer@2.1.0
+          Properties:
+            Color: =Cor.TextStandard
+            DisabledBorderColor: =Cor.Disabled
+            Font: =Font.'Open Sans'
+            Height: =204
+            HtmlText: "=If(!IsEmpty(colAvaliacoesColaboradoresRespostas),\r\n\r\n\r\n\"<div style='width: 100%; height: 100%;display: flex;justify-content: center;'>\r\n<img src='\" &\r\n\r\n\r\nWith({\r\n    Label:Concat(GroupBy(colAvaliacoesColaboradoresRespostas,CategoriaPergunta,Grupo),\"'\" & CategoriaPergunta & \"'\",\",\"),\r\n    Value1:Concat(GroupBy(colAvaliacoesColaboradoresRespostas,CategoriaPergunta,Grupo),\"'\" & Substitute(Average(Grupo,RespostaCalibrada),\",\",\".\") & \"'\",\",\"),\r\n    Value2:Concat(GroupBy(colAvaliacoesColaboradoresRespostas,CategoriaPergunta,Grupo),\"'\" & Substitute(Average(Grupo,RespostaGestor),\",\",\".\") & \"'\",\",\"),\r\n    Value3:Concat(GroupBy(colAvaliacoesColaboradoresRespostas,CategoriaPergunta,Grupo),\"'\" & Substitute(Average(Grupo,RespostaColab),\",\",\".\") & \"'\",\",\")\r\n    },\r\n\r\n\"https://quickchart.io/chart?c=\" & EncodeUrl(\"\r\n\r\n{\r\n  type: 'radar',\r\n  data: {\r\n    labels: [\" & Label & \"],\r\n    datasets: [\r\n    {\r\n        backgroundColor: 'rgba(236,241,211,0.5)',\r\n        borderColor: '#00C425',\r\n        data: [\" & Value3 & \"],\r\n        label: 'Calibrado',\r\n    },\r\n    {\r\n        backgroundColor: 'rgba(153, 102, 255, 0.0)',\r\n        borderColor: 'rgb(153, 102, 255)',\r\n        data: [\" & Value2 & \"],\r\n        label: 'Gestor',\r\n    },\r\n    {\r\n        backgroundColor: 'rgba(255, 205, 86, 0.0)',\r\n        borderColor: 'rgb(255, 205, 86)',\r\n        data: [\" & Value1 & \"],\r\n        label: 'Colaborador',\r\n    },\r\n      \r\n      \r\n    ],\r\n  },\r\n  options: {\r\n    scale: {\r\n        ticks: {\r\n            beginAtZero: true, // Garante que a escala comece em zero\r\n            min: 0, // Define o valor mínimo para 0\r\n        }\r\n    },\r\n    spanGaps: false,\r\n    elements: {\r\n      line: {\r\n        tension: 0.000001,\r\n      },\r\n    },\r\n    \r\n  },\r\n}\"\r\n))\r\n\r\n& \"' style='width: 80%; height: auto;'/>\r\n</div>\"\r\n)"
+            Size: =8
+            Visible: =false
+            Width: =221
+            Y: =564
+      - html_9box:
+          Control: HtmlViewer@2.1.0
+          Properties:
+            Color: =Cor.TextStandard
+            DisabledBorderColor: =Cor.Disabled
+            Fill: =RGBA(255, 255, 255, 1)
+            Font: =Font.'Open Sans'
+            Height: =212
+            HtmlText: "=With({\n\n    //Régua Notas (as notas são de 1 a ?\"\n    NotaMaxima:3,\n    \n    //Dimensões\n    Largura:\"600px\",\n    Altura:\"600px\",\n    \n    //Eixos X e Y\n    CorTexto:\"black\",\n    CorFundo:\"transparente\",\n    LinhaCor:\"black\",\n    LinhaEspessura:\"2px\",\n    LinhaTipo:\"solid\",\n\n\n    //LEGENDAS EIXOS\n    TextoEixoX:\"DESEMPENHO\",\n    TextoEixoY:\"POTENCIAL\",\n\n    //LEGENDAS QUADRANTES\n    X1:\"1\",\n    X2:\"2\",\n    X3:\"3\",\n    Y1:\"1\",\n    Y2:\"2\",\n    Y3:\"3\",\n\n    //QUADRANTES\n    //Linha 1\n    X1Y1:{Texto:\"Função exige mais que suas habilidades. Analisar demissão ou cargo de menor responsabilidade<br><font size=15>\U0001F601\", CorFundo:\"#f8d4d1\", CorTexto:\"black\"},\n    X1Y2:{Texto:\"Testar novas atribuições. Pode estar desmotivado\", CorFundo:\"#fde2c6\", CorTexto:\"black\"},\n    X1Y3:{Texto:\"Está bem na função. Verificar remuneração e manter cargo atual.\", CorFundo:\"#ffffd1\", CorTexto:\"black\"},\n    \n    //Linha 2\n    X2Y1:{Texto:\"Pode estar na área errada. Testar novas atribuiçoes.\", CorFundo:\"#fde2c6\", CorTexto:\"black\"},\n    X2Y2:{Texto:\"Está bem na função atual. Investir em capacitação para aumentar o desempenho.\", CorFundo:\"#ffffd1\", CorTexto:\"black\"},\n    X2Y3:{Texto:\"Tem potencial de liderança. Analisar possibilidade de pequenas promoções internas.\", CorFundo:\"#c6f0d1\", CorTexto:\"black\"},\n    \n    //Linha 3\n    X3Y1:{Texto:\"Tem potencial mas, pode estar mal aproveitado na área.\", CorFundo:\"#ffffd1\", CorTexto:\"black\"},\n    X3Y2:{Texto:\"Verificar se tem habilidades para administrar projetos a longo prazo.\", CorFundo:\"#c6f0d1\", CorTexto:\"black\"},\n    X3Y3:{Texto:\"Grande potencial. Pode delegar mais responsabilidades.\", CorFundo:\"#b5e7a0\", CorTexto:\"black\"},\n\n    //HABILITAR LINHAS MARCAÇÃO NOTAS\n    LinhaHorizontal:true,\n    LinhaVertical:true,\n    EstiloLinhaHorizontal:\"border-top:1px dashed gray\",\n    EstiloLinhaVertical:\"border-left:1px dashed gray\",\n    \n    //QUADRANTES ESTILO GERAL\n    EspacamentoQuadrantes:\"10px\", //Só funciona quando as linhas de marcação das notas estão desabilitadas\n    Estilo:\"border: 0px solid black; padding: 20px; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); border-radius: 00px;\"\n\n},\n\n// NAO PRECISA MEXER DAQUI PRA BAIXO-----------------------------------------------------\n\nWith({\n    LarguraTable:Substitute(Largura,\"px\",\"\") -20,\n    AlturaTable:Substitute(Altura,\"px\",\"\") -20,\n    NotaDesempenho:Sum(colMetasAvaliacaoColaboradores,Peso*Resposta/100),\n    NotaPotencial:Average(colAvaliacoesColaboradoresRespostas,RespostaCalibrada)\n    },\nWith({\n    PosicaoXLinha:Substitute(NotaDesempenho/NotaMaxima*(LarguraTable-20),\",\",\".\"),\n    PosicaoYLinha:Substitute((NotaMaxima-NotaPotencial)/NotaMaxima*(AlturaTable-20),\",\",\".\")\n    },\n\n\"\n<div style='width: 100%; height: 100%;display: flex;justify-content: center;'>\n<div style='display: flex; flex-direction: column; width: \"&Largura&\"; height: \"&Altura&\";'>\n    <div style='flex-grow: 1; background-color: transparent; display: flex; justify-content: center; align-items: center; color: white;'>\n        <div style='display: flex; width: 100%; height: 100%;'>\n            <div style='flex: 0 0 20px;  background-color: \"&CorFundo&\";border-right: \"&LinhaEspessura & \" \"&LinhaTipo&\" \"&LinhaCor&\"; display: flex; justify-content: center; align-items: center; flex-direction: column;margin-bottom: -20px'><!-- DIV DA ESQUERDA -->\n                <span style='writing-mode: vertical-lr; transform: rotate(180deg); color: \"&CorTexto&\"; font-weight: bold;'>\"&TextoEixoY&\"</span>\n            </div>\n            <div style='position: relative;background-color: white; display: flex; justify-content: left; align-items: center;'><!-- DIV DA DIREITA -->\n                <table style='width: \"&LarguraTable&\"px; background-color: transparent;  table-layout: fixed; height: \"&AlturaTable&\"px; border-collapse: separate; border-spacing: \"&If(LinhaHorizontal || LinhaVertical,\"0px\", EspacamentoQuadrantes)&\"; text-align: center;'>\n                    <colgroup>\n                        <col style='width: calc((100% - 20px) / 3);'> <!-- Dividindo o restante por três -->\n                        <col style='width: calc((100% - 20px) / 3);'>\n                        <col style='width: calc((100% - 20px) / 3);'>\n                    </colgroup>\n                    <tr>\n                        <td style='border: none; width: 20px;color: black;writing-mode: vertical-lr; transform: rotate(-180deg);'>\"&Y3&\"</td>\n                        <td style='\"&Estilo&\" background-color: \"&X3Y1.CorFundo&\"; color: \"&X3Y1.CorTexto&\";height: 33%;'>\"&X3Y1.Texto&\"</td>\n                        <td style='\"&Estilo&\" background-color: \"&X3Y2.CorFundo&\"; color: \"&X3Y2.CorTexto&\";height: 33%;'>\"&X3Y2.Texto&\"</td>\n                        <td style='\"&Estilo&\" background-color: \"&X3Y3.CorFundo&\"; color: \"&X3Y3.CorTexto&\";height: 33%;'>\"&X3Y3.Texto&\"</td>\n                    </tr>\n                    <tr>\n                        <td style='border: none; width: 20px;color: black;writing-mode: vertical-lr; transform: rotate(-180deg);'>\"&Y2&\"</td>\n                        <td style='\"&Estilo&\" background-color: \"&X2Y1.CorFundo&\"; color: \"&X2Y1.CorTexto&\";height: 33%;'>\"&X2Y1.Texto&\"</td>\n                        <td style='\"&Estilo&\" background-color: \"&X2Y2.CorFundo&\"; color: \"&X2Y2.CorTexto&\";height: 33%;'>\"&X2Y2.Texto&\"</td>\n                        <td style='\"&Estilo&\" background-color: \"&X2Y3.CorFundo&\"; color: \"&X2Y3.CorTexto&\";height: 33%;'>\"&X2Y3.Texto&\"</td>\n                    </tr>\n                    <tr>\n                        <td style='border: none; width: 20px;color: black;writing-mode: vertical-lr; transform: rotate(-180deg);'>\"&Y1&\"</td>\n                        <td style='\"&Estilo&\" background-color: \"&X1Y1.CorFundo&\"; color: \"&X1Y1.CorTexto&\";height: 33%;'>\"&X1Y1.Texto&\"</td>\n                        <td style='\"&Estilo&\" background-color: \"&X1Y2.CorFundo&\"; color: \"&X1Y2.CorTexto&\";height: 33%;'>\"&X1Y2.Texto&\"</td>\n                        <td style='\"&Estilo&\" background-color: \"&X1Y3.CorFundo&\"; color: \"&X1Y3.CorTexto&\";height: 33%;'>\"&X1Y3.Texto&\"</td>\n                    </tr>\n                    <tr>\n                        <td style='border: none;'></td>\n                        <td style='border: none;color: black;'>\"&X1&\"</td>\n                        <td style='border: none;color: black;'>\"&X2&\"</td>\n                        <td style='border: none;color: black;'>\"&X3&\"</td>\n                    </tr>\n                </table>\" &\n                If(LinhaVertical,\n                \n                \"<!-- Linha Vertical Pontilhada -->\n                <div style=\"\"position: absolute;margin-left:20px; left: \"&PosicaoXLinha&\"px; width: 0; height: 100%; \"&EstiloLinhaVertical&\";\"\"></div>\"\n                ) &\n\n                If(LinhaHorizontal,\n        \n                \"<!-- Linha Horizontal Pontilhada -->\n                <div style=\"\"position: absolute;margin-top:2px; top: \"&PosicaoYLinha&\"px; height: 0; width: 100%; \"&EstiloLinhaHorizontal&\";\"\"></div>\"\n                ) &\n                \n            \"</div>\n        </div>\n    </div>\n    <div style='flex: 0 0 20px; background-color: \"&CorFundo&\";border-top: \"&LinhaEspessura&\" \"&LinhaTipo&\" \"&LinhaCor&\"; display: flex; justify-content: center; align-items: center;margin-left: 0px;'>\n        <span style='color: \"&CorTexto&\"; font-weight: bold;'>\"&TextoEixoX&\"</span>\n    </div>\n</div>\n</div>\"\n)))"
+            Size: =8
+            Visible: =false
+            Width: =215
+            X: =24
+            Y: =252

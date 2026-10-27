@@ -1,0 +1,128 @@
+<ImportExportXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.26102.122" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.26102.00122">
+  <Entities></Entities>
+  <Roles></Roles>
+  <Workflows>
+    <Workflow WorkflowId="{ade52a9b-996c-ef11-a670-6045bd3be110}" Name="[Avaliação Colaboradores] - Excluindo Base Avaliação">
+      <JsonFileName>/Workflows/AvaliacaoColaboradores-ExcluindoBaseAvaliao-ADE52A9B-996C-EF11-A670-6045BD3BE110.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>0</StateCode>
+      <StatusCode>1</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.0</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <ModernFlowType>0</ModernFlowType>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="[Avaliação Colaboradores] - Excluindo Base Avaliação" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{a9514619-c567-ef11-a670-6045bd3be110}" Name="[Avaliação Colaboradores] - Convite Email">
+      <JsonFileName>/Workflows/AvaliacaoColaboradores-ConviteEmail-A9514619-C567-EF11-A670-6045BD3BE110.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>0</StateCode>
+      <StatusCode>1</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.0</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <ModernFlowType>0</ModernFlowType>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="[Avaliação Colaboradores] - Convite Email" />
+      </LocalizedNames>
+    </Workflow>
+  </Workflows>
+  <FieldSecurityProfiles></FieldSecurityProfiles>
+  <Templates />
+  <EntityMaps />
+  <EntityRelationships />
+  <OrganizationSettings />
+  <optionsets />
+  <CustomControls />
+  <EntityDataProviders />
+  <CanvasApps>
+    <CanvasApp>
+      <Name>lf_avaliacaocolaboradoresapp_fbef8</Name>
+      <AppVersion>2026-04-14T19:34:52Z</AppVersion>
+      <Status>Ready</Status>
+      <CreatedByClientVersion>3.26041.15.0</CreatedByClientVersion>
+      <MinClientVersion>3.26041.15.0</MinClientVersion>
+      <Tags>{"primaryDeviceWidth":"1366","primaryDeviceHeight":"768","supportsPortrait":"true","supportsLandscape":"true","primaryFormFactor":"Tablet","showStatusBar":"false","publisherVersion":"3.26041.15","minimumRequiredApiVersion":"2.2.0","hasComponent":"true","hasUnlockedComponent":"true","isUnifiedRootApp":"false","sienaVersion":"20260413T053430Z-3.24084.21.0","m365CopilotSettingValue":"0"}</Tags>
+      <IsCdsUpgraded>0</IsCdsUpgraded>
+      <GalleryItemId xsi:nil="true"></GalleryItemId>
+      <BackgroundColor>rgba(255, 255, 255, 1)</BackgroundColor>
+      <DisplayName>[Avaliação Colaboradores] - App</DisplayName>
+      <Description xsi:nil="true"></Description>
+      <CommitMessage xsi:nil="true"></CommitMessage>
+      <Publisher xsi:nil="true"></Publisher>
+      <AuthorizationReferences>[]</AuthorizationReferences>
+      <ConnectionReferences>{"3de78c56-c1a4-4077-863a-e94c2beaf12c":{"id":"/providers/microsoft.powerapps/apis/shared_logicflows","displayName":"Fluxos lógicos","iconUri":"https://conn-afd-prod-endpoint-bmc9bqahasf3grgk.b01.azurefd.net/v1.0.1766/1.0.1766.4325/logicflows/icon.png","dataSources":["[AvaliaçãoColaboradores]-ConviteEmail"],"dependencies":["969ea64b-b9ad-48e4-9c14-7a725be714a5","77e48f54-3474-4fa1-b199-e9e3edc09dd0","0fcd77e2-16a9-4e7b-8d96-ef133cf34eff"],"dependents":[],"parameterHints":{"workflowName":{"value":"c25afba7-028a-474c-b0bf-15d515c24a9f"},"workflowEntityId":{"value":"a9514619-c567-ef11-a670-6045bd3be110"},"workflowDisplayName":{"value":"[Avaliação Colaboradores] - Convite Email"},"afdfb506-b433-4672-bcdc-0bf0f691c2c6":{"value":"shared_sharepointonline"},"77e48f54-3474-4fa1-b199-e9e3edc09dd0":{"value":"shared_office365"},"0fcd77e2-16a9-4e7b-8d96-ef133cf34eff":{"value":"shared_office365users"},"969ea64b-b9ad-48e4-9c14-7a725be714a5":{"value":"shared_sharepointonline"}},"parameterHintsV2":{"workflowName":{"value":"c25afba7-028a-474c-b0bf-15d515c24a9f"},"workflowEntityId":{"value":"a9514619-c567-ef11-a670-6045bd3be110"},"workflowDisplayName":{"value":"[Avaliação Colaboradores] - Convite Email"},"shared_sharepointonline":{"value":"969ea64b-b9ad-48e4-9c14-7a725be714a5"},"shared_office365":{"value":"77e48f54-3474-4fa1-b199-e9e3edc09dd0"},"shared_office365users":{"value":"0fcd77e2-16a9-4e7b-8d96-ef133cf34eff"}},"isOnPremiseConnection":false,"bypassConsent":false,"dataSets":{},"apiTier":"Standard","actions":["Run"]},"969ea64b-b9ad-48e4-9c14-7a725be714a5":{"id":"/providers/microsoft.powerapps/apis/shared_sharepointonline","displayName":"SharePoint","iconUri":"https://conn-afd-prod-endpoint-bmc9bqahasf3grgk.b01.azurefd.net/releases/v1.0.1769/1.0.1769.4361/sharepointonline/icon.png","dataSources":["BaseAvaliacoes","BaseAvaliacoesItens","StatusAvaliacoes","AvaliacoesColaboradoresRespostas","MetasAvaliacaoColaboradores","BaseColaboradores","BaseCargos","BaseDptos","AvaliacoesColaboradores"],"dependencies":[],"dependents":["3de78c56-c1a4-4077-863a-e94c2beaf12c","0a97c451-b88c-4f5f-bf9c-eff067d52d3f"],"parameterHints":{},"parameterHintsV2":{},"isOnPremiseConnection":false,"bypassConsent":false,"dataSets":{"https://contoso.sharepoint.com/sites/AvaliacaoColaboradores_lf_SiteAppAvaliacao":{"datasetOverride":{"name":"https://contoso.sharepoint.com/sites/AvaliacaoColaboradores","environmentVariableName":"lf_SiteAppAvaliacao"},"dataSources":{"BaseAvaliacoes":{"tableName":"2120fc8c-cee5-4fe9-8cc6-5817272b53a4","tableNameOverride":{"name":"2120fc8c-cee5-4fe9-8cc6-5817272b53a4","environmentVariableName":"lf_BaseAvaliacoes2"}},"BaseAvaliacoesItens":{"tableName":"6889c91e-3005-4706-9936-3c9930cf43ac","tableNameOverride":{"name":"6889c91e-3005-4706-9936-3c9930cf43ac","environmentVariableName":"lf_BaseAvaliacoesItens"}},"StatusAvaliacoes":{"tableName":"071674ee-0693-40d9-ba31-aadc19e3ecbf","tableNameOverride":{"name":"071674ee-0693-40d9-ba31-aadc19e3ecbf","environmentVariableName":"lf_StatusAvaliacoes"}},"AvaliacoesColaboradoresRespostas":{"tableName":"8de42401-6b82-4fe4-abe1-e08a7e114e68","tableNameOverride":{"name":"8de42401-6b82-4fe4-abe1-e08a7e114e68","environmentVariableName":"lf_AvaliacoesColaboradoresRespostas"}},"MetasAvaliacaoColaboradores":{"tableName":"141337ac-f1e2-4441-8a72-7244d2a65227","tableNameOverride":{"name":"141337ac-f1e2-4441-8a72-7244d2a65227","environmentVariableName":"lf_MetasAvaliacaoColaboradores"}},"AvaliacoesColaboradores":{"tableName":"c6c4ee2e-3b9e-4ad5-aede-80a3ba89e31d","tableNameOverride":{"name":"c6c4ee2e-3b9e-4ad5-aede-80a3ba89e31d","environmentVariableName":"lf_AvaliacoesColaboradores"}}}},"https://contoso.sharepoint.com/sites/AvaliacaoColaboradores_lf_SiteBase":{"datasetOverride":{"name":"https://contoso.sharepoint.com/sites/AvaliacaoColaboradores","environmentVariableName":"lf_SiteBase"},"dataSources":{"BaseColaboradores":{"tableName":"e25c7c4a-e65c-45db-be6f-a6127ea696c3","tableNameOverride":{"name":"e25c7c4a-e65c-45db-be6f-a6127ea696c3","environmentVariableName":"lf_BaseColaboradores"}},"BaseCargos":{"tableName":"62734460-417a-47fb-b500-f48ab489cb10","tableNameOverride":{"name":"62734460-417a-47fb-b500-f48ab489cb10","environmentVariableName":"lf_BaseCargos"}},"BaseDptos":{"tableName":"7c3c2f9f-335b-43e5-ac44-2a3ad00f1436","tableNameOverride":{"name":"7c3c2f9f-335b-43e5-ac44-2a3ad00f1436","environmentVariableName":"lf_BaseDptos"}}}}},"apiTier":"Standard","actions":["providers/PowerPlatform.Governance/Operations/Read","providers/PowerPlatform.Governance/Operations/Write","providers/PowerPlatform.Governance/Operations/Delete"]},"77e48f54-3474-4fa1-b199-e9e3edc09dd0":{"id":"/providers/microsoft.powerapps/apis/shared_office365","displayName":"Office 365 Outlook","iconUri":"https://conn-afd-prod-endpoint-bmc9bqahasf3grgk.b01.azurefd.net/releases/v1.0.1802/1.0.1802.4699/office365/icon.png","dataSources":[],"dependencies":[],"dependents":["3de78c56-c1a4-4077-863a-e94c2beaf12c"],"parameterHints":{},"parameterHintsV2":{},"isOnPremiseConnection":false,"bypassConsent":false,"dataSets":{},"apiTier":"Standard"},"0fcd77e2-16a9-4e7b-8d96-ef133cf34eff":{"id":"/providers/microsoft.powerapps/apis/shared_office365users","displayName":"Usuários do Office 365","iconUri":"https://conn-afd-prod-endpoint-bmc9bqahasf3grgk.b01.azurefd.net/releases/v1.0.1788/1.0.1788.4544/office365users/icon.png","dataSources":["UsuáriosdoOffice365"],"dependencies":[],"dependents":["3de78c56-c1a4-4077-863a-e94c2beaf12c"],"parameterHints":{},"parameterHintsV2":{},"isOnPremiseConnection":false,"bypassConsent":false,"dataSets":{},"apiTier":"Standard"},"0a97c451-b88c-4f5f-bf9c-eff067d52d3f":{"id":"/providers/microsoft.powerapps/apis/shared_logicflows","displayName":"Fluxos lógicos","iconUri":"https://conn-afd-prod-endpoint-bmc9bqahasf3grgk.b01.azurefd.net/v1.0.1766/1.0.1766.4325/logicflows/icon.png","dataSources":["[AvaliaçãoColaboradores]-ExcluindoBaseAvaliação"],"dependencies":["969ea64b-b9ad-48e4-9c14-7a725be714a5"],"dependents":[],"parameterHints":{"workflowName":{"value":"acbb3001-5323-4b98-91ed-4e0052adde32"},"workflowEntityId":{"value":"ade52a9b-996c-ef11-a670-6045bd3be110"},"workflowDisplayName":{"value":"[Avaliação Colaboradores] - Excluindo Base Avaliação"},"afdfb506-b433-4672-bcdc-0bf0f691c2c6":{"value":"shared_sharepointonline"},"969ea64b-b9ad-48e4-9c14-7a725be714a5":{"value":"shared_sharepointonline"}},"parameterHintsV2":{"workflowName":{"value":"acbb3001-5323-4b98-91ed-4e0052adde32"},"workflowEntityId":{"value":"ade52a9b-996c-ef11-a670-6045bd3be110"},"workflowDisplayName":{"value":"[Avaliação Colaboradores] - Excluindo Base Avaliação"},"shared_sharepointonline":{"value":"969ea64b-b9ad-48e4-9c14-7a725be714a5"}},"isOnPremiseConnection":false,"bypassConsent":false,"dataSets":{},"apiTier":"Standard","actions":["Run"]}}</ConnectionReferences>
+      <DatabaseReferences>{}</DatabaseReferences>
+      <AppComponents>[]</AppComponents>
+      <AppComponentDependencies>[]</AppComponentDependencies>
+      <CanConsumeAppPass>1</CanConsumeAppPass>
+      <CanvasAppType>0</CanvasAppType>
+      <BypassConsent>0</BypassConsent>
+      <AdminControlBypassConsent>0</AdminControlBypassConsent>
+      <EmbeddedApp xsi:nil="true"></EmbeddedApp>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <CdsDependencies>{"cdsdependencies":[{"dependencyid":"a9514619-c567-ef11-a670-6045bd3be110","componenttype":29,"componenttypeplatformname":"Workflow"},{"dependencyid":"ade52a9b-996c-ef11-a670-6045bd3be110","componenttype":29,"componenttypeplatformname":"Workflow"},{"logicalname":"lf_SiteAppAvaliacao","componenttype":380,"componenttypeplatformname":"EnvironmentVariableDefinition"},{"logicalname":"lf_SiteBase","componenttype":380,"componenttypeplatformname":"EnvironmentVariableDefinition"},{"logicalname":"lf_BaseAvaliacoes2","componenttype":380,"componenttypeplatformname":"EnvironmentVariableDefinition"},{"logicalname":"lf_BaseAvaliacoesItens","componenttype":380,"componenttypeplatformname":"EnvironmentVariableDefinition"},{"logicalname":"lf_StatusAvaliacoes","componenttype":380,"componenttypeplatformname":"EnvironmentVariableDefinition"},{"logicalname":"lf_AvaliacoesColaboradoresRespostas","componenttype":380,"componenttypeplatformname":"EnvironmentVariableDefinition"},{"logicalname":"lf_MetasAvaliacaoColaboradores","componenttype":380,"componenttypeplatformname":"EnvironmentVariableDefinition"},{"logicalname":"lf_AvaliacoesColaboradores","componenttype":380,"componenttypeplatformname":"EnvironmentVariableDefinition"},{"logicalname":"lf_BaseColaboradores","componenttype":380,"componenttypeplatformname":"EnvironmentVariableDefinition"},{"logicalname":"lf_BaseCargos","componenttype":380,"componenttypeplatformname":"EnvironmentVariableDefinition"},{"logicalname":"lf_BaseDptos","componenttype":380,"componenttypeplatformname":"EnvironmentVariableDefinition"}]}</CdsDependencies>
+      <IsCustomizable>1</IsCustomizable>
+      <BackgroundImageUri>/CanvasApps/lf_avaliacaocolaboradoresapp_fbef8_BackgroundImageUri</BackgroundImageUri>
+      <DocumentUri>/CanvasApps/lf_avaliacaocolaboradoresapp_fbef8_DocumentUri.msapp</DocumentUri>
+      <AdditionalUris>
+        <AdditionalUri>/CanvasApps/lf_avaliacaocolaboradoresapp_fbef8_AdditionalUris0_identity.json</AdditionalUri>
+      </AdditionalUris>
+    </CanvasApp>
+  </CanvasApps>
+  <connectionreferences>
+    <connectionreference connectionreferencelogicalname="lf_Office365Users">
+      <connectionreferencedisplayname>Office365Users</connectionreferencedisplayname>
+      <connectorid>/providers/Microsoft.PowerApps/apis/shared_office365users</connectorid>
+      <iscustomizable>1</iscustomizable>
+      <promptingbehavior>0</promptingbehavior>
+      <statecode>0</statecode>
+      <statuscode>1</statuscode>
+    </connectionreference>
+    <connectionreference connectionreferencelogicalname="lf_SharePoint">
+      <connectionreferencedisplayname>SharePoint</connectionreferencedisplayname>
+      <connectorid>/providers/Microsoft.PowerApps/apis/shared_sharepointonline</connectorid>
+      <iscustomizable>1</iscustomizable>
+      <promptingbehavior>0</promptingbehavior>
+      <statecode>0</statecode>
+      <statuscode>1</statuscode>
+    </connectionreference>
+    <connectionreference connectionreferencelogicalname="lf_OutlookOffice">
+      <connectionreferencedisplayname>OutlookOffice</connectionreferencedisplayname>
+      <connectorid>/providers/Microsoft.PowerApps/apis/shared_office365</connectorid>
+      <iscustomizable>1</iscustomizable>
+      <promptingbehavior>0</promptingbehavior>
+      <statecode>0</statecode>
+      <statuscode>1</statuscode>
+    </connectionreference>
+  </connectionreferences>
+  <Languages>
+    <Language>1033</Language>
+  </Languages>
+</ImportExportXml>

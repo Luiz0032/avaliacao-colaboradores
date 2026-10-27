@@ -1,0 +1,941 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+Screens:
+  Colaboradores Avaliacao Screen:
+    Properties:
+      Fill: =Cor.BackgroundScreen
+      LoadingSpinnerColor: =Cor.Primary
+    Children:
+      - Container1:
+          Control: GroupContainer@1.5.0
+          Variant: AutoLayout
+          Properties:
+            DropShadow: =DropShadow.None
+            Fill: =Cor.Transparent
+            Height: =768
+            LayoutDirection: =LayoutDirection.Vertical
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Width: =1366
+          Children:
+            - cTopo_3:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  DropShadow: =DropShadow.None
+                  Fill: =Cor.BackgroundTop
+                  FillPortions: =0
+                  Height: =80
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  PaddingLeft: =20
+                  PaddingRight: =20
+                  RadiusBottomLeft: =0
+                  RadiusBottomRight: =0
+                  RadiusTopLeft: =0
+                  RadiusTopRight: =0
+                Children:
+                  - Icon1_3:
+                      Control: Classic/Icon@2.5.0
+                      Properties:
+                        BorderColor: =Cor.Border
+                        Color: =Cor.Primary
+                        DisabledBorderColor: =Cor.Disabled
+                        DisabledColor: =Cor.Disabled
+                        FocusedBorderThickness: =0
+                        Height: =50
+                        HoverColor: =ColorFade(Self.Color, 10%)
+                        Icon: =Icon.BackArrow
+                        OnSelect: =Back()
+                        PaddingBottom: =10
+                        PaddingTop: =10
+                        Width: =50
+                  - Label1_3:
+                      Control: Label@2.5.1
+                      Properties:
+                        Align: =Align.Right
+                        BorderColor: =Cor.Border
+                        Color: =Cor.TextInverted
+                        DisabledColor: =Cor.DisabledText
+                        FillPortions: =1
+                        Font: =Font.'Open Sans'
+                        Size: =14
+                        Text: ="Colaboradores Convidados - " & varBaseAvaliacao.NomeAvaliacao & " - " & varBaseAvaliacao.PeriodoAvaliacao
+                  - icoTopMenu_11:
+                      Control: Image@2.2.3
+                      Properties:
+                        BorderColor: =Cor.Border
+                        DisabledBorderColor: =Cor.Disabled
+                        DisabledFill: =Cor.Disabled
+                        FocusedBorderThickness: =0
+                        Height: =30
+                        HoverFill: =Cor.TransparentLight
+                        Image: "=If(varDark,\r\n\"data:image/svg+xml;utf8, \" &  EncodeUrl(\r\n\"<svg xmlns='http://www.w3.org/2000/svg' width='1.2rem' data-refresh='\"&varRefresh&\"' height='1.2rem' viewBox='0 0 24 24'>\r\n    <g fill='\"&TCor.TextInverted&\"' fill-opacity='0'>\r\n        <path d='m15.22 6.03l2.53-1.94L14.56 4L13.5 1l-1.06 3l-3.19.09l2.53 1.94l-.91 3.06l2.63-1.81l2.63 1.81z'>\r\n            <animate id='lineMdMoonFilledLoop0' fill='freeze' attributeName='fill-opacity' begin='1.61s;lineMdMoonFilledLoop0.begin+13.8s' dur='0.92s' values='0;1' />\r\n            <animate fill='freeze' attributeName='fill-opacity' begin='lineMdMoonFilledLoop0.begin+5.06s' dur='0.92s' values='1;0' />\r\n        </path>\r\n        <path d='M13.61 5.25L15.25 4l-2.06-.05L12.5 2l-.69 1.95L9.75 4l1.64 1.25l-.59 1.98l1.7-1.17l1.7 1.17z'>\r\n            <animate fill='freeze' attributeName='fill-opacity' begin='lineMdMoonFilledLoop0.begin+6.9s' dur='0.92s' values='0;1' />\r\n            <animate fill='freeze' attributeName='fill-opacity' begin='lineMdMoonFilledLoop0.begin+11.96s' dur='0.92s' values='1;0' />\r\n        </path>\r\n        <path d='M19.61 12.25L21.25 11l-2.06-.05L18.5 9l-.69 1.95l-2.06.05l1.64 1.25l-.59 1.98l1.7-1.17l1.7 1.17z'>\r\n            <animate fill='freeze' attributeName='fill-opacity' begin='lineMdMoonFilledLoop0.begin+0.92s' dur='0.92s' values='0;1' />\r\n            <animate fill='freeze' attributeName='fill-opacity' begin='lineMdMoonFilledLoop0.begin+6.44s' dur='0.92s' values='1;0' />\r\n        </path>\r\n        <path d='m20.828 9.731l1.876-1.439l-2.366-.067L19.552 6l-.786 2.225l-2.366.067l1.876 1.439L17.601 12l1.951-1.342L21.503 12z'>\r\n            <animate fill='freeze' attributeName='fill-opacity' begin='lineMdMoonFilledLoop0.begin+7.82s' dur='0.92s' values='0;1' />\r\n            <animate fill='freeze' attributeName='fill-opacity' begin='lineMdMoonFilledLoop0.begin+12.88s' dur='0.92s' values='1;0' />\r\n        </path>\r\n    </g>\r\n    <g fill-opacity='0' stroke='\"&TCor.TextInverted&\"' stroke-linecap='round' stroke-linejoin='round' stroke-width='0.95'>\r\n        <path fill='\"&TCor.TextInverted&\"' stroke-dasharray='56' stroke-dashoffset='56' d='M7 6 C7 12.08 11.92 17 18 17 C18.53 17 19.05 16.96 19.56 16.89 C17.95 19.36 15.17 21 12 21 C7.03 21 3 16.97 3 12 C3 8.83 4.64 6.05 7.11 4.44 C7.04 4.95 7 5.47 7 6 Z'>\r\n            <animate fill='freeze' attributeName='stroke-dashoffset' dur='1.38s' values='56;0' />\r\n            <animate fill='freeze' attributeName='fill-opacity' begin='1.45s' dur='1.15s' values='0;1' />\r\n        </path>\r\n    </g>\r\n</svg>\"\r\n)\r\n    ,\r\n    \r\n\r\n\"data:image/svg+xml;utf8, \" &  EncodeUrl(\"\r\n    <svg xmlns='http://www.w3.org/2000/svg' width='1.2rem' data-refresh='\"&varRefresh&\"' height='1.2rem' viewBox='0 0 24 24'>\r\n    <g fill='none' stroke='\"&TCor.TextInverted&\"' stroke-dasharray='2' stroke-dashoffset='2' stroke-linecap='round' stroke-width='0.95'>\r\n        <path d='M0 0'>\r\n            <animate fill='freeze' attributeName='d' begin='2.76s' dur='0.46s' values='M12 19v1M19 12h1M12 5v-1M5 12h-1;M12 21v1M21 12h1M12 3v-1M3 12h-1'/>\r\n            <animate fill='freeze' attributeName='stroke-dashoffset' begin='2.76s' dur='0.46s' values='2;0'/>\r\n        </path>\r\n        <path d='M0 0'>\r\n            <animate fill='freeze' attributeName='d' begin='3.45s' dur='0.46s' values='M17 17l0.5 0.5M17 7l0.5 -0.5M7 7l-0.5 -0.5M7 17l-0.5 0.5;M18.5 18.5l0.5 0.5M18.5 5.5l0.5 -0.5M5.5 5.5l-0.5 -0.5M5.5 18.5l-0.5 0.5'/>\r\n            <animate fill='freeze' attributeName='stroke-dashoffset' begin='3.45s' dur='2.76s' values='2;0'/>\r\n        </path>\r\n        <animateTransform attributeName='transform' dur='69s' repeatCount='indefinite' type='rotate' values='0 12 12;360 12 12'/>\r\n    </g>\r\n    <g fill='\"&TCor.TextInverted&\"'>\r\n        <path d='M15.22 6.03L17.75 4.09L14.56 4L13.5 1L12.44 4L9.25 4.09L11.78 6.03L10.87 9.09L13.5 7.28L16.13 9.09L15.22 6.03Z'>\r\n            <animate fill='freeze' attributeName='fill-opacity' dur='0.92s' values='1;0'/>\r\n        </path>\r\n        <path d='M19.61 12.25L21.25 11L19.19 10.95L18.5 9L17.81 10.95L15.75 11L17.39 12.25L16.8 14.23L18.5 13.06L20.2 14.23L19.61 12.25Z'>\r\n            <animate fill='freeze' attributeName='fill-opacity' begin='0.46s' dur='0.92s' values='1;0'/>\r\n        </path>\r\n    </g>\r\n    <g fill='\"&TCor.TextInverted&\"' stroke='\"&TCor.TextInverted&\"' stroke-linecap='round' stroke-linejoin='round' stroke-width='0.95'>\r\n        <path d='M7 6 C7 12.08 11.92 17 18 17 C18.53 17 19.05 16.96 19.56 16.89 C17.95 19.36 15.17 21 12 21 C7.03 21 3 16.97 3 12 C3 8.83 4.64 6.05 7.11 4.44 C7.04 4.95 7 5.47 7 6 Z'/>\r\n        <set attributeName='opacity' begin='1.38s' to='0'/>\r\n    </g>\r\n    <mask id='lineMdMoonFilledToSunnyFilledLoopTransition0'>\r\n        <circle cx='12' cy='12' r='12' fill='#fff'/>\r\n            <circle cx='18' cy='6' r='12' fill='#fff'>\r\n                <animate fill='freeze' attributeName='cx' begin='1.38s' dur='0.92s' values='18;22'/>\r\n                <animate fill='freeze' attributeName='cy' begin='1.38s' dur='0.92s' values='6;2'/>\r\n                <animate fill='freeze' attributeName='r' begin='1.38s' dur='0.92s' values='12;3'/>\r\n            </circle>\r\n        <circle cx='18' cy='6' r='10'>\r\n            <animate fill='freeze' attributeName='cx' begin='1.38s' dur='0.92s' values='18;22'/>\r\n            <animate fill='freeze' attributeName='cy' begin='1.38s' dur='0.92s' values='6;2'/>\r\n            <animate fill='freeze' attributeName='r' begin='1.38s' dur='0.92s' values='10;1'/>\r\n        </circle>\r\n    </mask>\r\n        <circle cx='12' cy='12' r='10' fill='\"&TCor.TextInverted&\"' mask='url(#lineMdMoonFilledToSunnyFilledLoopTransition0)' opacity='0'>\r\n            <set attributeName='opacity' begin='1.38s' to='1'/>\r\n            <animate fill='freeze' attributeName='r' begin='1.38s' dur='0.92s' values='10;6'/>\r\n        </circle>\r\n</svg>\")\r\n)"
+                        OnSelect: |-
+                          =Set(varRefresh,Text(Now(),""));
+                          Set(varDark,!varDark);
+                          If(varDark,
+                              Set(Cor,CoresDark);
+                              Set(TCor,TextCoresDark)
+                              ,
+                              Set(Cor,CoresLight);
+                              Set(TCor,TextCoresLight)
+                          )
+                        RadiusBottomLeft: =1000
+                        RadiusBottomRight: =1000
+                        RadiusTopLeft: =1000
+                        RadiusTopRight: =1000
+                        TabIndex: =0
+                        Width: =30
+                        X: =878
+                        Y: =645
+            - cCentral:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  DropShadow: =DropShadow.None
+                  Fill: =Cor.Transparent
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutGap: =20
+                  PaddingBottom: =20
+                  PaddingLeft: =20
+                  PaddingRight: =20
+                  PaddingTop: =20
+                  RadiusBottomLeft: =0
+                  RadiusBottomRight: =0
+                  RadiusTopLeft: =0
+                  RadiusTopRight: =0
+                Children:
+                  - Container2:
+                      Control: GroupContainer@1.5.0
+                      Variant: AutoLayout
+                      Properties:
+                        DropShadow: =DropShadow.Regular
+                        Fill: =Cor.BackgroundStandard
+                        FillPortions: =If(locExpandir,1,0)
+                        LayoutDirection: =LayoutDirection.Horizontal
+                        RadiusBottomLeft: =8
+                        RadiusBottomRight: =8
+                        RadiusTopLeft: =8
+                        RadiusTopRight: =8
+                        Width: =If(locExpandir,500,Icon4.Width)
+                      Children:
+                        - cGallery1_2:
+                            Control: GroupContainer@1.5.0
+                            Variant: AutoLayout
+                            Properties:
+                              DropShadow: =DropShadow.None
+                              Fill: =Cor.BackgroundStandard
+                              Height: =Parent.Height-Self.Y*2
+                              LayoutDirection: =LayoutDirection.Vertical
+                              LayoutGap: =10
+                              PaddingBottom: =20
+                              PaddingLeft: =20
+                              PaddingRight: =20
+                              PaddingTop: =20
+                              RadiusBottomLeft: =8
+                              RadiusBottomRight: =8
+                              RadiusTopLeft: =8
+                              RadiusTopRight: =8
+                              Visible: =locExpandir
+                              Width: =Parent.Width-Self.X*2
+                            Children:
+                              - cCabec_1:
+                                  Control: GroupContainer@1.5.0
+                                  Variant: AutoLayout
+                                  Properties:
+                                    AlignInContainer: =AlignInContainer.SetByContainer
+                                    DropShadow: =DropShadow.None
+                                    Fill: =Cor.NeutralL95
+                                    FillPortions: =0
+                                    Height: =42
+                                    LayoutDirection: =LayoutDirection.Horizontal
+                                    LayoutGap: =10
+                                    PaddingLeft: =5
+                                    PaddingRight: =20
+                                    Width: =Parent.Width-Self.X*2
+                                  Children:
+                                    - Checkbox2:
+                                        Control: Classic/CheckBox@2.1.0
+                                        Properties:
+                                          AlignInContainer: =AlignInContainer.Stretch
+                                          BorderColor: =Cor.Border
+                                          CheckboxBackgroundFill: =If(Self.Value,Cor.Primary,Cor.BackgroundInput)
+                                          CheckboxBorderColor: =If(Self.Value,Cor.Primary,Cor.Border)
+                                          CheckboxSize: =30
+                                          CheckmarkFill: =RGBA(255, 255, 255, 1)
+                                          Color: =Cor.TextStandard
+                                          FocusedBorderThickness: =0
+                                          Font: =Font.'Open Sans'
+                                          HoverColor: =ColorFade(Self.Color, 25%)
+                                          LayoutMinHeight: =0
+                                          OnCheck: |-
+                                            =Clear(colConviteEmMassa);
+                                            ForAll(Filter(colBaseColaboradores,Not(CodColaborador in colAvaliacoesColaboradores.CodColaborador)) As Tab,
+                                                Collect(colConviteEmMassa,
+                                                    {
+                                                        IdBaseAvaliacao:varBaseAvaliacao.ID,
+                                                        CodColaborador:Value(Tab.CodColaborador),
+                                                        CodGestor:Value(Tab.CodGestor),
+                                                        Cargo:Value(Tab.CodCargo),
+                                                        Dpto:Value(Tab.CodDpto)
+                                                    }
+                                                )
+                                            )
+                                          OnUncheck: =Clear(colConviteEmMassa);
+                                          PressedColor: =ColorFade(Self.Color, 25%)
+                                          Size: =8
+                                          Width: =30
+                                    - Label14_15:
+                                        Control: Label@2.5.1
+                                        Properties:
+                                          BorderColor: =Cor.Border
+                                          Color: =Cor.TextStandard
+                                          DisabledColor: =Cor.DisabledText
+                                          Font: =Font.'Open Sans'
+                                          FontWeight: =FontWeight.Semibold
+                                          Size: =8
+                                          Text: ="Foto"
+                                          Width: =40
+                                    - Label14_13:
+                                        Control: Label@2.5.1
+                                        Properties:
+                                          BorderColor: =Cor.Border
+                                          Color: =Cor.TextStandard
+                                          DisabledColor: =Cor.DisabledText
+                                          FillPortions: =1
+                                          Font: =Font.'Open Sans'
+                                          FontWeight: =FontWeight.Semibold
+                                          Size: =8
+                                          Text: ="Nome Colaborador"
+                                          Width: =200
+                                    - Label14_14:
+                                        Control: Label@2.5.1
+                                        Properties:
+                                          BorderColor: =Cor.Border
+                                          Color: =Cor.TextStandard
+                                          DisabledColor: =Cor.DisabledText
+                                          Font: =Font.'Open Sans'
+                                          FontWeight: =FontWeight.Semibold
+                                          Size: =8
+                                          Text: ="Email"
+                                          Width: =250
+                                    - Label14_16:
+                                        Control: Label@2.5.1
+                                        Properties:
+                                          BorderColor: =Cor.Border
+                                          Color: =Cor.TextStandard
+                                          DisabledColor: =Cor.DisabledText
+                                          Font: =Font.'Open Sans'
+                                          FontWeight: =FontWeight.Semibold
+                                          Size: =8
+                                          Text: =""
+                                          Width: =30
+                              - galBaseAvaliacoes_1:
+                                  Control: Gallery@2.15.0
+                                  Variant: Vertical
+                                  Properties:
+                                    BorderColor: =Cor.Border
+                                    Height: =100
+                                    Items: =SortByColumns(Filter(colBaseColaboradores,Not(CodColaborador in colAvaliacoesColaboradores.CodColaborador)),"NomeColaborador")
+                                    TemplatePadding: =0
+                                    TemplateSize: =50
+                                    Visible: =Self.AllItemsCount>0
+                                  Children:
+                                    - Container48_1:
+                                        Control: GroupContainer@1.5.0
+                                        Variant: AutoLayout
+                                        Properties:
+                                          DropShadow: =DropShadow.None
+                                          Fill: =Cor.BackgroundStandard
+                                          Height: =Parent.TemplateHeight
+                                          LayoutAlignItems: =LayoutAlignItems.Stretch
+                                          LayoutDirection: =LayoutDirection.Horizontal
+                                          LayoutGap: =10
+                                          PaddingLeft: =5
+                                          PaddingRight: =20
+                                          RadiusBottomLeft: =8
+                                          RadiusBottomRight: =8
+                                          RadiusTopLeft: =8
+                                          RadiusTopRight: =8
+                                          Width: =Parent.TemplateWidth-Self.X*2
+                                        Children:
+                                          - Checkbox1:
+                                              Control: Classic/CheckBox@2.1.0
+                                              Properties:
+                                                BorderColor: =Cor.Border
+                                                CheckboxBackgroundFill: =If(Self.Value,Cor.Primary,Cor.BackgroundInput)
+                                                CheckboxBorderColor: =If(Self.Value,Cor.Primary,Cor.Border)
+                                                CheckboxSize: =30
+                                                CheckmarkFill: =RGBA(255, 255, 255, 1)
+                                                Color: =Cor.TextStandard
+                                                Default: =ThisItem.CodColaborador in colConviteEmMassa.CodColaborador
+                                                FocusedBorderThickness: =0
+                                                Font: =Font.'Open Sans'
+                                                HoverColor: =ColorFade(Self.Color, 25%)
+                                                OnCheck: |-
+                                                  =Collect(colConviteEmMassa,
+                                                      {
+                                                          IdBaseAvaliacao:varBaseAvaliacao.ID,
+                                                          CodColaborador:Value(ThisItem.CodColaborador),
+                                                          CodGestor:Value(ThisItem.CodGestor),
+                                                          Cargo:Value(ThisItem.CodCargo),
+                                                          Dpto:Value(ThisItem.CodDpto)
+                                                      }
+                                                  )
+                                                OnUncheck: =RemoveIf(colConviteEmMassa,CodColaborador=Value(ThisItem.CodColaborador))
+                                                PressedColor: =ColorFade(Self.Color, 25%)
+                                                Size: =8
+                                                Text: =
+                                                Width: =30
+                                          - Image1:
+                                              Control: Image@2.2.3
+                                              Properties:
+                                                AlignInContainer: =AlignInContainer.Center
+                                                BorderColor: =Cor.Border
+                                                DisabledBorderColor: =Cor.Disabled
+                                                DisabledFill: =Cor.Disabled
+                                                FocusedBorderThickness: =0
+                                                Height: =40
+                                                Image: =ThisItem.FotoUser
+                                                RadiusBottomLeft: =100
+                                                RadiusBottomRight: =100
+                                                RadiusTopLeft: =100
+                                                RadiusTopRight: =100
+                                                Width: =40
+                                          - Label15_8:
+                                              Control: Label@2.5.1
+                                              Properties:
+                                                BorderColor: =Cor.Border
+                                                Color: =Cor.TextStandard
+                                                DisabledColor: =Cor.DisabledText
+                                                FillPortions: =1
+                                                Font: =Font.'Open Sans'
+                                                Size: =8
+                                                Text: =ThisItem.NomeColaborador
+                                                Width: =200
+                                          - Label15_9:
+                                              Control: Label@2.5.1
+                                              Properties:
+                                                BorderColor: =Cor.Border
+                                                Color: =Cor.TextStandard
+                                                DisabledColor: =Cor.DisabledText
+                                                Font: =Font.'Open Sans'
+                                                Size: =8
+                                                Text: =ThisItem.EmailColaborador
+                                                Width: =250
+                                          - Icon3:
+                                              Control: Classic/Icon@2.5.0
+                                              Properties:
+                                                AlignInContainer: =AlignInContainer.Center
+                                                BorderColor: =Cor.Border
+                                                Color: =Cor.Primary
+                                                DisabledBorderColor: =Cor.Disabled
+                                                DisabledColor: =Cor.Disabled
+                                                FocusedBorderThickness: =0
+                                                Height: =40
+                                                HoverColor: =ColorFade(Self.Color, 10%)
+                                                Icon: =Icon.ChevronRight
+                                                OnSelect: "=Set(varCarregando,true);\r\n\r\n    RemoveIf(colConviteEmMassa,CodColaborador=Value(ThisItem.CodColaborador));\r\n\r\n    Patch(colAvaliacoesColaboradores,Defaults(colAvaliacoesColaboradores),\r\n        Patch(AvaliacoesColaboradores,Defaults(AvaliacoesColaboradores),\r\n            {\r\n                IdBaseAvaliacao:varBaseAvaliacao.ID,\r\n                CodColaborador:Value(ThisItem.CodColaborador),\r\n                CodGestor:Value(ThisItem.CodGestor),\r\n                Cargo:Value(ThisItem.CodCargo),\r\n                Dpto:Value(ThisItem.CodDpto)\r\n            }\r\n        )\r\n    );\r\n\r\n    '[AvaliaçãoColaboradores]-ConviteEmail'.Run(varBaseAvaliacao.ID,ThisItem.EmailColaborador);\r\n\r\n    \r\n    Notify(\"Convite enviado com sucesso!\",NotificationType.Success,2000);\r\n\r\n\r\nSet(varCarregando,false);"
+                                                PaddingBottom: =10
+                                                PaddingTop: =10
+                                                Width: =30
+                                    - Rectangle9_1:
+                                        Control: Rectangle@2.3.0
+                                        Properties:
+                                          BorderColor: =Cor.Border
+                                          Fill: =Cor.GallerySeparator
+                                          FocusedBorderThickness: =0
+                                          Height: =1
+                                          OnSelect: =Select(Parent)
+                                          Width: =Parent.TemplateWidth
+                                          Y: =Parent.TemplateHeight-1
+                              - cmpNothing_3:
+                                  Control: CanvasComponent
+                                  ComponentName: cmpNothing
+                                  Properties:
+                                    Color: =TCor.NeutralL60
+                                    FillPortions: =1
+                                    Height: =Parent.Height
+                                    IconHeight: =100
+                                    IconWidth: =100
+                                    LayoutMinHeight: =200
+                                    LayoutMinWidth: =200
+                                    SVG: ="<path d='M384,80H128c-26,0-43,14-48,40L48,272V384a48.14,48.14,0,0,0,48,48H416a48.14,48.14,0,0,0,48-48V272L432,120C427,93,409,80,384,80Z' style='fill:none;stroke:#000;stroke-linejoin:round;stroke-width:32px'/><line x1='48' y1='272' x2='192' y2='272' style='fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/><line x1='320' y1='272' x2='464' y2='272' style='fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/><path d='M192,272a64,64,0,0,0,128,0' style='fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/></svg>"
+                                    Text: ="Nenhum item encontrado"
+                                    Visible: =IsEmpty(galBaseAvaliacoes_1.AllItems)
+                                    Width: =Parent.Width
+                              - Button2:
+                                  Control: Classic/Button@2.2.0
+                                  Properties:
+                                    AlignInContainer: =AlignInContainer.End
+                                    BorderColor: =Self.Fill
+                                    BorderThickness: =Metadados.EspessuraBordaBotao
+                                    Color: =Cor.TextInverted
+                                    DisabledBorderColor: =Cor.Disabled
+                                    DisabledColor: =Cor.DisabledText
+                                    DisabledFill: =Cor.DisabledButton
+                                    Fill: =Cor.Primary
+                                    FocusedBorderThickness: =Metadados.EspessuraBordaBotao
+                                    Font: =Font.'Open Sans'
+                                    HoverBorderColor: =Self.HoverFill
+                                    HoverColor: =Self.Color
+                                    HoverFill: =ColorFade(Self.Fill, -10%)
+                                    OnSelect: |-
+                                      =Set(varCarregando,true);
+                                      Patch(AvaliacoesColaboradores,colConviteEmMassa);
+
+                                      With({
+                                          EmailsConvite:Concat(colConviteEmMassa,LookUp(RenameColumns(colBaseColaboradores,CodColaborador,CodColaborador2),CodColaborador=Value(CodColaborador2),EmailColaborador),";")},
+                                          '[AvaliaçãoColaboradores]-ConviteEmail'.Run(varBaseAvaliacao.ID,EmailsConvite)
+                                      );
+
+                                      Clear(colConviteEmMassa);
+                                      ClearCollect(colAvaliacoesColaboradores,Filter(AvaliacoesColaboradores,IdBaseAvaliacao=varBaseAvaliacao.ID));
+                                      Notify("Usuários convidados com sucesso!",NotificationType.Success,2000);
+                                      Set(varCarregando,false)
+                                    PressedBorderColor: =Self.PressedFill
+                                    PressedFill: =ColorFade(Self.Fill, -30%)
+                                    RadiusBottomLeft: =5
+                                    RadiusBottomRight: =5
+                                    RadiusTopLeft: =5
+                                    RadiusTopRight: =5
+                                    Size: =8
+                                    Text: ="Convidar Selecionados"
+                                    Visible: =!IsEmpty(colConviteEmMassa)
+                        - Icon4:
+                            Control: Classic/Icon@2.5.0
+                            Properties:
+                              AlignInContainer: =AlignInContainer.Stretch
+                              BorderColor: =Cor.Border
+                              Color: =Cor.Primary
+                              DisabledBorderColor: =Cor.Disabled
+                              DisabledColor: =Cor.Disabled
+                              Fill: =Cor.Transparent
+                              FocusedBorderThickness: =0
+                              Height: =50
+                              HoverColor: =ColorFade(Self.Color, 10%)
+                              Icon: =If(locExpandir,Icon.ChevronLeft,Icon.ChevronRight)
+                              OnSelect: =UpdateContext({locExpandir:!locExpandir})
+                              PaddingBottom: =10
+                              PaddingTop: =10
+                              Width: =30
+                  - cGallery1_3:
+                      Control: GroupContainer@1.5.0
+                      Variant: AutoLayout
+                      Properties:
+                        DropShadow: =DropShadow.None
+                        Fill: =Cor.BackgroundStandard
+                        Height: =Parent.Height-Self.Y*2
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutGap: =10
+                        PaddingBottom: =20
+                        PaddingLeft: =20
+                        PaddingRight: =20
+                        PaddingTop: =20
+                        RadiusBottomLeft: =8
+                        RadiusBottomRight: =8
+                        RadiusTopLeft: =8
+                        RadiusTopRight: =8
+                        Width: =Parent.Width-Self.X*2
+                      Children:
+                        - cCabec_3:
+                            Control: GroupContainer@1.5.0
+                            Variant: AutoLayout
+                            Properties:
+                              AlignInContainer: =AlignInContainer.SetByContainer
+                              DropShadow: =DropShadow.None
+                              Fill: =Cor.NeutralL95
+                              FillPortions: =0
+                              Height: =42
+                              LayoutDirection: =LayoutDirection.Horizontal
+                              LayoutGap: =10
+                              PaddingLeft: =5
+                              PaddingRight: =10
+                              Width: =Parent.Width-Self.X*2
+                            Children:
+                              - Label14_21:
+                                  Control: Label@2.5.1
+                                  Properties:
+                                    BorderColor: =Cor.Border
+                                    Color: =Cor.TextStandard
+                                    DisabledColor: =Cor.DisabledText
+                                    Font: =Font.'Open Sans'
+                                    FontWeight: =FontWeight.Semibold
+                                    Size: =8
+                                    Text: ="Nome Avaliação"
+                              - Label14_22:
+                                  Control: Label@2.5.1
+                                  Properties:
+                                    Align: =Align.Center
+                                    BorderColor: =Cor.Border
+                                    Color: =Cor.TextStandard
+                                    DisabledColor: =Cor.DisabledText
+                                    Font: =Font.'Open Sans'
+                                    FontWeight: =FontWeight.Semibold
+                                    Size: =8
+                                    Text: ="1º Acesso"
+                                    Width: =50
+                              - Label14_23:
+                                  Control: Label@2.5.1
+                                  Properties:
+                                    BorderColor: =Cor.Border
+                                    Color: =Cor.TextStandard
+                                    DisabledColor: =Cor.DisabledText
+                                    Font: =Font.'Open Sans'
+                                    FontWeight: =FontWeight.Semibold
+                                    Size: =8
+                                    Text: |-
+                                      ="Cargo/
+                                      Dpto"
+                                    Visible: =!locExpandir
+                                    Width: =100
+                              - Label14_24:
+                                  Control: Label@2.5.1
+                                  Properties:
+                                    BorderColor: =Cor.Border
+                                    Color: =Cor.TextStandard
+                                    DisabledColor: =Cor.DisabledText
+                                    Font: =Font.'Open Sans'
+                                    FontWeight: =FontWeight.Semibold
+                                    Size: =8
+                                    Text: ="Gestor"
+                                    Width: =120
+                              - Label14_27:
+                                  Control: Label@2.5.1
+                                  Properties:
+                                    Align: =Align.Center
+                                    BorderColor: =Cor.Border
+                                    Color: =Cor.TextStandard
+                                    DisabledColor: =Cor.DisabledText
+                                    Font: =Font.'Open Sans'
+                                    FontWeight: =FontWeight.Semibold
+                                    Size: =8
+                                    Text: ="Status"
+                                    Width: =130
+                              - Label14_26:
+                                  Control: Label@2.5.1
+                                  Properties:
+                                    Align: =Align.Center
+                                    BorderColor: =Cor.Border
+                                    Color: =Cor.TextStandard
+                                    DisabledColor: =Cor.DisabledText
+                                    Font: =Font.'Open Sans'
+                                    FontWeight: =FontWeight.Semibold
+                                    Size: =8
+                                    Text: ="Término Metas"
+                                    Visible: =!locExpandir
+                                    Width: =80
+                              - Label14_28:
+                                  Control: Label@2.5.1
+                                  Properties:
+                                    Align: =Align.Center
+                                    BorderColor: =Cor.Border
+                                    Color: =Cor.TextStandard
+                                    DisabledColor: =Cor.DisabledText
+                                    Font: =Font.'Open Sans'
+                                    FontWeight: =FontWeight.Semibold
+                                    Size: =8
+                                    Text: ="Avaliação Colaborador"
+                                    Visible: =!locExpandir
+                                    Width: =80
+                              - Label14_29:
+                                  Control: Label@2.5.1
+                                  Properties:
+                                    Align: =Align.Center
+                                    BorderColor: =Cor.Border
+                                    Color: =Cor.TextStandard
+                                    DisabledColor: =Cor.DisabledText
+                                    Font: =Font.'Open Sans'
+                                    FontWeight: =FontWeight.Semibold
+                                    Size: =8
+                                    Text: ="Avaliação Gestor"
+                                    Visible: =!locExpandir
+                                    Width: =80
+                              - Label14_30:
+                                  Control: Label@2.5.1
+                                  Properties:
+                                    Align: =Align.Center
+                                    BorderColor: =Cor.Border
+                                    Color: =Cor.TextStandard
+                                    DisabledColor: =Cor.DisabledText
+                                    Font: =Font.'Open Sans'
+                                    FontWeight: =FontWeight.Semibold
+                                    Size: =8
+                                    Text: ="Calibração"
+                                    Visible: =!locExpandir
+                                    Width: =80
+                              - Label14_25:
+                                  Control: Label@2.5.1
+                                  Properties:
+                                    Align: =Align.Center
+                                    BorderColor: =Cor.Border
+                                    Color: =Cor.TextStandard
+                                    DisabledColor: =Cor.DisabledText
+                                    Font: =Font.'Open Sans'
+                                    FontWeight: =FontWeight.Semibold
+                                    Size: =8
+                                    Text: ="Reenviar Convite"
+                                    Width: =100
+                        - galBaseAvaliacoes_2:
+                            Control: Gallery@2.15.0
+                            Variant: Vertical
+                            Properties:
+                              BorderColor: =Cor.Border
+                              Height: =100
+                              Items: =Sort(colAvaliacoesColaboradores,LookUp(RenameColumns(colBaseColaboradores,CodColaborador,CodColaborador2),Text(CodColaborador)=CodColaborador2,NomeColaborador))
+                              TemplatePadding: =0
+                              TemplateSize: =50
+                              Visible: =Self.AllItemsCount>0
+                            Children:
+                              - Container48_2:
+                                  Control: GroupContainer@1.5.0
+                                  Variant: AutoLayout
+                                  Properties:
+                                    DropShadow: =DropShadow.None
+                                    Fill: =Cor.BackgroundStandard
+                                    Height: =Parent.TemplateHeight
+                                    LayoutAlignItems: =LayoutAlignItems.Stretch
+                                    LayoutDirection: =LayoutDirection.Horizontal
+                                    LayoutGap: =10
+                                    PaddingLeft: =5
+                                    PaddingRight: =10
+                                    RadiusBottomLeft: =8
+                                    RadiusBottomRight: =8
+                                    RadiusTopLeft: =8
+                                    RadiusTopRight: =8
+                                    Width: =Parent.TemplateWidth-Self.X*2
+                                  Children:
+                                    - Label15_15:
+                                        Control: Label@2.5.1
+                                        Properties:
+                                          BorderColor: =Cor.Border
+                                          Color: =Cor.TextStandard
+                                          DisabledColor: =Cor.DisabledText
+                                          Font: =Font.'Open Sans'
+                                          Size: =8
+                                          Text: =LookUp(colBaseColaboradores,CodColaborador=Text(ThisItem.CodColaborador),NomeColaborador)
+                                    - Label15_16:
+                                        Control: Label@2.5.1
+                                        Properties:
+                                          Align: =Align.Center
+                                          BorderColor: =Cor.Border
+                                          Color: =Cor.TextStandard
+                                          DisabledColor: =Cor.DisabledText
+                                          Font: =Font.'Open Sans'
+                                          Size: =8
+                                          Text: =If(ThisItem.JaFezPrimeiroAcesso,"Sim","Não")
+                                          Width: =50
+                                    - HtmlText2:
+                                        Control: HtmlViewer@2.1.0
+                                        Properties:
+                                          Color: =Cor.TextStandard
+                                          DisabledBorderColor: =Cor.Disabled
+                                          Font: =Font.'Open Sans'
+                                          HtmlText: |-
+                                            =LookUp(colBaseCargos,CodCargo=Text(ThisItem.Cargo),NomeCargo) & "/<br><i>" &
+                                            LookUp(colBaseDptos,CodDpto=Text(ThisItem.Dpto),NomeDpto)
+                                          Size: =8
+                                          Visible: =!locExpandir
+                                          Width: =100
+                                    - Label15_17:
+                                        Control: Label@2.5.1
+                                        Properties:
+                                          BorderColor: =Cor.Border
+                                          Color: =Cor.TextStandard
+                                          DisabledColor: =Cor.DisabledText
+                                          Font: =Font.'Open Sans'
+                                          Size: =8
+                                          Text: =LookUp(colBaseColaboradores,CodColaborador=Text(ThisItem.CodGestor),NomeColaborador)
+                                          Width: =120
+                                    - Button3_15:
+                                        Control: Classic/Button@2.2.0
+                                        Properties:
+                                          AlignInContainer: =AlignInContainer.Center
+                                          BorderColor: =Self.Fill
+                                          BorderThickness: =Metadados.EspessuraBordaBotao
+                                          Color: |-
+                                            =Switch(Self.Text,
+
+                                            //cinza
+                                            "Definindo Metas",If(varDark,RGBA(229,229,229,1),RGBA(124,124,124,1)),
+
+                                            //Roxo
+                                            "Metas Definidas",If(varDark, RGBA(220,224,240,1),RGBA(126,96,177,1)),
+
+                                            //vermelho
+                                            "Vermelho",If(varDark,ColorFade(Cor.Delete,80%),Cor.Delete),
+
+                                            //amarelo
+                                            "Convite Enviado",If(varDark,RGBA(255,235,192,1),RGBA(156,114,23,1)),
+
+                                            //verde
+                                            "Concluída",If(varDark,ColorFade(Cor.Success,80%),Cor.Success),
+
+                                            //azul
+                                            "Em Avaliação Individual",If(varDark,ColorFade(Cor.Primary,80%),Cor.Primary)
+
+                                            )
+                                          DisabledBorderColor: =Cor.Disabled
+                                          DisabledColor: =Cor.DisabledText
+                                          DisabledFill: =Cor.DisabledButton
+                                          DisplayMode: =DisplayMode.View
+                                          Fill: |-
+                                            =Switch(Self.Text,
+
+                                            //cinza
+                                            "Definindo Metas",If(varDark,RGBA(124,124,124,1),RGBA(229,229,229,1)),
+
+                                            //Roxo
+                                            "Metas Definidas",If(varDark,RGBA(126,96,177,1),RGBA(220,224,240,1)),
+
+                                            //vermelhor
+                                            "Vermelho",If(varDark,Cor.Delete,ColorFade(Cor.Delete,80%)),
+
+                                            //amarelo
+                                            "Convite Enviado",If(varDark,Cor.Warning,RGBA(255,235,192,1)),
+
+                                            //verde
+                                            "Concluída",If(varDark,Cor.Success,ColorFade(Cor.Success,80%)),
+
+
+                                            //azul
+                                            "Em Avaliação Individual",If(varDark,Cor.Primary,ColorFade(Cor.Primary,80%))
+
+                                            )
+                                          FocusedBorderThickness: =Metadados.EspessuraBordaBotao
+                                          Font: =Font.'Open Sans'
+                                          Height: =25
+                                          HoverBorderColor: =Self.HoverFill
+                                          HoverColor: =Self.Color
+                                          HoverFill: =ColorFade(Self.Fill, -10%)
+                                          PressedBorderColor: =Self.PressedFill
+                                          PressedFill: =ColorFade(Self.Fill, -30%)
+                                          RadiusBottomLeft: =100
+                                          RadiusBottomRight: =100
+                                          RadiusTopLeft: =100
+                                          RadiusTopRight: =100
+                                          Size: =8
+                                          Text: =LookUp(colStatusAvaliacoes,Ordem=ThisItem.Status,NomeStatus)
+                                          Width: =130
+                                    - Label15_18:
+                                        Control: Label@2.5.1
+                                        Properties:
+                                          Align: =Align.Center
+                                          BorderColor: =Cor.Border
+                                          Color: =Cor.TextStandard
+                                          DisabledColor: =Cor.DisabledText
+                                          Font: =Font.'Open Sans'
+                                          Size: =8
+                                          Text: =ThisItem.TerminoDefinicaoMetas
+                                          Visible: =!locExpandir
+                                          Width: =80
+                                    - Label15_19:
+                                        Control: Label@2.5.1
+                                        Properties:
+                                          Align: =Align.Center
+                                          BorderColor: =Cor.Border
+                                          Color: =Cor.TextStandard
+                                          DisabledColor: =Cor.DisabledText
+                                          Font: =Font.'Open Sans'
+                                          Size: =8
+                                          Text: =ThisItem.TerminoAvaliacaoColab
+                                          Visible: =!locExpandir
+                                          Width: =80
+                                    - Label15_20:
+                                        Control: Label@2.5.1
+                                        Properties:
+                                          Align: =Align.Center
+                                          BorderColor: =Cor.Border
+                                          Color: =Cor.TextStandard
+                                          DisabledColor: =Cor.DisabledText
+                                          Font: =Font.'Open Sans'
+                                          Size: =8
+                                          Text: =ThisItem.TerminoAvaliacaoGestor
+                                          Visible: =!locExpandir
+                                          Width: =80
+                                    - Label15_21:
+                                        Control: Label@2.5.1
+                                        Properties:
+                                          Align: =Align.Center
+                                          BorderColor: =Cor.Border
+                                          Color: =Cor.TextStandard
+                                          DisabledColor: =Cor.DisabledText
+                                          Font: =Font.'Open Sans'
+                                          Size: =8
+                                          Text: =ThisItem.TerminoAvaliacaoCalibracao
+                                          Visible: =!locExpandir
+                                          Width: =80
+                                    - Button5:
+                                        Control: Classic/Button@2.2.0
+                                        Properties:
+                                          AlignInContainer: =AlignInContainer.Center
+                                          BorderColor: =Self.Fill
+                                          BorderThickness: =Metadados.EspessuraBordaBotao
+                                          Color: =Cor.TextInverted
+                                          DisabledBorderColor: =Cor.Disabled
+                                          DisabledColor: =Cor.DisabledText
+                                          DisabledFill: =Cor.DisabledButton
+                                          DisplayMode: =If(ThisItem.Status=10, DisplayMode.Edit,DisplayMode.Disabled)
+                                          Fill: =Cor.Primary
+                                          FocusedBorderThickness: =Metadados.EspessuraBordaBotao
+                                          Font: =Font.'Open Sans'
+                                          HoverBorderColor: =Self.HoverFill
+                                          HoverColor: =Self.Color
+                                          HoverFill: =ColorFade(Self.Fill, -10%)
+                                          OnSelect: "=Set(varCarregando,true);\r\n\r\n    '[AvaliaçãoColaboradores]-ConviteEmail'.Run(varBaseAvaliacao.ID,LookUp(colBaseColaboradores,CodColaborador=Text(ThisItem.CodColaborador),EmailColaborador));\r\n\r\n    \r\n    Notify(\"Convite reenviado com sucesso!\",NotificationType.Success,2000);\r\n\r\n\r\nSet(varCarregando,false);"
+                                          PressedBorderColor: =Self.PressedFill
+                                          PressedFill: =ColorFade(Self.Fill, -30%)
+                                          RadiusBottomLeft: =5
+                                          RadiusBottomRight: =5
+                                          RadiusTopLeft: =5
+                                          RadiusTopRight: =5
+                                          Size: =8
+                                          Text: ="Reenviar"
+                                          Width: =100
+                                    - Label15_22:
+                                        Control: Label@2.5.1
+                                        Properties:
+                                          Align: =Align.Center
+                                          BorderColor: =Cor.Border
+                                          Color: =Cor.TextStandard
+                                          DisabledColor: =Cor.DisabledText
+                                          FillPortions: =1
+                                          Font: =Font.'Open Sans'
+                                          LayoutMinWidth: =0
+                                          Size: =8
+                                          Text: =""
+                                          Visible: =!locExpandir
+                                          Width: =80
+                                    - Icon5:
+                                        Control: Classic/Icon@2.5.0
+                                        Properties:
+                                          BorderColor: =Cor.Border
+                                          Color: =Cor.Delete
+                                          DisabledBorderColor: =Cor.Disabled
+                                          DisabledColor: =Cor.Disabled
+                                          FocusedBorderThickness: =0
+                                          Height: =50
+                                          HoverColor: =ColorFade(Self.Color, 10%)
+                                          Icon: =Icon.Trash
+                                          LayoutMinHeight: =0
+                                          OnSelect: =UpdateContext({locPP_ExcluirConvite:true,locConviteColab:ThisItem })
+                                          PaddingBottom: =10
+                                          PaddingTop: =10
+                                          Width: =50
+                              - Rectangle9_2:
+                                  Control: Rectangle@2.3.0
+                                  Properties:
+                                    BorderColor: =Cor.Border
+                                    Fill: =Cor.GallerySeparator
+                                    FocusedBorderThickness: =0
+                                    Height: =1
+                                    OnSelect: =Select(Parent)
+                                    Width: =Parent.TemplateWidth
+                                    Y: =Parent.TemplateHeight-1
+                        - cmpNothing_4:
+                            Control: CanvasComponent
+                            ComponentName: cmpNothing
+                            Properties:
+                              Color: =TCor.NeutralL60
+                              FillPortions: =1
+                              Height: =Parent.Height
+                              IconHeight: =100
+                              IconWidth: =100
+                              LayoutMinHeight: =200
+                              LayoutMinWidth: =200
+                              SVG: ="<path d='M384,80H128c-26,0-43,14-48,40L48,272V384a48.14,48.14,0,0,0,48,48H416a48.14,48.14,0,0,0,48-48V272L432,120C427,93,409,80,384,80Z' style='fill:none;stroke:#000;stroke-linejoin:round;stroke-width:32px'/><line x1='48' y1='272' x2='192' y2='272' style='fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/><line x1='320' y1='272' x2='464' y2='272' style='fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/><path d='M192,272a64,64,0,0,0,128,0' style='fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/></svg>"
+                              Text: ="Nenhum item encontrado"
+                              Visible: =IsEmpty(galBaseAvaliacoes_2.AllItems)
+                              Width: =Parent.Width
+      - cmpToast_6:
+          Control: CanvasComponent
+          ComponentName: cmpToastConfirm_1
+          Properties:
+            BackgroundColor: =TCor.TransparentBlack
+            BarTimer: =false
+            BottomHeight: =100
+            BtnCancel: =true
+            BtnWidth: =150
+            BtnWidthFlex: =false
+            CenterHeight: =350
+            CenterWidth: =600
+            FadeColor: =0.1
+            Fill: =ColorValue(Self.BackgroundColor)
+            Height: =Max(App.Height, App.MinScreenHeight)
+            Info: |-
+              ="
+              > Em relação ao componente de Power Apps
+
+              Este componente foi desenvolvido por Daniel Petrin (Mundo Power) e é de uso exclusivo dos alunos da Comunidade Mundo Power.
+
+              Versão 1.0.0
+              Publicada em 25/01/2024
+
+              www.mundopower.com.br
+
+              > Em relação ao licenciamento dos ícones:
+
+              The MIT License (MIT)
+
+              Copyright (c) 2015-present Ionic (http://ionic.io/)
+
+              Permission is hereby granted, free of charge, to any person obtaining a copy
+              of this software and associated documentation files (the 'Software'), to deal
+              in the Software without restriction, including without limitation the rights
+              to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+              copies of the Software, and to permit persons to whom the Software is
+              furnished to do so, subject to the following conditions:
+
+              "
+            MainColor: =TCor.Delete
+            OnSelect_Cancel: |-
+              =UpdateContext({locPP_ExcluirConvite:false});
+              UpdateContext({locConviteColab:Blank()});
+            OnSelect_Main: |-
+              =Set(varCarregando,true);
+
+                  Remove(colAvaliacoesColaboradores,locConviteColab);
+                  RemoveIf(AvaliacoesColaboradores,ID=locConviteColab.ID);
+
+              Set(varCarregando,false);
+
+              Notify("Item excluído com sucesso!",NotificationType.Success,2000);
+
+              UpdateContext({locPP_ExcluirConvite:false});
+              UpdateContext({locConviteColab:Blank()});
+            SVG: ="<path d='M449.07,399.08,278.64,82.58c-12.08-22.44-44.26-22.44-56.35,0L51.87,399.08A32,32,0,0,0,80,446.25H420.89A32,32,0,0,0,449.07,399.08Zm-198.6-1.83a20,20,0,1,1,20-20A20,20,0,0,1,250.47,397.25ZM272.19,196.1l-5.74,122a16,16,0,0,1-32,0l-5.74-121.95v0a21.73,21.73,0,0,1,21.5-22.69h.21a21.74,21.74,0,0,1,21.73,22.7Z'/></svg>"
+            Text1: ="Atenção"
+            Text1Size: =20
+            Text2: ="Você quer mesmo excluir este convite?"
+            Text2Size: =12
+            TextBtnCancel: ="Cancelar"
+            TextBtnMain: ="Excluir"
+            TextColor: ="#ffffff"
+            TimerSeconds: =0
+            Visible: =locPP_ExcluirConvite
+            Width: =Max(App.Width, App.MinScreenWidth)
+      - cmpLoading_12:
+          Control: CanvasComponent
+          ComponentName: cmpLoading
+          Properties:
+            Color1: ="#ffffff"
+            Color2: =
+            ColorBackground: =Cor.TransparentBlack
+            Fill: =Color.Transparent
+            Height: =Max(App.Height, App.MinScreenHeight)
+            SVGImage: ="<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><circle fill='"&Self.Color1&"' stroke='"&Self.Color1&"' stroke-width='15' r='15' cx='35' cy='100'><animate attributeName='cx' calcMode='spline' dur='2' values='35;165;165;35;35' keySplines='0 .1 .5 1;0 .1 .5 1;0 .1 .5 1;0 .1 .5 1' repeatCount='indefinite' begin='0'></animate></circle><circle fill='"&Self.Color1&"' stroke='"&Self.Color1&"' stroke-width='15' opacity='.8' r='15' cx='35' cy='100'><animate attributeName='cx' calcMode='spline' dur='2' values='35;165;165;35;35' keySplines='0 .1 .5 1;0 .1 .5 1;0 .1 .5 1;0 .1 .5 1' repeatCount='indefinite' begin='0.05'></animate></circle><circle fill='"&Self.Color1&"' stroke='"&Self.Color1&"' stroke-width='15' opacity='.6' r='15' cx='35' cy='100'><animate attributeName='cx' calcMode='spline' dur='2' values='35;165;165;35;35' keySplines='0 .1 .5 1;0 .1 .5 1;0 .1 .5 1;0 .1 .5 1' repeatCount='indefinite' begin='.1'></animate></circle><circle fill='"&Self.Color1&"' stroke='"&Self.Color1&"' stroke-width='15' opacity='.4' r='15' cx='35' cy='100'><animate attributeName='cx' calcMode='spline' dur='2' values='35;165;165;35;35' keySplines='0 .1 .5 1;0 .1 .5 1;0 .1 .5 1;0 .1 .5 1' repeatCount='indefinite' begin='.15'></animate></circle><circle fill='"&Self.Color1&"' stroke='"&Self.Color1&"' stroke-width='15' opacity='.2' r='15' cx='35' cy='100'><animate attributeName='cx' calcMode='spline' dur='2' values='35;165;165;35;35' keySplines='0 .1 .5 1;0 .1 .5 1;0 .1 .5 1;0 .1 .5 1' repeatCount='indefinite' begin='.2'></animate></circle></svg>"
+            ShowImage: =true
+            ShowText: =true
+            Text: ="carregando"
+            TextColor: ="#ffffff"
+            Visible: =varCarregando
+            Width: =Max(App.Width, App.MinScreenWidth)

@@ -1,0 +1,398 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_sharepointonline_1": {
+        "runtimeSource": "invoker",
+        "connection": {
+          "connectionReferenceLogicalName": "lf_SharePoint"
+        },
+        "api": {
+          "name": "shared_sharepointonline"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "SiteAppAvaliacao (lf_SiteAppAvaliacao)": {
+          "defaultValue": "https://contoso.sharepoint.com/sites/AvaliacaoColaboradores",
+          "type": "String",
+          "metadata": {
+            "schemaName": "lf_SiteAppAvaliacao"
+          }
+        },
+        "AvaliacoesColaboradores (lf_AvaliacoesColaboradores)": {
+          "defaultValue": "f428d119-e3df-4133-9e4c-955942756822",
+          "type": "String",
+          "metadata": {
+            "schemaName": "lf_AvaliacoesColaboradores"
+          }
+        },
+        "BaseAvaliacoesItens (lf_BaseAvaliacoesItens)": {
+          "defaultValue": "d64a8608-02f3-4533-9674-844a519aabec",
+          "type": "String",
+          "metadata": {
+            "schemaName": "lf_BaseAvaliacoesItens"
+          }
+        },
+        "AvaliacoesColaboradoresRespostas (lf_AvaliacoesColaboradoresRespostas)": {
+          "defaultValue": "36f2f503-a871-4ff9-9e0e-94dacdca2a59",
+          "type": "String",
+          "metadata": {
+            "schemaName": "lf_AvaliacoesColaboradoresRespostas"
+          }
+        },
+        "MetasAvaliacaoColaboradores (lf_MetasAvaliacaoColaboradores)": {
+          "defaultValue": "eb03a85e-4438-44fc-b18d-6c4deb6af134",
+          "type": "String",
+          "metadata": {
+            "schemaName": "lf_MetasAvaliacaoColaboradores"
+          }
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "8e83926c-7204-4a31-a137-0e3bebd62aa8"
+          },
+          "type": "Request",
+          "kind": "PowerAppV2",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "number": {
+                  "title": "IdBaseAvaliacao",
+                  "type": "number",
+                  "x-ms-dynamically-added": true,
+                  "description": "Insira um número",
+                  "x-ms-content-hint": "NUMBER"
+                }
+              },
+              "required": [
+                "number"
+              ]
+            }
+          }
+        }
+      },
+      "actions": {
+        "Excluindo_Avaliações_Colaboradores": {
+          "actions": {
+            "Obter_itens": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "76950105-0f42-4e15-8ef7-c29f36d71c03"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_sharepointonline_1",
+                  "operationId": "GetItems",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                },
+                "parameters": {
+                  "dataset": "@parameters('SiteAppAvaliacao (lf_SiteAppAvaliacao)')",
+                  "table": "@parameters('AvaliacoesColaboradores (lf_AvaliacoesColaboradores)')",
+                  "$filter": "IdBaseAvaliacao eq @{triggerBody()['number']}"
+                },
+                "authentication": "@parameters('$authentication')"
+              },
+              "runtimeConfiguration": {
+                "paginationPolicy": {
+                  "minimumItemCount": 5000
+                }
+              }
+            },
+            "Aplicar_a_cada": {
+              "foreach": "@outputs('Obter_itens')?['body/value']",
+              "actions": {
+                "Excluir_item": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "6ec98407-18b9-4a9c-89ff-a571341a3f3f"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_sharepointonline_1",
+                      "operationId": "DeleteItem",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                    },
+                    "parameters": {
+                      "dataset": "@parameters('SiteAppAvaliacao (lf_SiteAppAvaliacao)')",
+                      "table": "@parameters('AvaliacoesColaboradores (lf_AvaliacoesColaboradores)')",
+                      "id": "@items('Aplicar_a_cada')?['ID']"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              },
+              "runAfter": {
+                "Obter_itens": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "884cd5a4-4c31-479f-9d62-8505b3b04a09"
+              },
+              "type": "Foreach",
+              "runtimeConfiguration": {
+                "concurrency": {
+                  "repetitions": 50
+                }
+              }
+            }
+          },
+          "runAfter": {
+            "Excluindo_Perguntas_Base": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "3f368577-d232-47ea-b75a-3e350d68a415"
+          },
+          "type": "Scope"
+        },
+        "Excluindo_Respostas_Colaboradores": {
+          "actions": {
+            "Obter_itens_2": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "76950105-0f42-4e15-8ef7-c29f36d71c03"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_sharepointonline_1",
+                  "operationId": "GetItems",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                },
+                "parameters": {
+                  "dataset": "@parameters('SiteAppAvaliacao (lf_SiteAppAvaliacao)')",
+                  "table": "@parameters('AvaliacoesColaboradoresRespostas (lf_AvaliacoesColaboradoresRespostas)')",
+                  "$filter": "IdBaseAvaliacao eq @{triggerBody()['number']}"
+                },
+                "authentication": "@parameters('$authentication')"
+              },
+              "runtimeConfiguration": {
+                "paginationPolicy": {
+                  "minimumItemCount": 5000
+                }
+              }
+            },
+            "Aplicar_a_cada_2": {
+              "foreach": "@outputs('Obter_itens_2')?['body/value']",
+              "actions": {
+                "Excluir_item_2": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "6ec98407-18b9-4a9c-89ff-a571341a3f3f"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_sharepointonline_1",
+                      "operationId": "DeleteItem",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                    },
+                    "parameters": {
+                      "dataset": "@parameters('SiteAppAvaliacao (lf_SiteAppAvaliacao)')",
+                      "table": "@parameters('AvaliacoesColaboradoresRespostas (lf_AvaliacoesColaboradoresRespostas)')",
+                      "id": "@items('Aplicar_a_cada_2')?['ID']"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              },
+              "runAfter": {
+                "Obter_itens_2": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "884cd5a4-4c31-479f-9d62-8505b3b04a09"
+              },
+              "type": "Foreach",
+              "runtimeConfiguration": {
+                "concurrency": {
+                  "repetitions": 50
+                }
+              }
+            }
+          },
+          "runAfter": {
+            "Excluindo_Avaliações_Colaboradores": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "3f368577-d232-47ea-b75a-3e350d68a415"
+          },
+          "type": "Scope"
+        },
+        "Excluindo_Perguntas_Base": {
+          "actions": {
+            "Obter_itens_3": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "76950105-0f42-4e15-8ef7-c29f36d71c03"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_sharepointonline_1",
+                  "operationId": "GetItems",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                },
+                "parameters": {
+                  "dataset": "@parameters('SiteAppAvaliacao (lf_SiteAppAvaliacao)')",
+                  "table": "@parameters('BaseAvaliacoesItens (lf_BaseAvaliacoesItens)')",
+                  "$filter": "IdBaseAvaliacao eq @{triggerBody()['number']}"
+                },
+                "authentication": "@parameters('$authentication')"
+              },
+              "runtimeConfiguration": {
+                "paginationPolicy": {
+                  "minimumItemCount": 5000
+                }
+              }
+            },
+            "Aplicar_a_cada_3": {
+              "foreach": "@outputs('Obter_itens_3')?['body/value']",
+              "actions": {
+                "Excluir_item_3": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "6ec98407-18b9-4a9c-89ff-a571341a3f3f"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_sharepointonline_1",
+                      "operationId": "DeleteItem",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                    },
+                    "parameters": {
+                      "dataset": "@parameters('SiteAppAvaliacao (lf_SiteAppAvaliacao)')",
+                      "table": "@parameters('BaseAvaliacoesItens (lf_BaseAvaliacoesItens)')",
+                      "id": "@items('Aplicar_a_cada_3')?['ID']"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              },
+              "runAfter": {
+                "Obter_itens_3": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "884cd5a4-4c31-479f-9d62-8505b3b04a09"
+              },
+              "type": "Foreach",
+              "runtimeConfiguration": {
+                "concurrency": {
+                  "repetitions": 50
+                }
+              }
+            }
+          },
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "3f368577-d232-47ea-b75a-3e350d68a415"
+          },
+          "type": "Scope"
+        },
+        "Excluindo_Metas_Colaboradores": {
+          "actions": {
+            "Obter_itens_4": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "76950105-0f42-4e15-8ef7-c29f36d71c03"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_sharepointonline_1",
+                  "operationId": "GetItems",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                },
+                "parameters": {
+                  "dataset": "@parameters('SiteAppAvaliacao (lf_SiteAppAvaliacao)')",
+                  "table": "@parameters('MetasAvaliacaoColaboradores (lf_MetasAvaliacaoColaboradores)')",
+                  "$filter": "IdBaseAvaliacao eq @{triggerBody()['number']}"
+                },
+                "authentication": "@parameters('$authentication')"
+              },
+              "runtimeConfiguration": {
+                "paginationPolicy": {
+                  "minimumItemCount": 5000
+                }
+              }
+            },
+            "Aplicar_a_cada_4": {
+              "foreach": "@outputs('Obter_itens_4')?['body/value']",
+              "actions": {
+                "Excluir_item_4": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "6ec98407-18b9-4a9c-89ff-a571341a3f3f"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_sharepointonline_1",
+                      "operationId": "DeleteItem",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                    },
+                    "parameters": {
+                      "dataset": "@parameters('SiteAppAvaliacao (lf_SiteAppAvaliacao)')",
+                      "table": "@parameters('AvaliacoesColaboradores (lf_AvaliacoesColaboradores)')",
+                      "id": "@items('Aplicar_a_cada_4')?['ID']"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              },
+              "runAfter": {
+                "Obter_itens_4": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "884cd5a4-4c31-479f-9d62-8505b3b04a09"
+              },
+              "type": "Foreach",
+              "runtimeConfiguration": {
+                "concurrency": {
+                  "repetitions": 50
+                }
+              }
+            }
+          },
+          "runAfter": {
+            "Excluindo_Respostas_Colaboradores": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "3f368577-d232-47ea-b75a-3e350d68a415"
+          },
+          "type": "Scope"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

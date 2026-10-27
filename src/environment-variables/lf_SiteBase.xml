@@ -1,0 +1,15 @@
+<environmentvariabledefinition schemaname="lf_SiteBase">
+  <apiid>/providers/microsoft.powerapps/apis/shared_sharepointonline</apiid>
+  <description default="Site para armazenamento das listas">
+    <label description="Site para armazenamento das listas" languagecode="1033" />
+  </description>
+  <displayname default="SiteBase">
+    <label description="SiteBase" languagecode="1033" />
+  </displayname>
+  <introducedversion>1.0.0.0</introducedversion>
+  <iscustomizable>1</iscustomizable>
+  <isrequired>0</isrequired>
+  <parameterkey>dataset</parameterkey>
+  <secretstore>0</secretstore>
+  <type>100000004</type>
+</environmentvariabledefinition>

@@ -1,0 +1,1497 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+Screens:
+  Avaliacao Metas Screen:
+    Properties:
+      Fill: =Cor.BackgroundScreen
+      LoadingSpinnerColor: =Cor.Primary
+    Children:
+      - cMaster_3:
+          Control: GroupContainer@1.5.0
+          Variant: AutoLayout
+          Properties:
+            DropShadow: =DropShadow.None
+            Fill: =Cor.Transparent
+            Height: =768
+            LayoutDirection: =LayoutDirection.Vertical
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Width: =1366
+          Children:
+            - cTopo_5:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  DropShadow: =DropShadow.None
+                  Fill: =Cor.BackgroundTop
+                  FillPortions: =0
+                  Height: =80
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutGap: =20
+                  PaddingLeft: =20
+                  PaddingRight: =20
+                  RadiusBottomLeft: =0
+                  RadiusBottomRight: =0
+                  RadiusTopLeft: =0
+                  RadiusTopRight: =0
+                Children:
+                  - Icon1_7:
+                      Control: Classic/Icon@2.5.0
+                      Properties:
+                        BorderColor: =Cor.Border
+                        Color: =Cor.Primary
+                        DisabledBorderColor: =Cor.Disabled
+                        DisabledColor: =Cor.Disabled
+                        FocusedBorderThickness: =0
+                        Height: =50
+                        HoverColor: =ColorFade(Self.Color, 10%)
+                        Icon: =Icon.BackArrow
+                        OnSelect: =Back()
+                        PaddingBottom: =10
+                        PaddingTop: =10
+                        Width: =50
+                  - btnReabrirMetas:
+                      Control: Image@2.2.3
+                      Properties:
+                        BorderColor: |+
+                          =ColorFade(Cor.Primary,0.15)
+                        DisabledBorderColor: =Cor.Disabled
+                        DisabledFill: =Cor.Disabled
+                        Fill: =Cor.Secondary
+                        FocusedBorderThickness: =0
+                        Height: =40
+                        HoverBorderColor: |+
+                          =ColorFade(Cor.Primary,0.15)
+                        Image: "=With({\r\n    IconSVG:\r\n    \"\r\n    <path d='M456,192,300,180l23-89.4C329,64,322.22,48.73,300.53,42l-34.69-9.85a4,4,0,0,0-4.4,1.72l-129,202.34a8,8,0,0,1-6.81,3.81H16V448H133.61a48,48,0,0,1,15.18,2.46l76.3,25.43a80,80,0,0,0,25.3,4.11H428.32c19,0,31.5-13.52,35.23-32.16L496,305.58V232C496,209.94,478,194,456,192Z'/></svg>\r\n    \"\r\n    ,\r\n    IconText:\"Reabrir Metas\",\r\n    IconColor: TCor.TextInverted,\r\n    TextColor:TCor.TextInverted,\r\n    TextSize:14,\r\n    TextCenter:true,\r\n    PaddingText:0,\r\n    PaddingIcon:18,\r\n    varLoading:false, //If you want that the icon stay loading in some situation, just put a boolean variable\r\n    TextLoading:\"Loading\",\r\n    FontFamily:\"Arial\" //Tahoma, Verdana, Impact..\r\n},\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n//Não altere baixo\r\n//Do not change below\r\nWith({\r\n    PosicaoIcone:If(IsBlank(IconText),0,Round(Self.Width/2*-1 + Self.Height/2, 0)),\r\n    TextX:\r\n        If(TextCenter,\r\n            \"transform='translate(\" &Round(Self.Height/2/2,0)+PaddingText & \", 0)' x='50%' text-anchor='middle'\"\r\n            ,\r\n            \"x='\"&Self.Height + PaddingText&\"'\"\r\n        ),\r\n    TerminoSVG:\"</g></svg>\"\r\n    },\r\n\r\n    With({\r\n        \r\n    SVG_Loading:$\"<svg xmlns='http://www.w3.org/2000/svg'  viewBox='0 0 200 200' style='fill:{IconColor}' x='{PosicaoIcone}'><radialGradient id='a11' cx='.66' fx='.66' cy='.3125' fy='.3125' gradientTransform='scale(1.5)'><stop offset='0' stop-color='{IconColor}'></stop><stop offset='.3' stop-color='{IconColor}' stop-opacity='.9'></stop><stop offset='.6' stop-color='{IconColor}' stop-opacity='.6'></stop><stop offset='.8' stop-color='{IconColor}' stop-opacity='.3'></stop><stop offset='1' stop-color='{IconColor}' stop-opacity='0'></stop></radialGradient><circle transform-origin='center' fill='none' stroke='url(#a11)' stroke-width='15' stroke-linecap='round' stroke-dasharray='200 1000' stroke-dashoffset='0' cx='100' cy='100' r='70'><animateTransform type='rotate' attributeName='transform' calcMode='spline' dur='2' values='360;0' keyTimes='0;1' keySplines='0 0 1 1' repeatCount='indefinite'></animateTransform></circle><circle transform-origin='center' fill='none' opacity='.2' stroke='{IconColor}' stroke-width='15' stroke-linecap='round' cx='100' cy='100' r='70'></circle></svg>\",\r\n\r\n    InicioGrupoSvg:\r\n        $\"\r\n        <svg xmlns='http://www.w3.org/2000/svg' width='0'>\r\n        <g transform='translate(0,0)'>\r\n            <text {TextX} y='50%' font-family='{FontFamily}' font-size='{TextSize}' fill='{TextColor}' alignment-baseline='middle' dy='0.10em'>{If(Self.Width>Self.Height,If(varLoading,TextLoading,IconText))}</text>\",\r\n        \r\n    SVG_Ionic: $\"<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 512 512' style='fill:{IconColor}' x='{PosicaoIcone}'>\" & IconSVG\r\n    \r\n    }\r\n,\r\n\r\n\"data:image/svg+xml;utf8, \" &  EncodeUrl(InicioGrupoSvg & Substitute(If(varLoading || IsBlank(IconSVG),SVG_Loading, SVG_Ionic),\"#000\",IconColor) & TerminoSVG)\r\n)\r\n)\r\n)\r\n\r\n/*\r\n\"\r\n>\r\nEste ícone foi desenvolvido por Daniel Petrin (Mundo Power)\r\n\r\nwww.mundopower.com.br\r\n\r\n> Em relação ao licenciamento dos ícones:\r\n\r\nThe MIT License (MIT)\r\n\r\nCopyright (c) 2015-present Ionic (http://ionic.io/)\r\n\r\nPermission is hereby granted, free of charge, to any person obtaining a copy\r\nof this software and associated documentation files (the 'Software'), to deal\r\nin the Software without restriction, including without limitation the rights\r\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\r\ncopies of the Software, and to permit persons to whom the Software is\r\nfurnished to do so, subject to the following conditions:\r\n\r\n\"\r\n*/\r\n"
+                        OnSelect: |-
+                          =If(varBaseAvaliacao.DataLimiteDefinicaoMetas<Today(),
+                              UpdateContext({locMetasNaoLiberadas:true})
+                              ,
+
+                              Set(varCarregando,true);
+
+                              Patch(colAvaliacoes,varAvaliacao,{TerminoDefinicaoMetas:Blank(),Status:20});
+                              Patch(AvaliacoesColaboradores,{ID:varAvaliacao.ID},{TerminoDefinicaoMetas:Blank(),Status:20});
+                              Set(varAvaliacao,LookUp(colAvaliacoes,ID=varAvaliacao.ID));
+                              Notify("Metas reabertas com sucesso!",NotificationType.Success,2000);
+                              Set(varCarregando,false)
+                          )
+                        PaddingBottom: =10
+                        PaddingTop: =10
+                        PressedBorderColor: =ColorFade(Cor.Primary,0.35)
+                        RadiusBottomLeft: =4
+                        RadiusBottomRight: =4
+                        RadiusTopLeft: =4
+                        RadiusTopRight: =4
+                        TabIndex: =0
+                        Visible: =varAvaliacao.CodGestor=Value(varColab.CodColaborador) && !IsBlank(varAvaliacao.TerminoDefinicaoMetas) && varBaseAvaliacao.DataAberturaAvaliacao>Today()
+                        Width: =150
+                  - btnCriarItemMeta:
+                      Control: Image@2.2.3
+                      Properties:
+                        BorderColor: |+
+                          =ColorFade(Cor.Primary,0.15)
+                        DisabledBorderColor: =Cor.Disabled
+                        DisabledFill: =Cor.Disabled
+                        Fill: =Cor.Primary
+                        FocusedBorderThickness: =0
+                        Height: =40
+                        HoverBorderColor: |+
+                          =ColorFade(Cor.Primary,0.15)
+                        Image: "=With({\r\n    IconSVG:\r\n    \"\r\n    <line x1='256' y1='112' x2='256' y2='400' style='fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/><line x1='400' y1='256' x2='112' y2='256' style='fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/></svg>\r\n    \"\r\n    ,\r\n    IconText:\"Criar Item\",\r\n    IconColor: TCor.TextInverted,\r\n    TextColor:TCor.TextInverted,\r\n    TextSize:14,\r\n    TextCenter:true,\r\n    PaddingText:0,\r\n    PaddingIcon:18,\r\n    varLoading:false, //If you want that the icon stay loading in some situation, just put a boolean variable\r\n    TextLoading:\"Loading\",\r\n    FontFamily:\"Arial\" //Tahoma, Verdana, Impact..\r\n},\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n//Não altere baixo\r\n//Do not change below\r\nWith({\r\n    PosicaoIcone:If(IsBlank(IconText),0,Round(Self.Width/2*-1 + Self.Height/2, 0)),\r\n    TextX:\r\n        If(TextCenter,\r\n            \"transform='translate(\" &Round(Self.Height/2/2,0)+PaddingText & \", 0)' x='50%' text-anchor='middle'\"\r\n            ,\r\n            \"x='\"&Self.Height + PaddingText&\"'\"\r\n        ),\r\n    TerminoSVG:\"</g></svg>\"\r\n    },\r\n\r\n    With({\r\n        \r\n    SVG_Loading:$\"<svg xmlns='http://www.w3.org/2000/svg'  viewBox='0 0 200 200' style='fill:{IconColor}' x='{PosicaoIcone}'><radialGradient id='a11' cx='.66' fx='.66' cy='.3125' fy='.3125' gradientTransform='scale(1.5)'><stop offset='0' stop-color='{IconColor}'></stop><stop offset='.3' stop-color='{IconColor}' stop-opacity='.9'></stop><stop offset='.6' stop-color='{IconColor}' stop-opacity='.6'></stop><stop offset='.8' stop-color='{IconColor}' stop-opacity='.3'></stop><stop offset='1' stop-color='{IconColor}' stop-opacity='0'></stop></radialGradient><circle transform-origin='center' fill='none' stroke='url(#a11)' stroke-width='15' stroke-linecap='round' stroke-dasharray='200 1000' stroke-dashoffset='0' cx='100' cy='100' r='70'><animateTransform type='rotate' attributeName='transform' calcMode='spline' dur='2' values='360;0' keyTimes='0;1' keySplines='0 0 1 1' repeatCount='indefinite'></animateTransform></circle><circle transform-origin='center' fill='none' opacity='.2' stroke='{IconColor}' stroke-width='15' stroke-linecap='round' cx='100' cy='100' r='70'></circle></svg>\",\r\n\r\n    InicioGrupoSvg:\r\n        $\"\r\n        <svg xmlns='http://www.w3.org/2000/svg' width='0'>\r\n        <g transform='translate(0,0)'>\r\n            <text {TextX} y='50%' font-family='{FontFamily}' font-size='{TextSize}' fill='{TextColor}' alignment-baseline='middle' dy='0.10em'>{If(Self.Width>Self.Height,If(varLoading,TextLoading,IconText))}</text>\",\r\n        \r\n    SVG_Ionic: $\"<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 512 512' style='fill:{IconColor}' x='{PosicaoIcone}'>\" & IconSVG\r\n    \r\n    }\r\n,\r\n\r\n\"data:image/svg+xml;utf8, \" &  EncodeUrl(InicioGrupoSvg & Substitute(If(varLoading || IsBlank(IconSVG),SVG_Loading, SVG_Ionic),\"#000\",IconColor) & TerminoSVG)\r\n)\r\n)\r\n)\r\n\r\n/*\r\n\"\r\n>\r\nEste ícone foi desenvolvido por Daniel Petrin (Mundo Power)\r\n\r\nwww.mundopower.com.br\r\n\r\n> Em relação ao licenciamento dos ícones:\r\n\r\nThe MIT License (MIT)\r\n\r\nCopyright (c) 2015-present Ionic (http://ionic.io/)\r\n\r\nPermission is hereby granted, free of charge, to any person obtaining a copy\r\nof this software and associated documentation files (the 'Software'), to deal\r\nin the Software without restriction, including without limitation the rights\r\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\r\ncopies of the Software, and to permit persons to whom the Software is\r\nfurnished to do so, subject to the following conditions:\r\n\r\n\"\r\n*/\r\n"
+                        OnSelect: |-
+                          =UpdateContext({locItem:Blank()});
+                          NewForm(FormItemMeta);
+                          ResetForm(FormItemMeta)
+                        PaddingBottom: =10
+                        PaddingTop: =10
+                        PressedBorderColor: =ColorFade(Cor.Primary,0.35)
+                        RadiusBottomLeft: =4
+                        RadiusBottomRight: =4
+                        RadiusTopLeft: =4
+                        RadiusTopRight: =4
+                        TabIndex: =0
+                        Visible: =IsBlank(varAvaliacao.TerminoDefinicaoMetas) && !(varBaseAvaliacao.DataLimiteDefinicaoMetas<Today())
+                        Width: =150
+                  - btnDefinirMetas:
+                      Control: Image@2.2.3
+                      Properties:
+                        BorderColor: |+
+                          =ColorFade(Cor.Primary,0.15)
+                        DisabledBorderColor: =Cor.Disabled
+                        DisabledFill: =Cor.Disabled
+                        Fill: =Cor.Success
+                        FocusedBorderThickness: =0
+                        Height: =40
+                        HoverBorderColor: |+
+                          =ColorFade(Cor.Primary,0.15)
+                        Image: "=With({\r\n    IconSVG:\r\n    \"\r\n    <path d='M456,192,300,180l23-89.4C329,64,322.22,48.73,300.53,42l-34.69-9.85a4,4,0,0,0-4.4,1.72l-129,202.34a8,8,0,0,1-6.81,3.81H16V448H133.61a48,48,0,0,1,15.18,2.46l76.3,25.43a80,80,0,0,0,25.3,4.11H428.32c19,0,31.5-13.52,35.23-32.16L496,305.58V232C496,209.94,478,194,456,192Z'/></svg>\r\n    \"\r\n    ,\r\n    IconText:\"Definir Metas\",\r\n    IconColor: TCor.TextInverted,\r\n    TextColor:TCor.TextInverted,\r\n    TextSize:14,\r\n    TextCenter:true,\r\n    PaddingText:0,\r\n    PaddingIcon:18,\r\n    varLoading:false, //If you want that the icon stay loading in some situation, just put a boolean variable\r\n    TextLoading:\"Loading\",\r\n    FontFamily:\"Arial\" //Tahoma, Verdana, Impact..\r\n},\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n//Não altere baixo\r\n//Do not change below\r\nWith({\r\n    PosicaoIcone:If(IsBlank(IconText),0,Round(Self.Width/2*-1 + Self.Height/2, 0)),\r\n    TextX:\r\n        If(TextCenter,\r\n            \"transform='translate(\" &Round(Self.Height/2/2,0)+PaddingText & \", 0)' x='50%' text-anchor='middle'\"\r\n            ,\r\n            \"x='\"&Self.Height + PaddingText&\"'\"\r\n        ),\r\n    TerminoSVG:\"</g></svg>\"\r\n    },\r\n\r\n    With({\r\n        \r\n    SVG_Loading:$\"<svg xmlns='http://www.w3.org/2000/svg'  viewBox='0 0 200 200' style='fill:{IconColor}' x='{PosicaoIcone}'><radialGradient id='a11' cx='.66' fx='.66' cy='.3125' fy='.3125' gradientTransform='scale(1.5)'><stop offset='0' stop-color='{IconColor}'></stop><stop offset='.3' stop-color='{IconColor}' stop-opacity='.9'></stop><stop offset='.6' stop-color='{IconColor}' stop-opacity='.6'></stop><stop offset='.8' stop-color='{IconColor}' stop-opacity='.3'></stop><stop offset='1' stop-color='{IconColor}' stop-opacity='0'></stop></radialGradient><circle transform-origin='center' fill='none' stroke='url(#a11)' stroke-width='15' stroke-linecap='round' stroke-dasharray='200 1000' stroke-dashoffset='0' cx='100' cy='100' r='70'><animateTransform type='rotate' attributeName='transform' calcMode='spline' dur='2' values='360;0' keyTimes='0;1' keySplines='0 0 1 1' repeatCount='indefinite'></animateTransform></circle><circle transform-origin='center' fill='none' opacity='.2' stroke='{IconColor}' stroke-width='15' stroke-linecap='round' cx='100' cy='100' r='70'></circle></svg>\",\r\n\r\n    InicioGrupoSvg:\r\n        $\"\r\n        <svg xmlns='http://www.w3.org/2000/svg' width='0'>\r\n        <g transform='translate(0,0)'>\r\n            <text {TextX} y='50%' font-family='{FontFamily}' font-size='{TextSize}' fill='{TextColor}' alignment-baseline='middle' dy='0.10em'>{If(Self.Width>Self.Height,If(varLoading,TextLoading,IconText))}</text>\",\r\n        \r\n    SVG_Ionic: $\"<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 512 512' style='fill:{IconColor}' x='{PosicaoIcone}'>\" & IconSVG\r\n    \r\n    }\r\n,\r\n\r\n\"data:image/svg+xml;utf8, \" &  EncodeUrl(InicioGrupoSvg & Substitute(If(varLoading || IsBlank(IconSVG),SVG_Loading, SVG_Ionic),\"#000\",IconColor) & TerminoSVG)\r\n)\r\n)\r\n)\r\n\r\n/*\r\n\"\r\n>\r\nEste ícone foi desenvolvido por Daniel Petrin (Mundo Power)\r\n\r\nwww.mundopower.com.br\r\n\r\n> Em relação ao licenciamento dos ícones:\r\n\r\nThe MIT License (MIT)\r\n\r\nCopyright (c) 2015-present Ionic (http://ionic.io/)\r\n\r\nPermission is hereby granted, free of charge, to any person obtaining a copy\r\nof this software and associated documentation files (the 'Software'), to deal\r\nin the Software without restriction, including without limitation the rights\r\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\r\ncopies of the Software, and to permit persons to whom the Software is\r\nfurnished to do so, subject to the following conditions:\r\n\r\n\"\r\n*/\r\n"
+                        OnSelect: |-
+                          =If(varBaseAvaliacao.DataLimiteDefinicaoMetas<Today(),
+                              UpdateContext({locMetasNaoLiberadas:true})
+                              ,
+
+                              If(Sum(colMetasAvaliacaoColaboradores,Peso)<>100,
+                                  Notify("Você não definiu os pesos corretamente ainda.",NotificationType.Error,2000)
+                                  ,
+                                  Patch(colAvaliacoes,varAvaliacao,
+                                      Patch(AvaliacoesColaboradores,{ID:varAvaliacao.ID},
+                                          {
+                                              TerminoDefinicaoMetas:Now(),
+                                              Status:30
+                                          }
+                                      )
+                                  );
+                                  Set(varAvaliacao,LookUp(colAvaliacoes,ID=varAvaliacao.ID));
+                                  Notify("Metas criadas com sucesso!",NotificationType.Success,2000)
+                              )
+                          )
+                        PaddingBottom: =10
+                        PaddingTop: =10
+                        PressedBorderColor: =ColorFade(Cor.Primary,0.35)
+                        RadiusBottomLeft: =4
+                        RadiusBottomRight: =4
+                        RadiusTopLeft: =4
+                        RadiusTopRight: =4
+                        TabIndex: =0
+                        Visible: =varAvaliacao.CodGestor=Value(varColab.CodColaborador) && IsBlank(varAvaliacao.TerminoDefinicaoMetas)
+                        Width: =150
+                  - Label1_6:
+                      Control: Label@2.5.1
+                      Properties:
+                        Align: =Align.Right
+                        BorderColor: =Cor.Border
+                        Color: =Cor.TextInverted
+                        DisabledColor: =Cor.DisabledText
+                        FillPortions: =1
+                        Font: =Font.'Open Sans'
+                        Size: =14
+                        Text: =LookUp(colBaseAvaliacoes,ID=varAvaliacao.IdBaseAvaliacao,NomeAvaliacao) & " (METAS) | " & LookUp(colBaseAvaliacoes,ID=varAvaliacao.IdBaseAvaliacao,PeriodoAvaliacao) & " - " & LookUp(colBaseColaboradores,CodColaborador=Text(varAvaliacao.CodColaborador),NomeColaborador)
+                  - icoTopMenu_12:
+                      Control: Image@2.2.3
+                      Properties:
+                        BorderColor: =Cor.Border
+                        DisabledBorderColor: =Cor.Disabled
+                        DisabledFill: =Cor.Disabled
+                        FocusedBorderThickness: =0
+                        Height: =30
+                        HoverFill: =Cor.TransparentLight
+                        Image: "=If(varDark,\r\n\"data:image/svg+xml;utf8, \" &  EncodeUrl(\r\n\"<svg xmlns='http://www.w3.org/2000/svg' width='1.2rem' data-refresh='\"&varRefresh&\"' height='1.2rem' viewBox='0 0 24 24'>\r\n    <g fill='\"&TCor.TextInverted&\"' fill-opacity='0'>\r\n        <path d='m15.22 6.03l2.53-1.94L14.56 4L13.5 1l-1.06 3l-3.19.09l2.53 1.94l-.91 3.06l2.63-1.81l2.63 1.81z'>\r\n            <animate id='lineMdMoonFilledLoop0' fill='freeze' attributeName='fill-opacity' begin='1.61s;lineMdMoonFilledLoop0.begin+13.8s' dur='0.92s' values='0;1' />\r\n            <animate fill='freeze' attributeName='fill-opacity' begin='lineMdMoonFilledLoop0.begin+5.06s' dur='0.92s' values='1;0' />\r\n        </path>\r\n        <path d='M13.61 5.25L15.25 4l-2.06-.05L12.5 2l-.69 1.95L9.75 4l1.64 1.25l-.59 1.98l1.7-1.17l1.7 1.17z'>\r\n            <animate fill='freeze' attributeName='fill-opacity' begin='lineMdMoonFilledLoop0.begin+6.9s' dur='0.92s' values='0;1' />\r\n            <animate fill='freeze' attributeName='fill-opacity' begin='lineMdMoonFilledLoop0.begin+11.96s' dur='0.92s' values='1;0' />\r\n        </path>\r\n        <path d='M19.61 12.25L21.25 11l-2.06-.05L18.5 9l-.69 1.95l-2.06.05l1.64 1.25l-.59 1.98l1.7-1.17l1.7 1.17z'>\r\n            <animate fill='freeze' attributeName='fill-opacity' begin='lineMdMoonFilledLoop0.begin+0.92s' dur='0.92s' values='0;1' />\r\n            <animate fill='freeze' attributeName='fill-opacity' begin='lineMdMoonFilledLoop0.begin+6.44s' dur='0.92s' values='1;0' />\r\n        </path>\r\n        <path d='m20.828 9.731l1.876-1.439l-2.366-.067L19.552 6l-.786 2.225l-2.366.067l1.876 1.439L17.601 12l1.951-1.342L21.503 12z'>\r\n            <animate fill='freeze' attributeName='fill-opacity' begin='lineMdMoonFilledLoop0.begin+7.82s' dur='0.92s' values='0;1' />\r\n            <animate fill='freeze' attributeName='fill-opacity' begin='lineMdMoonFilledLoop0.begin+12.88s' dur='0.92s' values='1;0' />\r\n        </path>\r\n    </g>\r\n    <g fill-opacity='0' stroke='\"&TCor.TextInverted&\"' stroke-linecap='round' stroke-linejoin='round' stroke-width='0.95'>\r\n        <path fill='\"&TCor.TextInverted&\"' stroke-dasharray='56' stroke-dashoffset='56' d='M7 6 C7 12.08 11.92 17 18 17 C18.53 17 19.05 16.96 19.56 16.89 C17.95 19.36 15.17 21 12 21 C7.03 21 3 16.97 3 12 C3 8.83 4.64 6.05 7.11 4.44 C7.04 4.95 7 5.47 7 6 Z'>\r\n            <animate fill='freeze' attributeName='stroke-dashoffset' dur='1.38s' values='56;0' />\r\n            <animate fill='freeze' attributeName='fill-opacity' begin='1.45s' dur='1.15s' values='0;1' />\r\n        </path>\r\n    </g>\r\n</svg>\"\r\n)\r\n    ,\r\n    \r\n\r\n\"data:image/svg+xml;utf8, \" &  EncodeUrl(\"\r\n    <svg xmlns='http://www.w3.org/2000/svg' width='1.2rem' data-refresh='\"&varRefresh&\"' height='1.2rem' viewBox='0 0 24 24'>\r\n    <g fill='none' stroke='\"&TCor.TextInverted&\"' stroke-dasharray='2' stroke-dashoffset='2' stroke-linecap='round' stroke-width='0.95'>\r\n        <path d='M0 0'>\r\n            <animate fill='freeze' attributeName='d' begin='2.76s' dur='0.46s' values='M12 19v1M19 12h1M12 5v-1M5 12h-1;M12 21v1M21 12h1M12 3v-1M3 12h-1'/>\r\n            <animate fill='freeze' attributeName='stroke-dashoffset' begin='2.76s' dur='0.46s' values='2;0'/>\r\n        </path>\r\n        <path d='M0 0'>\r\n            <animate fill='freeze' attributeName='d' begin='3.45s' dur='0.46s' values='M17 17l0.5 0.5M17 7l0.5 -0.5M7 7l-0.5 -0.5M7 17l-0.5 0.5;M18.5 18.5l0.5 0.5M18.5 5.5l0.5 -0.5M5.5 5.5l-0.5 -0.5M5.5 18.5l-0.5 0.5'/>\r\n            <animate fill='freeze' attributeName='stroke-dashoffset' begin='3.45s' dur='2.76s' values='2;0'/>\r\n        </path>\r\n        <animateTransform attributeName='transform' dur='69s' repeatCount='indefinite' type='rotate' values='0 12 12;360 12 12'/>\r\n    </g>\r\n    <g fill='\"&TCor.TextInverted&\"'>\r\n        <path d='M15.22 6.03L17.75 4.09L14.56 4L13.5 1L12.44 4L9.25 4.09L11.78 6.03L10.87 9.09L13.5 7.28L16.13 9.09L15.22 6.03Z'>\r\n            <animate fill='freeze' attributeName='fill-opacity' dur='0.92s' values='1;0'/>\r\n        </path>\r\n        <path d='M19.61 12.25L21.25 11L19.19 10.95L18.5 9L17.81 10.95L15.75 11L17.39 12.25L16.8 14.23L18.5 13.06L20.2 14.23L19.61 12.25Z'>\r\n            <animate fill='freeze' attributeName='fill-opacity' begin='0.46s' dur='0.92s' values='1;0'/>\r\n        </path>\r\n    </g>\r\n    <g fill='\"&TCor.TextInverted&\"' stroke='\"&TCor.TextInverted&\"' stroke-linecap='round' stroke-linejoin='round' stroke-width='0.95'>\r\n        <path d='M7 6 C7 12.08 11.92 17 18 17 C18.53 17 19.05 16.96 19.56 16.89 C17.95 19.36 15.17 21 12 21 C7.03 21 3 16.97 3 12 C3 8.83 4.64 6.05 7.11 4.44 C7.04 4.95 7 5.47 7 6 Z'/>\r\n        <set attributeName='opacity' begin='1.38s' to='0'/>\r\n    </g>\r\n    <mask id='lineMdMoonFilledToSunnyFilledLoopTransition0'>\r\n        <circle cx='12' cy='12' r='12' fill='#fff'/>\r\n            <circle cx='18' cy='6' r='12' fill='#fff'>\r\n                <animate fill='freeze' attributeName='cx' begin='1.38s' dur='0.92s' values='18;22'/>\r\n                <animate fill='freeze' attributeName='cy' begin='1.38s' dur='0.92s' values='6;2'/>\r\n                <animate fill='freeze' attributeName='r' begin='1.38s' dur='0.92s' values='12;3'/>\r\n            </circle>\r\n        <circle cx='18' cy='6' r='10'>\r\n            <animate fill='freeze' attributeName='cx' begin='1.38s' dur='0.92s' values='18;22'/>\r\n            <animate fill='freeze' attributeName='cy' begin='1.38s' dur='0.92s' values='6;2'/>\r\n            <animate fill='freeze' attributeName='r' begin='1.38s' dur='0.92s' values='10;1'/>\r\n        </circle>\r\n    </mask>\r\n        <circle cx='12' cy='12' r='10' fill='\"&TCor.TextInverted&\"' mask='url(#lineMdMoonFilledToSunnyFilledLoopTransition0)' opacity='0'>\r\n            <set attributeName='opacity' begin='1.38s' to='1'/>\r\n            <animate fill='freeze' attributeName='r' begin='1.38s' dur='0.92s' values='10;6'/>\r\n        </circle>\r\n</svg>\")\r\n)"
+                        OnSelect: |-
+                          =Set(varRefresh,Text(Now(),""));
+                          Set(varDark,!varDark);
+                          If(varDark,
+                              Set(Cor,CoresDark);
+                              Set(TCor,TextCoresDark)
+                              ,
+                              Set(Cor,CoresLight);
+                              Set(TCor,TextCoresLight)
+                          )
+                        RadiusBottomLeft: =1000
+                        RadiusBottomRight: =1000
+                        RadiusTopLeft: =1000
+                        RadiusTopRight: =1000
+                        TabIndex: =0
+                        Width: =30
+                        X: =878
+                        Y: =645
+            - cFormGallery_1:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  DropShadow: =DropShadow.None
+                  Fill: =Cor.Transparent
+                  Height: =Parent.Height-Self.Y*2
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutGap: =20
+                  PaddingBottom: =20
+                  PaddingLeft: =20
+                  PaddingRight: =20
+                  PaddingTop: =20
+                  RadiusBottomLeft: =8
+                  RadiusBottomRight: =8
+                  RadiusTopLeft: =8
+                  RadiusTopRight: =8
+                  Width: =Parent.Width-Self.X*2
+                Children:
+                  - cFormEsq_1:
+                      Control: GroupContainer@1.5.0
+                      Variant: AutoLayout
+                      Properties:
+                        DropShadow: =DropShadow.Semibold
+                        Fill: =Cor.Transparent
+                        Height: =Parent.Height-Self.Y*2
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutMinHeight: =0
+                        LayoutMinWidth: =0
+                        RadiusBottomLeft: =8
+                        RadiusBottomRight: =8
+                        RadiusTopLeft: =8
+                        RadiusTopRight: =8
+                        Visible: =IsBlank(varAvaliacao.TerminoDefinicaoMetas) && !(varBaseAvaliacao.DataLimiteDefinicaoMetas<Today())
+                        Width: =Parent.Width-Self.X*2
+                      Children:
+                        - cFormCentral_2:
+                            Control: GroupContainer@1.5.0
+                            Variant: AutoLayout
+                            Properties:
+                              DropShadow: =DropShadow.Semibold
+                              Fill: =Cor.BackgroundStandard
+                              Height: =Parent.Height-Self.Y*2
+                              LayoutDirection: =LayoutDirection.Vertical
+                              LayoutMinHeight: =0
+                              LayoutMinWidth: =0
+                              RadiusBottomLeft: =8
+                              RadiusBottomRight: =8
+                              RadiusTopLeft: =8
+                              RadiusTopRight: =8
+                              Width: =0
+                            Children:
+                              - cForm_C1_2:
+                                  Control: GroupContainer@1.5.0
+                                  Variant: AutoLayout
+                                  Properties:
+                                    DropShadow: =DropShadow.None
+                                    Fill: =Cor.BackgroundStandard
+                                    FillPortions: =0
+                                    Height: =75
+                                    LayoutDirection: =LayoutDirection.Horizontal
+                                    LayoutMinWidth: =0
+                                    PaddingBottom: =20
+                                    PaddingLeft: =20
+                                    PaddingRight: =20
+                                    PaddingTop: =20
+                                    RadiusBottomLeft: =8
+                                    RadiusBottomRight: =8
+                                    RadiusTopLeft: =8
+                                    RadiusTopRight: =8
+                                    Width: =Parent.Width-Self.X*2
+                                  Children:
+                                    - icoEditarForm_2:
+                                        Control: Classic/Icon@2.5.0
+                                        Properties:
+                                          AlignInContainer: =AlignInContainer.Center
+                                          BorderColor: =Cor.Border
+                                          Color: =Cor.Primary
+                                          DisabledBorderColor: =Cor.Disabled
+                                          DisabledColor: =Cor.Disabled
+                                          FocusedBorderThickness: =0
+                                          Height: =50
+                                          HoverColor: =ColorFade(Self.Color, 10%)
+                                          Icon: =Icon.Edit
+                                          OnSelect: =EditForm(FormItemMeta)
+                                          PaddingBottom: =10
+                                          PaddingTop: =10
+                                          Visible: =Value(FormItemMeta.Mode)=2
+                                          Width: =50
+                                    - Label7_2:
+                                        Control: Label@2.5.1
+                                        Properties:
+                                          BorderColor: =Cor.Border
+                                          Color: =Cor.TextStandard
+                                          DisabledColor: =Cor.DisabledText
+                                          FillPortions: =1
+                                          Font: =Font.'Open Sans'
+                                          FontWeight: =FontWeight.Semibold
+                                          Size: =12
+                                          Text: ="Formulário Meta de Desempenho"
+                              - ret1_3:
+                                  Control: Rectangle@2.3.0
+                                  Properties:
+                                    AlignInContainer: =AlignInContainer.Stretch
+                                    BorderColor: =Cor.Border
+                                    Fill: =Cor.GallerySeparator
+                                    FocusedBorderThickness: =0
+                                    Height: =2
+                              - cForm_C2_2:
+                                  Control: GroupContainer@1.5.0
+                                  Variant: AutoLayout
+                                  Properties:
+                                    DropShadow: =DropShadow.None
+                                    Fill: =Cor.BackgroundStandard
+                                    Height: =Parent.Height-Self.Y*2
+                                    LayoutDirection: =LayoutDirection.Vertical
+                                    PaddingBottom: =20
+                                    PaddingLeft: =20
+                                    PaddingRight: =20
+                                    PaddingTop: =20
+                                    RadiusBottomLeft: =8
+                                    RadiusBottomRight: =8
+                                    RadiusTopLeft: =8
+                                    RadiusTopRight: =8
+                                    Width: =Parent.Width-Self.X*2
+                                  Children:
+                                    - FormItemMeta:
+                                        Control: Form@2.4.4
+                                        Variant: Classic
+                                        Layout: Vertical
+                                        Properties:
+                                          BorderColor: =Cor.Border
+                                          DataSource: =MetasAvaliacaoColaboradores
+                                          DefaultMode: =FormMode.New
+                                          Item: =locItem
+                                          NumberOfColumns: =1
+                                          OnFailure: =Set(varCarregando,false)
+                                          OnSuccess: |-
+                                            =If(IsEmpty(colMetasAvaliacaoColaboradores) && varAvaliacao.Status=10,
+                                                Patch(colAvaliacoes,varAvaliacao,
+                                                    Patch(AvaliacoesColaboradores,{ID:varAvaliacao.ID},
+                                                        {
+                                                            Status:20
+                                                        }
+                                                    )
+                                                )
+                                            );
+
+                                            Set(varAvaliacao,LookUp(colAvaliacoes,ID=varAvaliacao.ID));
+
+
+                                            Patch(colMetasAvaliacaoColaboradores,Coalesce(locItem,Defaults(colMetasAvaliacaoColaboradores)),FormItemMeta.LastSubmit);
+
+                                            Notify("Item registrado com sucesso!",NotificationType.Success,2000);
+
+
+
+                                            Set(varCarregando,false);
+                                            Select(Image6_68)
+                                        Children:
+                                          - TituloMeta_DataCard1:
+                                              Control: TypedDataCard@1.0.7
+                                              Variant: ClassicTextualEdit
+                                              Properties:
+                                                BorderColor: =Cor.Border
+                                                DataField: ="TituloMeta"
+                                                Default: =ThisItem.TituloMeta
+                                                DisplayName: =DataSourceInfo([@MetasAvaliacaoColaboradores],DataSourceInfo.DisplayName,TituloMeta)
+                                                MaxLength: =DataSourceInfo([@MetasAvaliacaoColaboradores], DataSourceInfo.MaxLength, TituloMeta)
+                                                Required: =true
+                                                Update: =DataCardValue10.Text
+                                                Width: =395
+                                                X: =0
+                                                Y: =0
+                                              Children:
+                                                - DataCardKey10:
+                                                    Control: Label@2.5.1
+                                                    MetadataKey: FieldName
+                                                    Properties:
+                                                      AutoHeight: =true
+                                                      BorderColor: =RGBA(0, 0, 0, 1)
+                                                      Color: =Cor.TextStandard
+                                                      DisabledColor: =Cor.DisabledText
+                                                      Font: =Font.'Open Sans'
+                                                      FontWeight: =FontWeight.Semibold
+                                                      Height: =34
+                                                      Size: =8
+                                                      Text: =Parent.DisplayName
+                                                      Width: =Parent.Width - 60
+                                                      Wrap: =false
+                                                      X: =30
+                                                      Y: =10
+                                                - DataCardValue10:
+                                                    Control: Classic/TextInput@2.3.2
+                                                    MetadataKey: FieldValue
+                                                    Properties:
+                                                      BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                                                      BorderThickness: =1
+                                                      Color: =Cor.TextStandard
+                                                      Default: =Parent.Default
+                                                      DelayOutput: =true
+                                                      DisabledBorderColor: =Cor.Disabled
+                                                      DisabledColor: =Cor.DisabledText
+                                                      DisabledFill: =Cor.Disabled
+                                                      DisplayMode: =Parent.DisplayMode
+                                                      Fill: =Cor.BackgroundInput
+                                                      FocusedBorderThickness: =1
+                                                      Font: =Font.'Open Sans'
+                                                      HoverBorderColor: =Cor.Border
+                                                      HoverColor: =Cor.TextStandard
+                                                      HoverFill: =Cor.BackgroundInputHover
+                                                      MaxLength: =Parent.MaxLength
+                                                      PaddingLeft: =5
+                                                      RadiusBottomLeft: =0
+                                                      RadiusBottomRight: =0
+                                                      RadiusTopLeft: =0
+                                                      RadiusTopRight: =0
+                                                      Size: =8
+                                                      Tooltip: =Parent.DisplayName
+                                                      Width: =Parent.Width - 60
+                                                      X: =30
+                                                      Y: =DataCardKey10.Y + DataCardKey10.Height + 5
+                                                - ErrorMessage10:
+                                                    Control: Label@2.5.1
+                                                    MetadataKey: ErrorMessage
+                                                    Properties:
+                                                      AutoHeight: =true
+                                                      BorderColor: =RGBA(0, 0, 0, 1)
+                                                      Color: =Cor.Delete
+                                                      DisabledColor: =Cor.DisabledText
+                                                      Font: =Font.'Open Sans'
+                                                      FontWeight: =FontWeight.Semibold
+                                                      Height: =10
+                                                      Live: =Live.Assertive
+                                                      PaddingBottom: =0
+                                                      PaddingLeft: =0
+                                                      PaddingRight: =0
+                                                      PaddingTop: =0
+                                                      Size: =8
+                                                      Text: =Parent.Error
+                                                      Visible: =Parent.DisplayMode=DisplayMode.Edit
+                                                      Width: =Parent.Width - 60
+                                                      X: =30
+                                                      Y: =DataCardValue10.Y + DataCardValue10.Height
+                                                - StarVisible10:
+                                                    Control: Label@2.5.1
+                                                    MetadataKey: FieldRequired
+                                                    Properties:
+                                                      Align: =Align.Center
+                                                      BorderColor: =RGBA(0, 0, 0, 1)
+                                                      Color: =Cor.TextStandard
+                                                      DisabledColor: =Cor.DisabledText
+                                                      Font: =Font.'Open Sans'
+                                                      FontWeight: =FontWeight.Semibold
+                                                      Height: =DataCardKey10.Height
+                                                      Size: =8
+                                                      Text: ="*"
+                                                      Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                                      Width: =30
+                                                      Wrap: =false
+                                                      Y: =DataCardKey10.Y
+                                          - DescricaoMeta_DataCard2:
+                                              Control: TypedDataCard@1.0.7
+                                              Variant: ClassicTextualMultilineEdit
+                                              IsLocked: true
+                                              Properties:
+                                                BorderColor: =Cor.Border
+                                                DataField: ="DescricaoMeta"
+                                                Default: =ThisItem.DescricaoMeta
+                                                DisplayName: =DataSourceInfo([@MetasAvaliacaoColaboradores],DataSourceInfo.DisplayName,DescricaoMeta)
+                                                Required: =false
+                                                Update: =DataCardValue22.Text
+                                                Width: =395
+                                                X: =0
+                                                Y: =1
+                                              Children:
+                                                - DataCardKey22:
+                                                    Control: Label@2.5.1
+                                                    MetadataKey: FieldName
+                                                    Properties:
+                                                      AutoHeight: =true
+                                                      BorderColor: =RGBA(0, 0, 0, 1)
+                                                      Color: =Cor.TextStandard
+                                                      DisabledColor: =Cor.DisabledText
+                                                      Font: =Font.'Open Sans'
+                                                      FontWeight: =FontWeight.Semibold
+                                                      Height: =34
+                                                      Size: =8
+                                                      Text: =Parent.DisplayName
+                                                      Width: =Parent.Width - 60
+                                                      Wrap: =false
+                                                      X: =30
+                                                      Y: =10
+                                                - DataCardValue22:
+                                                    Control: Classic/TextInput@2.3.2
+                                                    MetadataKey: FieldValue
+                                                    Properties:
+                                                      BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                                                      BorderThickness: =1
+                                                      Color: =Cor.TextStandard
+                                                      Default: =Parent.Default
+                                                      DelayOutput: =true
+                                                      DisabledBorderColor: =Cor.Disabled
+                                                      DisabledColor: =Cor.DisabledText
+                                                      DisabledFill: =Cor.Disabled
+                                                      DisplayMode: =Parent.DisplayMode
+                                                      Fill: =Cor.BackgroundInput
+                                                      FocusedBorderThickness: =1
+                                                      Font: =Font.'Open Sans'
+                                                      Height: =80
+                                                      HoverBorderColor: =Cor.Border
+                                                      HoverColor: =Cor.TextStandard
+                                                      HoverFill: =Cor.BackgroundInputHover
+                                                      Mode: =TextMode.MultiLine
+                                                      PaddingLeft: =5
+                                                      RadiusBottomLeft: =0
+                                                      RadiusBottomRight: =0
+                                                      RadiusTopLeft: =0
+                                                      RadiusTopRight: =0
+                                                      Size: =8
+                                                      Tooltip: =Parent.DisplayName
+                                                      Width: =Parent.Width - 60
+                                                      X: =30
+                                                      Y: =DataCardKey22.Y + DataCardKey22.Height + 5
+                                                - ErrorMessage22:
+                                                    Control: Label@2.5.1
+                                                    MetadataKey: ErrorMessage
+                                                    Properties:
+                                                      AutoHeight: =true
+                                                      BorderColor: =RGBA(0, 0, 0, 1)
+                                                      Color: =Cor.Delete
+                                                      DisabledColor: =Cor.DisabledText
+                                                      Font: =Font.'Open Sans'
+                                                      FontWeight: =FontWeight.Semibold
+                                                      Height: =10
+                                                      Live: =Live.Assertive
+                                                      PaddingBottom: =0
+                                                      PaddingLeft: =0
+                                                      PaddingRight: =0
+                                                      PaddingTop: =0
+                                                      Size: =8
+                                                      Text: =Parent.Error
+                                                      Visible: =Parent.DisplayMode=DisplayMode.Edit
+                                                      Width: =Parent.Width - 60
+                                                      X: =30
+                                                      Y: =DataCardValue22.Y + DataCardValue22.Height
+                                                - StarVisible22:
+                                                    Control: Label@2.5.1
+                                                    MetadataKey: FieldRequired
+                                                    Properties:
+                                                      Align: =Align.Center
+                                                      BorderColor: =RGBA(0, 0, 0, 1)
+                                                      Color: =Cor.TextStandard
+                                                      DisabledColor: =Cor.DisabledText
+                                                      Font: =Font.'Open Sans'
+                                                      FontWeight: =FontWeight.Semibold
+                                                      Height: =DataCardKey22.Height
+                                                      Size: =8
+                                                      Text: ="*"
+                                                      Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                                      Width: =30
+                                                      Wrap: =false
+                                                      Y: =DataCardKey22.Y
+                                          - Peso_DataCard1:
+                                              Control: TypedDataCard@1.0.7
+                                              Variant: ClassicNumberEdit
+                                              Properties:
+                                                BorderColor: =Cor.Border
+                                                DataField: ="Peso"
+                                                Default: =ThisItem.Peso
+                                                DisplayName: =DataSourceInfo([@MetasAvaliacaoColaboradores],DataSourceInfo.DisplayName,Peso)
+                                                Required: =true
+                                                Update: =Value(DataCardValue13.Text)
+                                                Width: =395
+                                                X: =0
+                                                Y: =2
+                                              Children:
+                                                - DataCardKey13:
+                                                    Control: Label@2.5.1
+                                                    MetadataKey: FieldName
+                                                    Properties:
+                                                      AutoHeight: =true
+                                                      BorderColor: =RGBA(0, 0, 0, 1)
+                                                      Color: =Cor.TextStandard
+                                                      DisabledColor: =Cor.DisabledText
+                                                      Font: =Font.'Open Sans'
+                                                      FontWeight: =FontWeight.Semibold
+                                                      Height: =34
+                                                      Size: =8
+                                                      Text: =Parent.DisplayName
+                                                      Width: =Parent.Width - 60
+                                                      Wrap: =false
+                                                      X: =30
+                                                      Y: =10
+                                                - DataCardValue13:
+                                                    Control: Classic/TextInput@2.3.2
+                                                    MetadataKey: FieldValue
+                                                    Properties:
+                                                      BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                                                      BorderThickness: =1
+                                                      Color: =Cor.TextStandard
+                                                      Default: =Parent.Default
+                                                      DelayOutput: =true
+                                                      DisabledBorderColor: =Cor.Disabled
+                                                      DisabledColor: =Cor.DisabledText
+                                                      DisabledFill: =Cor.Disabled
+                                                      DisplayMode: =Parent.DisplayMode
+                                                      Fill: =Cor.BackgroundInput
+                                                      FocusedBorderThickness: =1
+                                                      Font: =Font.'Open Sans'
+                                                      Format: =TextFormat.Number
+                                                      HoverBorderColor: =Cor.Border
+                                                      HoverColor: =Cor.TextStandard
+                                                      HoverFill: =Cor.BackgroundInputHover
+                                                      PaddingLeft: =5
+                                                      RadiusBottomLeft: =0
+                                                      RadiusBottomRight: =0
+                                                      RadiusTopLeft: =0
+                                                      RadiusTopRight: =0
+                                                      Size: =8
+                                                      Tooltip: =Parent.DisplayName
+                                                      Width: =Parent.Width - 60
+                                                      X: =30
+                                                      Y: =DataCardKey13.Y + DataCardKey13.Height + 5
+                                                - ErrorMessage13:
+                                                    Control: Label@2.5.1
+                                                    MetadataKey: ErrorMessage
+                                                    Properties:
+                                                      AutoHeight: =true
+                                                      BorderColor: =RGBA(0, 0, 0, 1)
+                                                      Color: =Cor.Delete
+                                                      DisabledColor: =Cor.DisabledText
+                                                      Font: =Font.'Open Sans'
+                                                      FontWeight: =FontWeight.Semibold
+                                                      Height: =10
+                                                      Live: =Live.Assertive
+                                                      PaddingBottom: =0
+                                                      PaddingLeft: =0
+                                                      PaddingRight: =0
+                                                      PaddingTop: =0
+                                                      Size: =8
+                                                      Text: =Parent.Error
+                                                      Visible: =Parent.DisplayMode=DisplayMode.Edit
+                                                      Width: =Parent.Width - 60
+                                                      X: =30
+                                                      Y: =DataCardValue13.Y + DataCardValue13.Height
+                                                - StarVisible13:
+                                                    Control: Label@2.5.1
+                                                    MetadataKey: FieldRequired
+                                                    Properties:
+                                                      Align: =Align.Center
+                                                      BorderColor: =RGBA(0, 0, 0, 1)
+                                                      Color: =Cor.TextStandard
+                                                      DisabledColor: =Cor.DisabledText
+                                                      Font: =Font.'Open Sans'
+                                                      FontWeight: =FontWeight.Semibold
+                                                      Height: =DataCardKey13.Height
+                                                      Size: =8
+                                                      Text: ="*"
+                                                      Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                                      Width: =30
+                                                      Wrap: =false
+                                                      Y: =DataCardKey13.Y
+                                          - CodColab_DataCard1:
+                                              Control: TypedDataCard@1.0.7
+                                              Variant: ClassicNumberEdit
+                                              Properties:
+                                                BorderColor: =Cor.Border
+                                                DataField: ="CodColab"
+                                                Default: =ThisItem.CodColab
+                                                DisplayName: =DataSourceInfo([@MetasAvaliacaoColaboradores],DataSourceInfo.DisplayName,CodColab)
+                                                Required: =false
+                                                Update: =varAvaliacao.CodColaborador
+                                                Visible: =false
+                                                Width: =395
+                                                X: =0
+                                                Y: =3
+                                          - IdAvaliacao_DataCard1:
+                                              Control: TypedDataCard@1.0.7
+                                              Variant: ClassicNumberEdit
+                                              Properties:
+                                                BorderColor: =Cor.Border
+                                                DataField: ="IdAvaliacao"
+                                                Default: =ThisItem.IdAvaliacao
+                                                DisplayName: =DataSourceInfo([@MetasAvaliacaoColaboradores],DataSourceInfo.DisplayName,IdAvaliacao)
+                                                Required: =false
+                                                Update: =varAvaliacao.ID
+                                                Visible: =false
+                                                Width: =395
+                                                X: =0
+                                                Y: =4
+                                          - IdBaseAvaliacao_DataCard2:
+                                              Control: TypedDataCard@1.0.7
+                                              Variant: ClassicNumberEdit
+                                              Properties:
+                                                BorderColor: =Cor.Border
+                                                DataField: ="IdBaseAvaliacao"
+                                                Default: =ThisItem.IdBaseAvaliacao
+                                                DisplayName: =DataSourceInfo([@MetasAvaliacaoColaboradores],DataSourceInfo.DisplayName,IdBaseAvaliacao)
+                                                Required: =false
+                                                Update: =varBaseAvaliacao.ID
+                                                Visible: =false
+                                                Width: =400
+                                                X: =0
+                                                Y: =5
+                              - ret2_2:
+                                  Control: Rectangle@2.3.0
+                                  Properties:
+                                    AlignInContainer: =AlignInContainer.Stretch
+                                    BorderColor: =Cor.Border
+                                    Fill: =Cor.GallerySeparator
+                                    FocusedBorderThickness: =0
+                                    Height: =2
+                              - cForm_C3_2:
+                                  Control: GroupContainer@1.5.0
+                                  Variant: AutoLayout
+                                  Properties:
+                                    DropShadow: =DropShadow.None
+                                    Fill: =Cor.BackgroundStandard
+                                    FillPortions: =0
+                                    Height: =75
+                                    LayoutDirection: =LayoutDirection.Horizontal
+                                    LayoutGap: =20
+                                    LayoutJustifyContent: =LayoutJustifyContent.End
+                                    PaddingBottom: =20
+                                    PaddingLeft: =20
+                                    PaddingRight: =20
+                                    PaddingTop: =20
+                                    RadiusBottomLeft: =8
+                                    RadiusBottomRight: =8
+                                    RadiusTopLeft: =8
+                                    RadiusTopRight: =8
+                                    Width: =Parent.Width-Self.X*2
+                                  Children:
+                                    - Container46_7:
+                                        Control: GroupContainer@1.5.0
+                                        Variant: AutoLayout
+                                        Properties:
+                                          AlignInContainer: =AlignInContainer.Center
+                                          DropShadow: =DropShadow.None
+                                          Fill: =Cor.BackgroundStandard
+                                          Height: =Parent.Height-Self.Y*2
+                                          LayoutAlignItems: =LayoutAlignItems.Center
+                                          LayoutDirection: =LayoutDirection.Horizontal
+                                          LayoutMinWidth: =0
+                                          RadiusBottomLeft: =8
+                                          RadiusBottomRight: =8
+                                          RadiusTopLeft: =8
+                                          RadiusTopRight: =8
+                                          Visible: =Value(FormItemMeta.Mode)=0
+                                          Width: =Parent.Width-Self.X*2
+                                        Children:
+                                          - Icon1_9:
+                                              Control: Classic/Icon@2.5.0
+                                              Properties:
+                                                BorderColor: =Cor.Border
+                                                Color: =Cor.Delete
+                                                DisabledBorderColor: =Cor.Disabled
+                                                DisabledColor: =Cor.Disabled
+                                                FocusedBorderThickness: =0
+                                                Height: =40
+                                                HoverColor: =ColorFade(Self.Color, 10%)
+                                                Icon: =Icon.Trash
+                                                OnSelect: =UpdateContext({locExcluirItemMeta:true})
+                                                PaddingBottom: =5
+                                                PaddingTop: =5
+                                                Width: =40
+                                    - Image6_68:
+                                        Control: Image@2.2.3
+                                        Properties:
+                                          BorderColor: |+
+                                            =ColorFade(Cor.Primary,0.15)
+                                          DisabledBorderColor: =Cor.Disabled
+                                          DisabledFill: =Cor.Disabled
+                                          Fill: =Cor.Cancel
+                                          FocusedBorderThickness: =0
+                                          Height: =40
+                                          HoverBorderColor: |+
+                                            =ColorFade(Cor.Primary,0.15)
+                                          Image: "=With({\r\n    IconSVG:\r\n    \"\r\n    <polygon points='400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49'/></svg>\r\n    \"\r\n    ,\r\n    IconText:\"Cancelar\",\r\n    IconColor: TCor.TextInverted,\r\n    TextColor:TCor.TextInverted,\r\n    TextSize:14,\r\n    TextCenter:true,\r\n    PaddingText:0,\r\n    PaddingIcon:18,\r\n    varLoading:false, //If you want that the icon stay loading in some situation, just put a boolean variable\r\n    TextLoading:\"Loading\",\r\n    FontFamily:\"Arial\" //Tahoma, Verdana, Impact..\r\n},\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n//Não altere baixo\r\n//Do not change below\r\nWith({\r\n    PosicaoIcone:If(IsBlank(IconText),0,Round(Self.Width/2*-1 + Self.Height/2, 0)),\r\n    TextX:\r\n        If(TextCenter,\r\n            \"transform='translate(\" &Round(Self.Height/2/2,0)+PaddingText & \", 0)' x='50%' text-anchor='middle'\"\r\n            ,\r\n            \"x='\"&Self.Height + PaddingText&\"'\"\r\n        ),\r\n    TerminoSVG:\"</g></svg>\"\r\n    },\r\n\r\n    With({\r\n        \r\n    SVG_Loading:$\"<svg xmlns='http://www.w3.org/2000/svg'  viewBox='0 0 200 200' style='fill:{IconColor}' x='{PosicaoIcone}'><radialGradient id='a11' cx='.66' fx='.66' cy='.3125' fy='.3125' gradientTransform='scale(1.5)'><stop offset='0' stop-color='{IconColor}'></stop><stop offset='.3' stop-color='{IconColor}' stop-opacity='.9'></stop><stop offset='.6' stop-color='{IconColor}' stop-opacity='.6'></stop><stop offset='.8' stop-color='{IconColor}' stop-opacity='.3'></stop><stop offset='1' stop-color='{IconColor}' stop-opacity='0'></stop></radialGradient><circle transform-origin='center' fill='none' stroke='url(#a11)' stroke-width='15' stroke-linecap='round' stroke-dasharray='200 1000' stroke-dashoffset='0' cx='100' cy='100' r='70'><animateTransform type='rotate' attributeName='transform' calcMode='spline' dur='2' values='360;0' keyTimes='0;1' keySplines='0 0 1 1' repeatCount='indefinite'></animateTransform></circle><circle transform-origin='center' fill='none' opacity='.2' stroke='{IconColor}' stroke-width='15' stroke-linecap='round' cx='100' cy='100' r='70'></circle></svg>\",\r\n\r\n    InicioGrupoSvg:\r\n        $\"\r\n        <svg xmlns='http://www.w3.org/2000/svg' width='0'>\r\n        <g transform='translate(0,0)'>\r\n            <text {TextX} y='50%' font-family='{FontFamily}' font-size='{TextSize}' fill='{TextColor}' alignment-baseline='middle' dy='0.10em'>{If(Self.Width>Self.Height,If(varLoading,TextLoading,IconText))}</text>\",\r\n        \r\n    SVG_Ionic: $\"<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 512 512' style='fill:{IconColor}' x='{PosicaoIcone}'>\" & IconSVG\r\n    \r\n    }\r\n,\r\n\r\n\"data:image/svg+xml;utf8, \" &  EncodeUrl(InicioGrupoSvg & Substitute(If(varLoading || IsBlank(IconSVG),SVG_Loading, SVG_Ionic),\"#000\",IconColor) & TerminoSVG)\r\n)\r\n)\r\n)\r\n\r\n/*\r\n\"\r\n>\r\nEste ícone foi desenvolvido por Daniel Petrin (Mundo Power)\r\n\r\nwww.mundopower.com.br\r\n\r\n> Em relação ao licenciamento dos ícones:\r\n\r\nThe MIT License (MIT)\r\n\r\nCopyright (c) 2015-present Ionic (http://ionic.io/)\r\n\r\nPermission is hereby granted, free of charge, to any person obtaining a copy\r\nof this software and associated documentation files (the 'Software'), to deal\r\nin the Software without restriction, including without limitation the rights\r\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\r\ncopies of the Software, and to permit persons to whom the Software is\r\nfurnished to do so, subject to the following conditions:\r\n\r\n\"\r\n*/\r\n"
+                                          OnSelect: =Select(btnCriarItemMeta)
+                                          PaddingBottom: =10
+                                          PaddingTop: =10
+                                          PressedBorderColor: =ColorFade(Cor.Primary,0.35)
+                                          RadiusBottomLeft: =4
+                                          RadiusBottomRight: =4
+                                          RadiusTopLeft: =4
+                                          RadiusTopRight: =4
+                                          TabIndex: =0
+                                          Width: =150
+                                    - Image6_69:
+                                        Control: Image@2.2.3
+                                        Properties:
+                                          BorderColor: |+
+                                            =ColorFade(Cor.Primary,0.15)
+                                          DisabledBorderColor: =Cor.Disabled
+                                          DisabledFill: =Cor.Disabled
+                                          Fill: =Cor.Primary
+                                          FocusedBorderThickness: =0
+                                          Height: =40
+                                          HoverBorderColor: |+
+                                            =ColorFade(Cor.Primary,0.15)
+                                          Image: "=With({\r\n    IconSVG:\r\n    \"<polyline points='416 128 192 384 96 288' style='fill:none;stroke:#000;stroke-linecap:square;stroke-miterlimit:10;stroke-width:44px'/></svg>\"\r\n    ,\r\n    IconText:\"Confirmar\",\r\n    IconColor: TCor.TextInverted,\r\n    TextColor:TCor.TextInverted,\r\n    TextSize:14,\r\n    TextCenter:true,\r\n    PaddingText:0,\r\n    PaddingIcon:18,\r\n    varLoading:false, //If you want that the icon stay loading in some situation, just put a boolean variable\r\n    TextLoading:\"Loading\",\r\n    FontFamily:\"Arial\" //Tahoma, Verdana, Impact..\r\n},\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n//Não altere baixo\r\n//Do not change below\r\nWith({\r\n    PosicaoIcone:If(IsBlank(IconText),0,Round(Self.Width/2*-1 + Self.Height/2, 0)),\r\n    TextX:\r\n        If(TextCenter,\r\n            \"transform='translate(\" &Round(Self.Height/2/2,0)+PaddingText & \", 0)' x='50%' text-anchor='middle'\"\r\n            ,\r\n            \"x='\"&Self.Height + PaddingText&\"'\"\r\n        ),\r\n    TerminoSVG:\"</g></svg>\"\r\n    },\r\n\r\n    With({\r\n        \r\n    SVG_Loading:$\"<svg xmlns='http://www.w3.org/2000/svg'  viewBox='0 0 200 200' style='fill:{IconColor}' x='{PosicaoIcone}'><radialGradient id='a11' cx='.66' fx='.66' cy='.3125' fy='.3125' gradientTransform='scale(1.5)'><stop offset='0' stop-color='{IconColor}'></stop><stop offset='.3' stop-color='{IconColor}' stop-opacity='.9'></stop><stop offset='.6' stop-color='{IconColor}' stop-opacity='.6'></stop><stop offset='.8' stop-color='{IconColor}' stop-opacity='.3'></stop><stop offset='1' stop-color='{IconColor}' stop-opacity='0'></stop></radialGradient><circle transform-origin='center' fill='none' stroke='url(#a11)' stroke-width='15' stroke-linecap='round' stroke-dasharray='200 1000' stroke-dashoffset='0' cx='100' cy='100' r='70'><animateTransform type='rotate' attributeName='transform' calcMode='spline' dur='2' values='360;0' keyTimes='0;1' keySplines='0 0 1 1' repeatCount='indefinite'></animateTransform></circle><circle transform-origin='center' fill='none' opacity='.2' stroke='{IconColor}' stroke-width='15' stroke-linecap='round' cx='100' cy='100' r='70'></circle></svg>\",\r\n\r\n    InicioGrupoSvg:\r\n        $\"\r\n        <svg xmlns='http://www.w3.org/2000/svg' width='0'>\r\n        <g transform='translate(0,0)'>\r\n            <text {TextX} y='50%' font-family='{FontFamily}' font-size='{TextSize}' fill='{TextColor}' alignment-baseline='middle' dy='0.10em'>{If(Self.Width>Self.Height,If(varLoading,TextLoading,IconText))}</text>\",\r\n        \r\n    SVG_Ionic: $\"<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 512 512' style='fill:{IconColor}' x='{PosicaoIcone}'>\" & IconSVG\r\n    \r\n    }\r\n,\r\n\r\n\"data:image/svg+xml;utf8, \" &  EncodeUrl(InicioGrupoSvg & Substitute(If(varLoading || IsBlank(IconSVG),SVG_Loading, SVG_Ionic),\"#000\",IconColor) & TerminoSVG)\r\n)\r\n)\r\n)\r\n\r\n/*\r\n\"\r\n>\r\nEste ícone foi desenvolvido por Daniel Petrin (Mundo Power)\r\n\r\nwww.mundopower.com.br\r\n\r\n> Em relação ao licenciamento dos ícones:\r\n\r\nThe MIT License (MIT)\r\n\r\nCopyright (c) 2015-present Ionic (http://ionic.io/)\r\n\r\nPermission is hereby granted, free of charge, to any person obtaining a copy\r\nof this software and associated documentation files (the 'Software'), to deal\r\nin the Software without restriction, including without limitation the rights\r\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\r\ncopies of the Software, and to permit persons to whom the Software is\r\nfurnished to do so, subject to the following conditions:\r\n\r\n\"\r\n*/\r\n"
+                                          OnSelect: |-
+                                            =If((Sum(Filter(colMetasAvaliacaoColaboradores,ID<>locItem.ID),Peso)+Value(DataCardValue13.Text))>100,
+                                                Notify("Você excedeu o valor dos pesos!",NotificationType.Error,2000)
+                                                ,
+                                                Set(varCarregando,true);
+                                                SubmitForm(FormItemMeta)
+                                            )
+                                          PaddingBottom: =10
+                                          PaddingTop: =10
+                                          PressedBorderColor: =ColorFade(Cor.Primary,0.35)
+                                          RadiusBottomLeft: =4
+                                          RadiusBottomRight: =4
+                                          RadiusTopLeft: =4
+                                          RadiusTopRight: =4
+                                          TabIndex: =0
+                                          Width: =150
+                  - cGalleryDir_1:
+                      Control: GroupContainer@1.5.0
+                      Variant: AutoLayout
+                      Properties:
+                        DropShadow: =DropShadow.Semibold
+                        Fill: =Cor.BackgroundStandard
+                        FillPortions: =2
+                        Height: =Parent.Height-Self.Y*2
+                        LayoutDirection: =LayoutDirection.Vertical
+                        RadiusBottomLeft: =8
+                        RadiusBottomRight: =8
+                        RadiusTopLeft: =8
+                        RadiusTopRight: =8
+                        Width: =Parent.Width-Self.X*2
+                      Children:
+                        - cGallery1_5:
+                            Control: GroupContainer@1.5.0
+                            Variant: AutoLayout
+                            Properties:
+                              DropShadow: =DropShadow.Semibold
+                              Fill: =Cor.BackgroundStandard
+                              Height: =Parent.Height-Self.Y*2
+                              LayoutDirection: =LayoutDirection.Vertical
+                              LayoutMinHeight: =0
+                              LayoutMinWidth: =0
+                              RadiusBottomLeft: =8
+                              RadiusBottomRight: =8
+                              RadiusTopLeft: =8
+                              RadiusTopRight: =8
+                              Width: =Parent.Width-Self.X*2
+                            Children:
+                              - cTitleGallery_1:
+                                  Control: GroupContainer@1.5.0
+                                  Variant: AutoLayout
+                                  Properties:
+                                    DropShadow: =DropShadow.None
+                                    Fill: =Cor.BackgroundStandard
+                                    FillPortions: =0
+                                    Height: =75
+                                    LayoutAlignItems: =LayoutAlignItems.Center
+                                    LayoutDirection: =LayoutDirection.Horizontal
+                                    LayoutMinWidth: =0
+                                    PaddingBottom: =20
+                                    PaddingLeft: =20
+                                    PaddingRight: =20
+                                    PaddingTop: =20
+                                    RadiusBottomLeft: =8
+                                    RadiusBottomRight: =8
+                                    RadiusTopLeft: =8
+                                    RadiusTopRight: =8
+                                    Width: =Parent.Width-Self.X*2
+                                  Children:
+                                    - Label7_4:
+                                        Control: Label@2.5.1
+                                        Properties:
+                                          BorderColor: =Cor.Border
+                                          Color: =Cor.TextStandard
+                                          DisabledColor: =Cor.DisabledText
+                                          FillPortions: =1
+                                          Font: =Font.'Open Sans'
+                                          FontWeight: =FontWeight.Semibold
+                                          Size: =12
+                                          Text: ="Lista Metas de Desempenho"
+                                    - Label8:
+                                        Control: Label@2.5.1
+                                        Properties:
+                                          BorderColor: =Cor.Border
+                                          Color: =Cor.TextStandard
+                                          DisabledColor: =Cor.DisabledText
+                                          Font: =Font.'Open Sans'
+                                          FontWeight: =FontWeight.Bold
+                                          Size: =30
+                                          Text: =CountRows(Filter(colMetasAvaliacaoColaboradores,Resposta=Blank())) & " / " & CountRows(colMetasAvaliacaoColaboradores)
+                                          Visible: =varAvaliacao.AvaliacaoColabConcluida && varAvaliacao.AvaliacaoGestorConcluida
+                              - ret1_4:
+                                  Control: Rectangle@2.3.0
+                                  Properties:
+                                    AlignInContainer: =AlignInContainer.Stretch
+                                    BorderColor: =Cor.Border
+                                    Fill: =Cor.GallerySeparator
+                                    FocusedBorderThickness: =0
+                                    Height: =2
+                              - cGalleryMain_1:
+                                  Control: GroupContainer@1.5.0
+                                  Variant: AutoLayout
+                                  Properties:
+                                    DropShadow: =DropShadow.None
+                                    Fill: =Cor.BackgroundStandard
+                                    Height: =Parent.Height-Self.Y*2
+                                    LayoutDirection: =LayoutDirection.Vertical
+                                    LayoutGap: =10
+                                    PaddingBottom: =20
+                                    PaddingLeft: =20
+                                    PaddingRight: =20
+                                    PaddingTop: =20
+                                    RadiusBottomLeft: =8
+                                    RadiusBottomRight: =8
+                                    RadiusTopLeft: =8
+                                    RadiusTopRight: =8
+                                    Width: =Parent.Width-Self.X*2
+                                  Children:
+                                    - cCabec_5:
+                                        Control: GroupContainer@1.5.0
+                                        Variant: AutoLayout
+                                        Properties:
+                                          AlignInContainer: =AlignInContainer.SetByContainer
+                                          DropShadow: =DropShadow.None
+                                          Fill: =Cor.NeutralL95
+                                          FillPortions: =0
+                                          Height: =42
+                                          LayoutDirection: =LayoutDirection.Horizontal
+                                          LayoutGap: =10
+                                          PaddingLeft: =10
+                                          PaddingRight: =20
+                                          Width: =Parent.Width-Self.X*2
+                                        Children:
+                                          - Label14_34:
+                                              Control: Label@2.5.1
+                                              Properties:
+                                                BorderColor: =Cor.Border
+                                                Color: =Cor.TextStandard
+                                                DisabledColor: =Cor.DisabledText
+                                                Font: =Font.'Open Sans'
+                                                FontWeight: =FontWeight.Semibold
+                                                Size: =8
+                                                Text: ="Item"
+                                                Width: =50
+                                          - Label14_35:
+                                              Control: Label@2.5.1
+                                              Properties:
+                                                BorderColor: =Cor.Border
+                                                Color: =Cor.TextStandard
+                                                DisabledColor: =Cor.DisabledText
+                                                FillPortions: =If(cFormEsq_1.Visible,1, 0)
+                                                Font: =Font.'Open Sans'
+                                                FontWeight: =FontWeight.Semibold
+                                                Size: =8
+                                                Text: ="Título / Descrição"
+                                                Width: =300
+                                          - Label14_39:
+                                              Control: Label@2.5.1
+                                              Properties:
+                                                BorderColor: =Cor.Border
+                                                Color: =Cor.TextStandard
+                                                DisabledColor: =Cor.DisabledText
+                                                Font: =Font.'Open Sans'
+                                                FontWeight: =FontWeight.Semibold
+                                                Size: =8
+                                                Text: ="Comentário Colaborador"
+                                                Visible: =!cFormEsq_1.Visible
+                                                Width: =TextInput1.Width
+                                          - Label14_40:
+                                              Control: Label@2.5.1
+                                              Properties:
+                                                BorderColor: =Cor.Border
+                                                Color: =Cor.TextStandard
+                                                DisabledColor: =Cor.DisabledText
+                                                Font: =Font.'Open Sans'
+                                                FontWeight: =FontWeight.Semibold
+                                                Size: =8
+                                                Text: ="Comentário Gestor"
+                                                Visible: =!cFormEsq_1.Visible
+                                                Width: =TextInput1_1.Width
+                                          - Label14_38:
+                                              Control: Label@2.5.1
+                                              Properties:
+                                                Align: =Align.Center
+                                                BorderColor: =Cor.Border
+                                                Color: =Cor.TextStandard
+                                                DisabledColor: =Cor.DisabledText
+                                                Font: =Font.'Open Sans'
+                                                FontWeight: =FontWeight.Semibold
+                                                Size: =8
+                                                Text: |-
+                                                  ="Peso
+                                                  "&
+                                                  Sum(colMetasAvaliacaoColaboradores,Peso)
+                                                Visible: =cFormEsq_1.Visible || (varAvaliacao.AvaliacaoColabConcluida && varAvaliacao.AvaliacaoGestorConcluida && varAvaliacao.CodGestor=Value(varColab.CodColaborador))
+                                                Width: =50
+                                          - Label14_36:
+                                              Control: Label@2.5.1
+                                              Properties:
+                                                Align: =Align.Center
+                                                BorderColor: =Cor.Border
+                                                Color: =Cor.TextStandard
+                                                DisabledColor: =Cor.DisabledText
+                                                Font: =Font.'Open Sans'
+                                                FontWeight: =FontWeight.Semibold
+                                                Size: =8
+                                                Text: ="Resposta"
+                                                Visible: =varAvaliacao.AvaliacaoColabConcluida && varAvaliacao.AvaliacaoGestorConcluida && varAvaliacao.CodGestor=Value(varColab.CodColaborador)
+                                          - Label14_37:
+                                              Control: Label@2.5.1
+                                              Properties:
+                                                Align: =Align.Center
+                                                BorderColor: =Cor.Border
+                                                Color: =Cor.TextStandard
+                                                DisabledColor: =Cor.DisabledText
+                                                Font: =Font.'Open Sans'
+                                                FontWeight: =FontWeight.Semibold
+                                                Size: =8
+                                                Text: ="Editar"
+                                                Visible: =cFormEsq_1.Visible
+                                                Width: =50
+                                    - cmpNothing_6:
+                                        Control: CanvasComponent
+                                        ComponentName: cmpNothing
+                                        Properties:
+                                          AlignInContainer: =AlignInContainer.Stretch
+                                          Color: =TCor.NeutralL60
+                                          FillPortions: =1
+                                          Height: =Parent.Height
+                                          IconHeight: =100
+                                          IconWidth: =100
+                                          LayoutMinHeight: =200
+                                          LayoutMinWidth: =0
+                                          SVG: ="<path d='M384,80H128c-26,0-43,14-48,40L48,272V384a48.14,48.14,0,0,0,48,48H416a48.14,48.14,0,0,0,48-48V272L432,120C427,93,409,80,384,80Z' style='fill:none;stroke:#000;stroke-linejoin:round;stroke-width:32px'/><line x1='48' y1='272' x2='192' y2='272' style='fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/><line x1='320' y1='272' x2='464' y2='272' style='fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/><path d='M192,272a64,64,0,0,0,128,0' style='fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/></svg>"
+                                          Text: ="Nenhum item encontrado"
+                                          Visible: =IsEmpty(Gallery10_1.AllItems)
+                                          Width: =Parent.Width
+                                    - Gallery10_1:
+                                        Control: Gallery@2.15.0
+                                        Variant: VariableHeight
+                                        Properties:
+                                          BorderColor: =Cor.Border
+                                          DisplayMode: =If(varBaseAvaliacao.DataLimiteDefinicaoMetas<Today() && varBaseAvaliacao.DataAberturaAvaliacao>Today(),DisplayMode.View, DisplayMode.Edit)
+                                          Items: =colMetasAvaliacaoColaboradores
+                                          TemplatePadding: =0
+                                          Visible: =Self.AllItemsCount>0
+                                        Children:
+                                          - Container48_9:
+                                              Control: GroupContainer@1.5.0
+                                              Variant: AutoLayout
+                                              Properties:
+                                                DropShadow: =DropShadow.None
+                                                Fill: =Cor.BackgroundStandard
+                                                Height: =Max(HtmlText1_1.Height,TextInput1.Height) +20
+                                                LayoutAlignItems: =LayoutAlignItems.Stretch
+                                                LayoutDirection: =LayoutDirection.Horizontal
+                                                LayoutGap: =10
+                                                PaddingBottom: =10
+                                                PaddingLeft: =10
+                                                PaddingRight: =20
+                                                PaddingTop: =10
+                                                RadiusBottomLeft: =8
+                                                RadiusBottomRight: =8
+                                                RadiusTopLeft: =8
+                                                RadiusTopRight: =8
+                                                Width: =Parent.TemplateWidth-Self.X*2
+                                              Children:
+                                                - Label10:
+                                                    Control: Label@2.5.1
+                                                    Properties:
+                                                      BorderColor: =Cor.Border
+                                                      Color: =Cor.TextStandard
+                                                      DisabledColor: =Cor.DisabledText
+                                                      Font: =Font.'Open Sans'
+                                                      Size: =8
+                                                      Text: =ThisItem.ID
+                                                      Width: =50
+                                                - HtmlText1_1:
+                                                    Control: HtmlViewer@2.1.0
+                                                    Properties:
+                                                      AlignInContainer: =AlignInContainer.Stretch
+                                                      AutoHeight: =true
+                                                      Color: =Cor.TextStandard
+                                                      DisabledBorderColor: =Cor.Disabled
+                                                      FillPortions: =If(cFormEsq_1.Visible,1, 0)
+                                                      Font: =Font.'Open Sans'
+                                                      HtmlText: ="<b>" & ThisItem.TituloMeta & "</b><br><br>" & ThisItem.DescricaoMeta
+                                                      LayoutMinHeight: =0
+                                                      Size: =8
+                                                      Width: =If(!cFormEsq_1.Visible,300)
+                                                      X: =40
+                                                      Y: =40
+                                                - TextInput1:
+                                                    Control: Classic/TextInput@2.3.2
+                                                    Properties:
+                                                      AlignInContainer: =AlignInContainer.Start
+                                                      BorderColor: =Cor.Border
+                                                      BorderThickness: =1
+                                                      Color: =Cor.TextStandard
+                                                      Default: |-
+                                                        =If(varAvaliacao.CodColaborador=Value(varColab.CodColaborador) || (varAvaliacao.AvaliacaoColabConcluida && varAvaliacao.AvaliacaoGestorConcluida),
+                                                            ThisItem.ComentarioColab
+                                                            ,
+                                                            "Aguardando a conclusão de ambos"
+                                                        )
+                                                      DisabledBorderColor: =Cor.Disabled
+                                                      DisabledColor: =Cor.DisabledText
+                                                      DisabledFill: =Cor.Disabled
+                                                      DisplayMode: =If(varAvaliacao.CodGestor=Value(varColab.CodColaborador) || (varAvaliacao.AvaliacaoColabConcluida && varAvaliacao.AvaliacaoGestorConcluida) || varAvaliacao.AvaliacaoColabConcluida , DisplayMode.View,DisplayMode.Edit)
+                                                      Fill: =Cor.BackgroundInput
+                                                      FocusedBorderThickness: =1
+                                                      Font: =Font.'Open Sans'
+                                                      Height: =90
+                                                      HintText: ="Comentário Colaborador"
+                                                      HoverBorderColor: =Cor.Border
+                                                      HoverColor: =Cor.TextStandard
+                                                      HoverFill: =Cor.BackgroundInputHover
+                                                      Mode: =TextMode.MultiLine
+                                                      OnChange: |-
+                                                        =Set(varCarregando,true);
+
+                                                        If(varAvaliacao.Status<40,
+                                                            Patch(colAvaliacoes,varAvaliacao,
+                                                                Patch(AvaliacoesColaboradores,{ID:varAvaliacao.ID},
+                                                                    {
+                                                                        Status:40
+                                                                    }
+                                                                )
+                                                            );
+                                                            Set(varAvaliacao,LookUp(colAvaliacoes,ID=varAvaliacao.ID))
+                                                        );
+
+                                                        Patch(colMetasAvaliacaoColaboradores,ThisItem,
+                                                            Patch(MetasAvaliacaoColaboradores,{ID:ThisItem.ID},
+                                                                {
+                                                                    ComentarioColab:Self.Text
+                                                                }
+                                                            )
+                                                        );
+
+                                                        Notify("Comentário registrado com sucesso!",NotificationType.Success,2000);
+
+
+                                                        Set(varCarregando,false);
+                                                      Size: =8
+                                                      Visible: =!cFormEsq_1.Visible
+                                                      Width: =300
+                                                - TextInput1_1:
+                                                    Control: Classic/TextInput@2.3.2
+                                                    Properties:
+                                                      AlignInContainer: =AlignInContainer.Start
+                                                      BorderColor: =Cor.Border
+                                                      BorderThickness: =1
+                                                      Color: =Cor.TextStandard
+                                                      Default: |-
+                                                        =If(varAvaliacao.CodGestor=Value(varColab.CodColaborador) || (varAvaliacao.AvaliacaoColabConcluida && varAvaliacao.AvaliacaoGestorConcluida),
+                                                            ThisItem.ComentarioGestor
+                                                            ,
+                                                            "Aguardando a conclusão de ambos"
+                                                        )
+                                                      DisabledBorderColor: =Cor.Disabled
+                                                      DisabledColor: =Cor.DisabledText
+                                                      DisabledFill: =Cor.Disabled
+                                                      DisplayMode: =If(varAvaliacao.CodColaborador=Value(varColab.CodColaborador) || (varAvaliacao.AvaliacaoColabConcluida && varAvaliacao.AvaliacaoGestorConcluida) || varAvaliacao.AvaliacaoGestorConcluida, DisplayMode.View,DisplayMode.Edit)
+                                                      Fill: =Cor.BackgroundInput
+                                                      FocusedBorderThickness: =1
+                                                      Font: =Font.'Open Sans'
+                                                      Height: =90
+                                                      HintText: ="Comentário Gestor"
+                                                      HoverBorderColor: =Cor.Border
+                                                      HoverColor: =Cor.TextStandard
+                                                      HoverFill: =Cor.BackgroundInputHover
+                                                      LayoutMinHeight: =90
+                                                      Mode: =TextMode.MultiLine
+                                                      OnChange: |-
+                                                        =Set(varCarregando,true);
+
+                                                        If(varAvaliacao.Status<40,
+                                                            Patch(colAvaliacoes,varAvaliacao,
+                                                                Patch(AvaliacoesColaboradores,{ID:varAvaliacao.ID},
+                                                                    {
+                                                                        Status:40
+                                                                    }
+                                                                )
+                                                            );
+                                                            Set(varAvaliacao,LookUp(colAvaliacoes,ID=varAvaliacao.ID))
+                                                        );
+
+                                                        Patch(colMetasAvaliacaoColaboradores,ThisItem,
+                                                            Patch(MetasAvaliacaoColaboradores,{ID:ThisItem.ID},
+                                                                {
+                                                                    ComentarioGestor:Self.Text
+                                                                }
+                                                            )
+                                                        );
+
+                                                        Notify("Comentário registrado com sucesso!",NotificationType.Success,2000);
+
+
+                                                        Set(varCarregando,false);
+                                                      Size: =8
+                                                      Visible: =!cFormEsq_1.Visible
+                                                      Width: =300
+                                                - Label10_1:
+                                                    Control: Label@2.5.1
+                                                    Properties:
+                                                      Align: =Align.Center
+                                                      BorderColor: =Cor.Border
+                                                      Color: =Cor.TextStandard
+                                                      DisabledColor: =Cor.DisabledText
+                                                      Font: =Font.'Open Sans'
+                                                      Size: =8
+                                                      Text: =ThisItem.Peso
+                                                      Visible: =cFormEsq_1.Visible || (varAvaliacao.AvaliacaoColabConcluida && varAvaliacao.AvaliacaoGestorConcluida && varAvaliacao.CodGestor=Value(varColab.CodColaborador))
+                                                      Width: =50
+                                                - Dropdown2:
+                                                    Control: Classic/DropDown@2.3.1
+                                                    Properties:
+                                                      AlignInContainer: =AlignInContainer.Center
+                                                      AllowEmptySelection: =true
+                                                      BorderColor: =Cor.Border
+                                                      BorderThickness: =1
+                                                      ChevronBackground: =Cor.BackgroundInput
+                                                      ChevronDisabledBackground: =Cor.Disabled
+                                                      ChevronDisabledFill: =Cor.Disabled
+                                                      ChevronFill: =Cor.TextStandard
+                                                      ChevronHoverBackground: =Cor.BackgroundInputHover
+                                                      ChevronHoverFill: =Cor.TextStandard
+                                                      Color: =Cor.TextStandard
+                                                      Default: =LookUp(colRespostasMetas,Nota=ThisItem.Resposta,Texto)
+                                                      DisabledBorderColor: =Cor.Disabled
+                                                      DisabledColor: =Cor.DisabledText
+                                                      DisabledFill: =Cor.Disabled
+                                                      DisplayMode: =If(varAvaliacao.CodGestor=Value(varColab.CodColaborador) && varAvaliacao.AvaliacaoColabConcluida && varAvaliacao.AvaliacaoGestorConcluida, DisplayMode.Edit,DisplayMode.View)
+                                                      Fill: =Cor.BackgroundInput
+                                                      FocusedBorderThickness: =1
+                                                      Font: =Font.'Open Sans'
+                                                      HoverColor: =Cor.TextStandard
+                                                      HoverFill: =Cor.BackgroundInputHover
+                                                      Items: =colRespostasMetas
+                                                      Items.Value: =Texto
+                                                      OnChange: |-
+                                                        =Set(varCarregando,true);
+
+                                                        Patch(colMetasAvaliacaoColaboradores,ThisItem,
+                                                            Patch(MetasAvaliacaoColaboradores,{ID:ThisItem.ID},
+                                                                {
+                                                                    Resposta:Self.Selected.Nota
+                                                                }
+                                                            )
+                                                        );
+
+                                                        Notify("Comentário registrado com sucesso!",NotificationType.Success,2000);
+
+
+                                                        Set(varCarregando,false);
+                                                      PressedColor: =Cor.TextStandard
+                                                      PressedFill: =ColorFade(Self.HoverFill, 20%)
+                                                      SelectionColor: =Cor.TextInverted
+                                                      SelectionFill: =Cor.Primary
+                                                      Size: =8
+                                                      Visible: =varAvaliacao.AvaliacaoColabConcluida && varAvaliacao.AvaliacaoGestorConcluida && varAvaliacao.CodGestor=Value(varColab.CodColaborador)
+                                                      Width: =150
+                                                - Icon7_1:
+                                                    Control: Classic/Icon@2.5.0
+                                                    Properties:
+                                                      AlignInContainer: =AlignInContainer.Center
+                                                      BorderColor: =Cor.Border
+                                                      Color: =Cor.Primary
+                                                      DisabledBorderColor: =Cor.Disabled
+                                                      DisabledColor: =Cor.Disabled
+                                                      FocusedBorderThickness: =0
+                                                      Height: =50
+                                                      HoverColor: =ColorFade(Self.Color, 10%)
+                                                      Icon: =Icon.Edit
+                                                      OnSelect: |-
+                                                        =If(varBaseAvaliacao.DataLimiteDefinicaoMetas<Today(),
+                                                            UpdateContext({locMetasNaoLiberadas:true})
+                                                            ,
+
+                                                            UpdateContext({locItem:ThisItem});
+                                                            EditForm(FormItemMeta)
+                                                        )
+                                                      PaddingBottom: =10
+                                                      PaddingTop: =10
+                                                      Visible: =IsBlank(varAvaliacao.TerminoDefinicaoMetas)
+                                                      Width: =50
+                                          - Rectangle9_10:
+                                              Control: Rectangle@2.3.0
+                                              Properties:
+                                                BorderColor: =Cor.Border
+                                                Fill: =Cor.GallerySeparator
+                                                FocusedBorderThickness: =0
+                                                Height: =1
+                                                OnSelect: =Select(Parent)
+                                                Width: =Parent.TemplateWidth
+                                                Y: =Container48_9.Y+Container48_9.Height+5
+      - cmpToast_7:
+          Control: CanvasComponent
+          ComponentName: cmpToastConfirm
+          Properties:
+            BackgroundColor: =TCor.TransparentBlack
+            BarTimer: =false
+            BottomHeight: =100
+            BtnCancel: =true
+            BtnWidth: =150
+            BtnWidthFlex: =false
+            CenterHeight: =350
+            CenterWidth: =600
+            FadeColor: =0.1
+            Fill: =ColorValue(Self.BackgroundColor)
+            Height: =Max(App.Height, App.MinScreenHeight)
+            Info: |-
+              ="
+              > Em relação ao componente de Power Apps
+
+              Este componente foi desenvolvido por Daniel Petrin (Mundo Power) e é de uso exclusivo dos alunos da Comunidade Mundo Power.
+
+              Versão 1.0.0
+              Publicada em 25/01/2024
+
+              www.mundopower.com.br
+
+              > Em relação ao licenciamento dos ícones:
+
+              The MIT License (MIT)
+
+              Copyright (c) 2015-present Ionic (http://ionic.io/)
+
+              Permission is hereby granted, free of charge, to any person obtaining a copy
+              of this software and associated documentation files (the 'Software'), to deal
+              in the Software without restriction, including without limitation the rights
+              to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+              copies of the Software, and to permit persons to whom the Software is
+              furnished to do so, subject to the following conditions:
+
+              "
+            MainColor: =TCor.Delete
+            OnSelect_Cancel: |+
+              =UpdateContext({locExcluirItemMeta:false})
+            OnSelect_Main: |-
+              =Set(varCarregando,true);
+
+                  Remove(colMetasAvaliacaoColaboradores,locItem);
+                  RemoveIf(MetasAvaliacaoColaboradores,ID=locItem.ID);
+
+              Set(varCarregando,false);
+
+              Select(btnCriarItemMeta);
+
+              Notify("Item excluído com sucesso!",NotificationType.Success,2000);
+
+              UpdateContext({locExcluirItemMeta:false});
+              UpdateContext({locItem:Blank()});
+            SVG: ="<path d='M449.07,399.08,278.64,82.58c-12.08-22.44-44.26-22.44-56.35,0L51.87,399.08A32,32,0,0,0,80,446.25H420.89A32,32,0,0,0,449.07,399.08Zm-198.6-1.83a20,20,0,1,1,20-20A20,20,0,0,1,250.47,397.25ZM272.19,196.1l-5.74,122a16,16,0,0,1-32,0l-5.74-121.95v0a21.73,21.73,0,0,1,21.5-22.69h.21a21.74,21.74,0,0,1,21.73,22.7Z'/></svg>"
+            Text1: ="Atenção"
+            Text1Size: =20
+            Text2: ="Você quer mesmo excluir esta meta?"
+            Text2Size: =12
+            TextBtnCancel: ="Cancelar"
+            TextBtnMain: ="Excluir"
+            TextColor: ="#ffffff"
+            TimerSeconds: =0
+            Visible: =locExcluirItemMeta
+            Width: =Max(App.Width, App.MinScreenWidth)
+      - cmpLoading_13:
+          Control: CanvasComponent
+          ComponentName: cmpLoading
+          Properties:
+            Color1: ="#ffffff"
+            Color2: =
+            ColorBackground: =Cor.TransparentBlack
+            Fill: =Color.Transparent
+            Height: =Max(App.Height, App.MinScreenHeight)
+            SVGImage: ="<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><circle fill='"&Self.Color1&"' stroke='"&Self.Color1&"' stroke-width='15' r='15' cx='35' cy='100'><animate attributeName='cx' calcMode='spline' dur='2' values='35;165;165;35;35' keySplines='0 .1 .5 1;0 .1 .5 1;0 .1 .5 1;0 .1 .5 1' repeatCount='indefinite' begin='0'></animate></circle><circle fill='"&Self.Color1&"' stroke='"&Self.Color1&"' stroke-width='15' opacity='.8' r='15' cx='35' cy='100'><animate attributeName='cx' calcMode='spline' dur='2' values='35;165;165;35;35' keySplines='0 .1 .5 1;0 .1 .5 1;0 .1 .5 1;0 .1 .5 1' repeatCount='indefinite' begin='0.05'></animate></circle><circle fill='"&Self.Color1&"' stroke='"&Self.Color1&"' stroke-width='15' opacity='.6' r='15' cx='35' cy='100'><animate attributeName='cx' calcMode='spline' dur='2' values='35;165;165;35;35' keySplines='0 .1 .5 1;0 .1 .5 1;0 .1 .5 1;0 .1 .5 1' repeatCount='indefinite' begin='.1'></animate></circle><circle fill='"&Self.Color1&"' stroke='"&Self.Color1&"' stroke-width='15' opacity='.4' r='15' cx='35' cy='100'><animate attributeName='cx' calcMode='spline' dur='2' values='35;165;165;35;35' keySplines='0 .1 .5 1;0 .1 .5 1;0 .1 .5 1;0 .1 .5 1' repeatCount='indefinite' begin='.15'></animate></circle><circle fill='"&Self.Color1&"' stroke='"&Self.Color1&"' stroke-width='15' opacity='.2' r='15' cx='35' cy='100'><animate attributeName='cx' calcMode='spline' dur='2' values='35;165;165;35;35' keySplines='0 .1 .5 1;0 .1 .5 1;0 .1 .5 1;0 .1 .5 1' repeatCount='indefinite' begin='.2'></animate></circle></svg>"
+            ShowImage: =true
+            ShowText: =true
+            Text: ="carregando"
+            TextColor: ="#ffffff"
+            Visible: =varCarregando
+            Width: =Max(App.Width, App.MinScreenWidth)
+      - cmpToast_8:
+          Control: CanvasComponent
+          ComponentName: cmpToastConfirm_2
+          Properties:
+            BackgroundColor: =TCor.TransparentBlack
+            BarTimer: =true
+            BottomHeight: =100
+            BtnCancel: =false
+            BtnWidth: =150
+            BtnWidthFlex: =false
+            CenterHeight: =350
+            CenterWidth: =600
+            FadeColor: =0.1
+            Fill: =ColorValue(Self.BackgroundColor)
+            Height: =Max(App.Height, App.MinScreenHeight)
+            Info: |-
+              ="
+              > Em relação ao componente de Power Apps
+
+              Este componente foi desenvolvido por Daniel Petrin (Mundo Power) e é de uso exclusivo dos alunos da Comunidade Mundo Power.
+
+              Versão 1.0.0
+              Publicada em 25/01/2024
+
+              www.mundopower.com.br
+
+              > Em relação ao licenciamento dos ícones:
+
+              The MIT License (MIT)
+
+              Copyright (c) 2015-present Ionic (http://ionic.io/)
+
+              Permission is hereby granted, free of charge, to any person obtaining a copy
+              of this software and associated documentation files (the 'Software'), to deal
+              in the Software without restriction, including without limitation the rights
+              to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+              copies of the Software, and to permit persons to whom the Software is
+              furnished to do so, subject to the following conditions:
+
+              "
+            MainColor: =TCor.Warning
+            OnSelect_Cancel: =
+            OnSelect_Main: =Back()
+            SVG: ="<path d='M449.07,399.08,278.64,82.58c-12.08-22.44-44.26-22.44-56.35,0L51.87,399.08A32,32,0,0,0,80,446.25H420.89A32,32,0,0,0,449.07,399.08Zm-198.6-1.83a20,20,0,1,1,20-20A20,20,0,0,1,250.47,397.25ZM272.19,196.1l-5.74,122a16,16,0,0,1-32,0l-5.74-121.95v0a21.73,21.73,0,0,1,21.5-22.69h.21a21.74,21.74,0,0,1,21.73,22.7Z'/></svg>"
+            Text1: ="Atenção!"
+            Text1Size: =20
+            Text2: ="Ainda não é permitido criar essas metas!"
+            Text2Size: =12
+            TextBtnCancel: ="Cancelar"
+            TextBtnMain: ="Ok"
+            TextColor: ="#ffffff"
+            TimerSeconds: =0
+            Visible: =varBaseAvaliacao.DataAberturaDefinicaoMetas>Today()
+            Width: =Max(App.Width, App.MinScreenWidth)
+      - cmpToast_9:
+          Control: CanvasComponent
+          ComponentName: cmpToastConfirm_2
+          Properties:
+            BackgroundColor: =TCor.TransparentBlack
+            BarTimer: =true
+            BottomHeight: =100
+            BtnCancel: =false
+            BtnWidth: =150
+            BtnWidthFlex: =false
+            CenterHeight: =350
+            CenterWidth: =600
+            FadeColor: =0.1
+            Fill: =ColorValue(Self.BackgroundColor)
+            Height: =Max(App.Height, App.MinScreenHeight)
+            Info: |-
+              ="
+              > Em relação ao componente de Power Apps
+
+              Este componente foi desenvolvido por Daniel Petrin (Mundo Power) e é de uso exclusivo dos alunos da Comunidade Mundo Power.
+
+              Versão 1.0.0
+              Publicada em 25/01/2024
+
+              www.mundopower.com.br
+
+              > Em relação ao licenciamento dos ícones:
+
+              The MIT License (MIT)
+
+              Copyright (c) 2015-present Ionic (http://ionic.io/)
+
+              Permission is hereby granted, free of charge, to any person obtaining a copy
+              of this software and associated documentation files (the 'Software'), to deal
+              in the Software without restriction, including without limitation the rights
+              to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+              copies of the Software, and to permit persons to whom the Software is
+              furnished to do so, subject to the following conditions:
+
+              "
+            MainColor: =TCor.Warning
+            OnSelect_Cancel: =
+            OnSelect_Main: =UpdateContext({locMetasNaoLiberadas:false})
+            SVG: ="<path d='M449.07,399.08,278.64,82.58c-12.08-22.44-44.26-22.44-56.35,0L51.87,399.08A32,32,0,0,0,80,446.25H420.89A32,32,0,0,0,449.07,399.08Zm-198.6-1.83a20,20,0,1,1,20-20A20,20,0,0,1,250.47,397.25ZM272.19,196.1l-5.74,122a16,16,0,0,1-32,0l-5.74-121.95v0a21.73,21.73,0,0,1,21.5-22.69h.21a21.74,21.74,0,0,1,21.73,22.7Z'/></svg>"
+            Text1: ="Atenção!"
+            Text1Size: =20
+            Text2: ="Data limite expirada! Converse com o RH"
+            Text2Size: =12
+            TextBtnCancel: ="Cancelar"
+            TextBtnMain: ="Ok"
+            TextColor: ="#ffffff"
+            TimerSeconds: =0
+            Visible: =locMetasNaoLiberadas
+            Width: =Max(App.Width, App.MinScreenWidth)

@@ -1,0 +1,85 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+ComponentDefinitions:
+  cmpNothing:
+    DefinitionType: CanvasComponent
+    AccessAppScope: true
+    CustomProperties:
+      Color:
+        PropertyKind: Input
+        DisplayName: Color
+        Description: Uma propriedade personalizada
+        DataType: Text
+        Default: =TCor.NeutralL60
+      IconHeight:
+        PropertyKind: Input
+        DisplayName: Icon Height
+        Description: Uma propriedade personalizada
+        DataType: Number
+        Default: =100
+      IconWidth:
+        PropertyKind: Input
+        DisplayName: Icon Width
+        Description: Uma propriedade personalizada
+        DataType: Number
+        Default: =100
+      SVG:
+        PropertyKind: Input
+        DisplayName: SVG
+        Description: Uma propriedade personalizada
+        DataType: Text
+        Default: ="<path d='M384,80H128c-26,0-43,14-48,40L48,272V384a48.14,48.14,0,0,0,48,48H416a48.14,48.14,0,0,0,48-48V272L432,120C427,93,409,80,384,80Z' style='fill:none;stroke:#000;stroke-linejoin:round;stroke-width:32px'/><line x1='48' y1='272' x2='192' y2='272' style='fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/><line x1='320' y1='272' x2='464' y2='272' style='fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/><path d='M192,272a64,64,0,0,0,128,0' style='fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/></svg>"
+      Text:
+        PropertyKind: Input
+        DisplayName: Text
+        Description: Uma propriedade personalizada
+        DataType: Text
+        Default: ="Nenhum item encontrado"
+    Children:
+      - cNonthing:
+          Control: GroupContainer@1.5.0
+          Variant: ManualLayout
+          Properties:
+            DropShadow: =DropShadow.None
+            Fill: =Cor.Transparent
+            Height: =Parent.Height-Self.Y*2
+            PaddingLeft: =20
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Width: =Parent.Width-Self.X*2
+          Children:
+            - Label12:
+                Control: Label@2.5.1
+                Properties:
+                  Align: =Align.Center
+                  AutoHeight: =true
+                  BorderColor: =Cor.Border
+                  Color: =Cor.TextStandard
+                  DisabledColor: =Cor.DisabledText
+                  Font: =Font.'Open Sans'
+                  Size: =10
+                  Text: =cmpNothing.Text
+                  Width: =Parent.Width
+                  X: |+
+                    =0
+                  Y: =Image2_2.Y+Image2_2.Height
+            - Image2_2:
+                Control: Image@2.2.3
+                Properties:
+                  BorderColor: =Cor.Border
+                  DisabledBorderColor: =Cor.Disabled
+                  DisabledFill: =Cor.Disabled
+                  FocusedBorderThickness: =0
+                  Height: =cmpNothing.IconHeight
+                  Image: ="data:image/svg+xml;utf8, " &  EncodeUrl("<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 512 512' style='fill:"&cmpNothing.Color&"'>" &  Substitute(cmpNothing.SVG,"#000",cmpNothing.Color))
+                  Width: =cmpNothing.IconWidth
+                  X: =Parent.Width/2-Self.Width/2
+                  Y: =Parent.Height/2-Self.Height/2

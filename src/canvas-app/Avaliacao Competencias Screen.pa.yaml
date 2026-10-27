@@ -1,0 +1,717 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+Screens:
+  Avaliacao Competencias Screen:
+    Properties:
+      Fill: =Cor.BackgroundScreen
+      LoadingSpinnerColor: =Cor.Primary
+    Children:
+      - cMaster_4:
+          Control: GroupContainer@1.5.0
+          Variant: AutoLayout
+          Properties:
+            DropShadow: =DropShadow.None
+            Fill: =Cor.Transparent
+            Height: =768
+            LayoutDirection: =LayoutDirection.Vertical
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Width: =1366
+          Children:
+            - cTopo_6:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  DropShadow: =DropShadow.None
+                  Fill: =Cor.BackgroundTop
+                  FillPortions: =0
+                  Height: =80
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutGap: =20
+                  PaddingLeft: =20
+                  PaddingRight: =20
+                  RadiusBottomLeft: =0
+                  RadiusBottomRight: =0
+                  RadiusTopLeft: =0
+                  RadiusTopRight: =0
+                Children:
+                  - Icon1_10:
+                      Control: Classic/Icon@2.5.0
+                      Properties:
+                        BorderColor: =Cor.Border
+                        Color: =Cor.Primary
+                        DisabledBorderColor: =Cor.Disabled
+                        DisabledColor: =Cor.Disabled
+                        FocusedBorderThickness: =0
+                        Height: =50
+                        HoverColor: =ColorFade(Self.Color, 10%)
+                        Icon: =Icon.BackArrow
+                        OnSelect: =Back()
+                        PaddingBottom: =10
+                        PaddingTop: =10
+                        Width: =50
+                  - Label1_7:
+                      Control: Label@2.5.1
+                      Properties:
+                        Align: =Align.Right
+                        BorderColor: =Cor.Border
+                        Color: =Cor.TextInverted
+                        DisabledColor: =Cor.DisabledText
+                        FillPortions: =1
+                        Font: =Font.'Open Sans'
+                        Size: =14
+                        Text: =LookUp(colBaseAvaliacoes,ID=varAvaliacao.IdBaseAvaliacao,NomeAvaliacao) & " (COMPETÊNCIAS) | " & LookUp(colBaseAvaliacoes,ID=varAvaliacao.IdBaseAvaliacao,PeriodoAvaliacao) & " - " & LookUp(colBaseColaboradores,CodColaborador=Text(varAvaliacao.CodColaborador),NomeColaborador)
+                  - icoTopMenu_13:
+                      Control: Image@2.2.3
+                      Properties:
+                        BorderColor: =Cor.Border
+                        DisabledBorderColor: =Cor.Disabled
+                        DisabledFill: =Cor.Disabled
+                        FocusedBorderThickness: =0
+                        Height: =30
+                        HoverFill: =Cor.TransparentLight
+                        Image: "=If(varDark,\r\n\"data:image/svg+xml;utf8, \" &  EncodeUrl(\r\n\"<svg xmlns='http://www.w3.org/2000/svg' width='1.2rem' data-refresh='\"&varRefresh&\"' height='1.2rem' viewBox='0 0 24 24'>\r\n    <g fill='\"&TCor.TextInverted&\"' fill-opacity='0'>\r\n        <path d='m15.22 6.03l2.53-1.94L14.56 4L13.5 1l-1.06 3l-3.19.09l2.53 1.94l-.91 3.06l2.63-1.81l2.63 1.81z'>\r\n            <animate id='lineMdMoonFilledLoop0' fill='freeze' attributeName='fill-opacity' begin='1.61s;lineMdMoonFilledLoop0.begin+13.8s' dur='0.92s' values='0;1' />\r\n            <animate fill='freeze' attributeName='fill-opacity' begin='lineMdMoonFilledLoop0.begin+5.06s' dur='0.92s' values='1;0' />\r\n        </path>\r\n        <path d='M13.61 5.25L15.25 4l-2.06-.05L12.5 2l-.69 1.95L9.75 4l1.64 1.25l-.59 1.98l1.7-1.17l1.7 1.17z'>\r\n            <animate fill='freeze' attributeName='fill-opacity' begin='lineMdMoonFilledLoop0.begin+6.9s' dur='0.92s' values='0;1' />\r\n            <animate fill='freeze' attributeName='fill-opacity' begin='lineMdMoonFilledLoop0.begin+11.96s' dur='0.92s' values='1;0' />\r\n        </path>\r\n        <path d='M19.61 12.25L21.25 11l-2.06-.05L18.5 9l-.69 1.95l-2.06.05l1.64 1.25l-.59 1.98l1.7-1.17l1.7 1.17z'>\r\n            <animate fill='freeze' attributeName='fill-opacity' begin='lineMdMoonFilledLoop0.begin+0.92s' dur='0.92s' values='0;1' />\r\n            <animate fill='freeze' attributeName='fill-opacity' begin='lineMdMoonFilledLoop0.begin+6.44s' dur='0.92s' values='1;0' />\r\n        </path>\r\n        <path d='m20.828 9.731l1.876-1.439l-2.366-.067L19.552 6l-.786 2.225l-2.366.067l1.876 1.439L17.601 12l1.951-1.342L21.503 12z'>\r\n            <animate fill='freeze' attributeName='fill-opacity' begin='lineMdMoonFilledLoop0.begin+7.82s' dur='0.92s' values='0;1' />\r\n            <animate fill='freeze' attributeName='fill-opacity' begin='lineMdMoonFilledLoop0.begin+12.88s' dur='0.92s' values='1;0' />\r\n        </path>\r\n    </g>\r\n    <g fill-opacity='0' stroke='\"&TCor.TextInverted&\"' stroke-linecap='round' stroke-linejoin='round' stroke-width='0.95'>\r\n        <path fill='\"&TCor.TextInverted&\"' stroke-dasharray='56' stroke-dashoffset='56' d='M7 6 C7 12.08 11.92 17 18 17 C18.53 17 19.05 16.96 19.56 16.89 C17.95 19.36 15.17 21 12 21 C7.03 21 3 16.97 3 12 C3 8.83 4.64 6.05 7.11 4.44 C7.04 4.95 7 5.47 7 6 Z'>\r\n            <animate fill='freeze' attributeName='stroke-dashoffset' dur='1.38s' values='56;0' />\r\n            <animate fill='freeze' attributeName='fill-opacity' begin='1.45s' dur='1.15s' values='0;1' />\r\n        </path>\r\n    </g>\r\n</svg>\"\r\n)\r\n    ,\r\n    \r\n\r\n\"data:image/svg+xml;utf8, \" &  EncodeUrl(\"\r\n    <svg xmlns='http://www.w3.org/2000/svg' width='1.2rem' data-refresh='\"&varRefresh&\"' height='1.2rem' viewBox='0 0 24 24'>\r\n    <g fill='none' stroke='\"&TCor.TextInverted&\"' stroke-dasharray='2' stroke-dashoffset='2' stroke-linecap='round' stroke-width='0.95'>\r\n        <path d='M0 0'>\r\n            <animate fill='freeze' attributeName='d' begin='2.76s' dur='0.46s' values='M12 19v1M19 12h1M12 5v-1M5 12h-1;M12 21v1M21 12h1M12 3v-1M3 12h-1'/>\r\n            <animate fill='freeze' attributeName='stroke-dashoffset' begin='2.76s' dur='0.46s' values='2;0'/>\r\n        </path>\r\n        <path d='M0 0'>\r\n            <animate fill='freeze' attributeName='d' begin='3.45s' dur='0.46s' values='M17 17l0.5 0.5M17 7l0.5 -0.5M7 7l-0.5 -0.5M7 17l-0.5 0.5;M18.5 18.5l0.5 0.5M18.5 5.5l0.5 -0.5M5.5 5.5l-0.5 -0.5M5.5 18.5l-0.5 0.5'/>\r\n            <animate fill='freeze' attributeName='stroke-dashoffset' begin='3.45s' dur='2.76s' values='2;0'/>\r\n        </path>\r\n        <animateTransform attributeName='transform' dur='69s' repeatCount='indefinite' type='rotate' values='0 12 12;360 12 12'/>\r\n    </g>\r\n    <g fill='\"&TCor.TextInverted&\"'>\r\n        <path d='M15.22 6.03L17.75 4.09L14.56 4L13.5 1L12.44 4L9.25 4.09L11.78 6.03L10.87 9.09L13.5 7.28L16.13 9.09L15.22 6.03Z'>\r\n            <animate fill='freeze' attributeName='fill-opacity' dur='0.92s' values='1;0'/>\r\n        </path>\r\n        <path d='M19.61 12.25L21.25 11L19.19 10.95L18.5 9L17.81 10.95L15.75 11L17.39 12.25L16.8 14.23L18.5 13.06L20.2 14.23L19.61 12.25Z'>\r\n            <animate fill='freeze' attributeName='fill-opacity' begin='0.46s' dur='0.92s' values='1;0'/>\r\n        </path>\r\n    </g>\r\n    <g fill='\"&TCor.TextInverted&\"' stroke='\"&TCor.TextInverted&\"' stroke-linecap='round' stroke-linejoin='round' stroke-width='0.95'>\r\n        <path d='M7 6 C7 12.08 11.92 17 18 17 C18.53 17 19.05 16.96 19.56 16.89 C17.95 19.36 15.17 21 12 21 C7.03 21 3 16.97 3 12 C3 8.83 4.64 6.05 7.11 4.44 C7.04 4.95 7 5.47 7 6 Z'/>\r\n        <set attributeName='opacity' begin='1.38s' to='0'/>\r\n    </g>\r\n    <mask id='lineMdMoonFilledToSunnyFilledLoopTransition0'>\r\n        <circle cx='12' cy='12' r='12' fill='#fff'/>\r\n            <circle cx='18' cy='6' r='12' fill='#fff'>\r\n                <animate fill='freeze' attributeName='cx' begin='1.38s' dur='0.92s' values='18;22'/>\r\n                <animate fill='freeze' attributeName='cy' begin='1.38s' dur='0.92s' values='6;2'/>\r\n                <animate fill='freeze' attributeName='r' begin='1.38s' dur='0.92s' values='12;3'/>\r\n            </circle>\r\n        <circle cx='18' cy='6' r='10'>\r\n            <animate fill='freeze' attributeName='cx' begin='1.38s' dur='0.92s' values='18;22'/>\r\n            <animate fill='freeze' attributeName='cy' begin='1.38s' dur='0.92s' values='6;2'/>\r\n            <animate fill='freeze' attributeName='r' begin='1.38s' dur='0.92s' values='10;1'/>\r\n        </circle>\r\n    </mask>\r\n        <circle cx='12' cy='12' r='10' fill='\"&TCor.TextInverted&\"' mask='url(#lineMdMoonFilledToSunnyFilledLoopTransition0)' opacity='0'>\r\n            <set attributeName='opacity' begin='1.38s' to='1'/>\r\n            <animate fill='freeze' attributeName='r' begin='1.38s' dur='0.92s' values='10;6'/>\r\n        </circle>\r\n</svg>\")\r\n)"
+                        OnSelect: |-
+                          =Set(varRefresh,Text(Now(),""));
+                          Set(varDark,!varDark);
+                          If(varDark,
+                              Set(Cor,CoresDark);
+                              Set(TCor,TextCoresDark)
+                              ,
+                              Set(Cor,CoresLight);
+                              Set(TCor,TextCoresLight)
+                          )
+                        RadiusBottomLeft: =1000
+                        RadiusBottomRight: =1000
+                        RadiusTopLeft: =1000
+                        RadiusTopRight: =1000
+                        TabIndex: =0
+                        Width: =30
+                        X: =878
+                        Y: =645
+            - cFormGallery_2:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  DropShadow: =DropShadow.None
+                  Fill: =Cor.Transparent
+                  Height: =Parent.Height-Self.Y*2
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutGap: =20
+                  PaddingBottom: =20
+                  PaddingLeft: =20
+                  PaddingRight: =20
+                  PaddingTop: =20
+                  RadiusBottomLeft: =8
+                  RadiusBottomRight: =8
+                  RadiusTopLeft: =8
+                  RadiusTopRight: =8
+                  Width: =Parent.Width-Self.X*2
+                Children:
+                  - cGalleryDir_2:
+                      Control: GroupContainer@1.5.0
+                      Variant: AutoLayout
+                      Properties:
+                        DropShadow: =DropShadow.Semibold
+                        Fill: =Cor.BackgroundStandard
+                        FillPortions: =2
+                        Height: =Parent.Height-Self.Y*2
+                        LayoutDirection: =LayoutDirection.Vertical
+                        RadiusBottomLeft: =8
+                        RadiusBottomRight: =8
+                        RadiusTopLeft: =8
+                        RadiusTopRight: =8
+                        Width: =Parent.Width-Self.X*2
+                      Children:
+                        - cGallery1_6:
+                            Control: GroupContainer@1.5.0
+                            Variant: AutoLayout
+                            Properties:
+                              DropShadow: =DropShadow.Semibold
+                              Fill: =Cor.BackgroundStandard
+                              Height: =Parent.Height-Self.Y*2
+                              LayoutDirection: =LayoutDirection.Vertical
+                              LayoutMinHeight: =0
+                              LayoutMinWidth: =0
+                              RadiusBottomLeft: =8
+                              RadiusBottomRight: =8
+                              RadiusTopLeft: =8
+                              RadiusTopRight: =8
+                              Width: =Parent.Width-Self.X*2
+                            Children:
+                              - cGalleryMain_2:
+                                  Control: GroupContainer@1.5.0
+                                  Variant: AutoLayout
+                                  Properties:
+                                    DropShadow: =DropShadow.None
+                                    Fill: =Cor.BackgroundStandard
+                                    Height: =Parent.Height-Self.Y*2
+                                    LayoutDirection: =LayoutDirection.Vertical
+                                    PaddingBottom: =20
+                                    PaddingLeft: =20
+                                    PaddingRight: =20
+                                    PaddingTop: =20
+                                    RadiusBottomLeft: =8
+                                    RadiusBottomRight: =8
+                                    RadiusTopLeft: =8
+                                    RadiusTopRight: =8
+                                    Width: =Parent.Width-Self.X*2
+                                  Children:
+                                    - cCabecCompt:
+                                        Control: GroupContainer@1.5.0
+                                        Variant: ManualLayout
+                                        Properties:
+                                          DropShadow: =DropShadow.None
+                                          Fill: =Cor.NeutralL95
+                                          FillPortions: =0
+                                          Height: =42
+                                        Children:
+                                          - Label14_41:
+                                              Control: Label@2.5.1
+                                              Properties:
+                                                Align: =Align.Center
+                                                BorderColor: =Cor.Border
+                                                Color: =Cor.TextStandard
+                                                DisabledColor: =Cor.DisabledText
+                                                Font: =Font.'Open Sans'
+                                                FontWeight: =FontWeight.Semibold
+                                                Size: =8
+                                                Text: ="Item"
+                                                Width: =50
+                                                Y: =2
+                                          - Label14_42:
+                                              Control: Label@2.5.1
+                                              Properties:
+                                                BorderColor: =Cor.Border
+                                                Color: =Cor.TextStandard
+                                                DisabledColor: =Cor.DisabledText
+                                                Font: =Font.'Open Sans'
+                                                FontWeight: =FontWeight.Semibold
+                                                Size: =8
+                                                Text: ="Título / Descrição"
+                                                Width: =HtmlText1_2.Width
+                                                X: =65
+                                          - Label14_43:
+                                              Control: Label@2.5.1
+                                              Properties:
+                                                Align: =Align.Center
+                                                BorderColor: =Cor.Border
+                                                Color: =Cor.TextStandard
+                                                DisabledColor: =Cor.DisabledText
+                                                Font: =Font.'Open Sans'
+                                                FontWeight: =FontWeight.Semibold
+                                                Size: =8
+                                                Text: ="Colaborador"
+                                                Width: =inpComentColab.Width
+                                                X: =380
+                                                Y: =2
+                                          - Label14_44:
+                                              Control: Label@2.5.1
+                                              Properties:
+                                                Align: =Align.Center
+                                                BorderColor: =Cor.Border
+                                                Color: =Cor.TextStandard
+                                                DisabledColor: =Cor.DisabledText
+                                                Font: =Font.'Open Sans'
+                                                FontWeight: =FontWeight.Semibold
+                                                Size: =8
+                                                Text: ="Gestor"
+                                                Width: =inpComentGestor.Width
+                                                X: =720
+                                          - Label14_46:
+                                              Control: Label@2.5.1
+                                              Properties:
+                                                Align: =Align.Center
+                                                BorderColor: =Cor.Border
+                                                Color: =Cor.TextStandard
+                                                DisabledColor: =Cor.DisabledText
+                                                Font: =Font.'Open Sans'
+                                                FontWeight: =FontWeight.Semibold
+                                                Size: =8
+                                                Text: ="Calibração"
+                                                X: =1077
+                                    - Gallery10_2:
+                                        Control: Gallery@2.15.0
+                                        Variant: VariableHeight
+                                        Properties:
+                                          BorderColor: =Cor.Border
+                                          Items: =colAvaliacoesColaboradoresRespostas
+                                          OnSelect: =
+                                          TemplatePadding: =0
+                                          Visible: =Self.AllItemsCount>0
+                                        Children:
+                                          - htmlColab:
+                                              Control: HtmlViewer@2.1.0
+                                              Properties:
+                                                AutoHeight: =true
+                                                Color: =Cor.TextStandard
+                                                DisabledBorderColor: =Cor.Disabled
+                                                Font: =Font.'Open Sans'
+                                                Height: =26
+                                                HtmlText: "=If(varAvaliacao.CodColaborador=Value(varColab.CodColaborador) || (varAvaliacao.AvaliacaoColabConcluida && varAvaliacao.AvaliacaoGestorConcluida),\r\n    \r\n    If(!IsBlank(ThisItem.ComentarioColab),\r\n    ThisItem.ComentarioColab & \"<p>\") &\r\n\r\n    \"Avaliação: <b>\" &  Coalesce(Text(ThisItem.RespostaColab),\"Pendente\")\r\n\r\n    ,\r\n    \r\n    \"Aguardando a conclusão de ambos\"\r\n)"
+                                                OnSelect: =Select(Parent)
+                                                Size: =8
+                                                Visible: =!locEditColab ||  locItem.ID<>ThisItem.ID ||  varAvaliacao.CodColaborador<>Value(varColab.CodColaborador)
+                                                Width: =300
+                                                X: =384
+                                                Y: =If(ico_edit_colab.Visible && !IsBlank(ThisItem.ComentarioColab) ,ico_edit_colab.Y+ico_edit_colab.Height,20)
+                                          - htmlGestor:
+                                              Control: HtmlViewer@2.1.0
+                                              Properties:
+                                                AutoHeight: =true
+                                                Color: =Cor.TextStandard
+                                                DisabledBorderColor: =Cor.Disabled
+                                                Font: =Font.'Open Sans'
+                                                Height: =26
+                                                HtmlText: "=If(varAvaliacao.CodGestor=Value(varColab.CodColaborador) || (varAvaliacao.AvaliacaoColabConcluida && varAvaliacao.AvaliacaoGestorConcluida),\r\n    \r\n    If(!IsBlank(ThisItem.ComentarioGestor),\r\n    ThisItem.ComentarioGestor & \"<p>\") &\r\n    \r\n    \"Avaliação: <b>\" & Coalesce(Text(ThisItem.RespostaGestor),\"Pendente\")\r\n    ,\r\n    \"Aguardando a conclusão de ambos\"\r\n)"
+                                                OnSelect: =Select(Parent)
+                                                Size: =8
+                                                Visible: =!locEditColab ||  locItem.ID<>ThisItem.ID ||  varAvaliacao.CodGestor<>Value(varColab.CodColaborador)
+                                                Width: =300
+                                                X: =713
+                                                Y: =If(ico_edit_gestor.Visible && !IsBlank(ThisItem.ComentarioGestor),ico_edit_gestor.Y+ico_edit_gestor.Height,20)
+                                          - Rectangle9_11:
+                                              Control: Rectangle@2.3.0
+                                              Properties:
+                                                BorderColor: =Cor.Border
+                                                Fill: =Cor.NeutralL90
+                                                FocusedBorderThickness: =0
+                                                Height: =1
+                                                OnSelect: =Select(Parent)
+                                                Width: =Parent.TemplateWidth
+                                                Y: |-
+                                                  =Max(
+                                                      (HtmlText1_2.Y+HtmlText1_2.Height),
+                                                      (rd_colab.Y+rd_colab.Height),
+                                                      (htmlColab.Y+htmlColab.Height)
+                                                  )+20
+                                          - Label10_2:
+                                              Control: Label@2.5.1
+                                              Properties:
+                                                Align: =Align.Center
+                                                BorderColor: =Cor.Border
+                                                Color: =Cor.TextStandard
+                                                DisabledColor: =Cor.DisabledText
+                                                Font: =Font.'Open Sans'
+                                                Size: =8
+                                                Text: =ThisItem.ID
+                                                Width: =50
+                                                Y: =10
+                                          - HtmlText1_2:
+                                              Control: HtmlViewer@2.1.0
+                                              Properties:
+                                                AutoHeight: =true
+                                                Color: =Cor.TextStandard
+                                                DisabledBorderColor: =Cor.Disabled
+                                                Font: =Font.'Open Sans'
+                                                HtmlText: "=\"(\" & LookUp(colBaseAvaliacoesItens,ID=ThisItem.IdItem,Categoria.Value) & \") <p>\" &\r\n \r\n \"<b>\" & LookUp(colBaseAvaliacoesItens,ID=ThisItem.IdItem,TituloItem) & \"</b><br><br>\" & LookUp(colBaseAvaliacoesItens,ID=ThisItem.IdItem,DescricaoItem)"
+                                                Size: =8
+                                                Width: =300
+                                                X: =71
+                                                Y: =10
+                                          - inpComentGestor:
+                                              Control: Classic/TextInput@2.3.2
+                                              Properties:
+                                                BorderColor: =Cor.Border
+                                                BorderThickness: =1
+                                                Color: =Cor.TextStandard
+                                                Default: |-
+                                                  =If(varAvaliacao.CodGestor=Value(varColab.CodColaborador) || (varAvaliacao.AvaliacaoColabConcluida && varAvaliacao.AvaliacaoGestorConcluida),
+                                                      ThisItem.ComentarioGestor
+                                                      ,
+                                                      "Aguardando a conclusão de ambos"
+                                                  )
+                                                DisabledBorderColor: =Cor.Disabled
+                                                DisabledColor: =Cor.DisabledText
+                                                DisabledFill: =Cor.Disabled
+                                                DisplayMode: |-
+                                                  =If(varAvaliacao.CodColaborador=Value(varColab.CodColaborador) || (varAvaliacao.AvaliacaoColabConcluida && varAvaliacao.AvaliacaoGestorConcluida)  ||
+                                                   ico_edit_gestor.Visible ||
+                                                   locItem.ID<>ThisItem.ID, DisplayMode.View,DisplayMode.Edit)
+                                                Fill: =Cor.BackgroundInput
+                                                FocusedBorderThickness: =1
+                                                Font: =Font.'Open Sans'
+                                                Height: =90
+                                                HintText: ="Comentário Gestor"
+                                                HoverBorderColor: =Cor.Border
+                                                HoverColor: =Cor.TextStandard
+                                                HoverFill: =Cor.BackgroundInputHover
+                                                Mode: =TextMode.MultiLine
+                                                OnChange: =
+                                                Size: =8
+                                                Visible: =locEditColab && locItem.ID=ThisItem.ID && varAvaliacao.CodGestor=Value(varColab.CodColaborador)
+                                                Width: =300
+                                                X: =713
+                                                Y: =20
+                                          - inpComentColab:
+                                              Control: Classic/TextInput@2.3.2
+                                              Properties:
+                                                BorderColor: =Cor.Border
+                                                BorderThickness: =1
+                                                Color: =Cor.TextStandard
+                                                Default: |-
+                                                  =If(varAvaliacao.CodColaborador=Value(varColab.CodColaborador) || (varAvaliacao.AvaliacaoColabConcluida && varAvaliacao.AvaliacaoGestorConcluida),
+                                                      ThisItem.ComentarioColab
+                                                      ,
+                                                      "Aguardando a conclusão de ambos"
+                                                  )
+                                                DisabledBorderColor: =Cor.Disabled
+                                                DisabledColor: =Cor.DisabledText
+                                                DisabledFill: =Cor.Disabled
+                                                DisplayMode: |-
+                                                  =If(varAvaliacao.CodGestor=Value(varColab.CodColaborador) ||
+                                                  (varAvaliacao.AvaliacaoColabConcluida && varAvaliacao.AvaliacaoGestorConcluida) ||
+                                                   ico_edit_colab.Visible ||
+                                                   locItem.ID<>ThisItem.ID, DisplayMode.View,
+                                                  DisplayMode.Edit)
+                                                Fill: =Cor.BackgroundInput
+                                                FocusedBorderThickness: =1
+                                                Font: =Font.'Open Sans'
+                                                Height: =90
+                                                HintText: ="Comentário Colaborador"
+                                                HoverBorderColor: =Cor.Border
+                                                HoverColor: =Cor.TextStandard
+                                                HoverFill: =Cor.BackgroundInputHover
+                                                Mode: =TextMode.MultiLine
+                                                OnChange: =
+                                                Size: =8
+                                                Visible: =locEditColab && locItem.ID=ThisItem.ID && varAvaliacao.CodColaborador=Value(varColab.CodColaborador)
+                                                Width: =300
+                                                X: =383
+                                                Y: =20
+                                          - rd_colab:
+                                              Control: Classic/Radio@2.3.0
+                                              Properties:
+                                                BorderColor: =Cor.Border
+                                                Color: =Cor.TextStandard
+                                                Default: =ThisItem.RespostaColab
+                                                DisplayMode: =If(ico_edit_colab.Visible || locItem.ID<>ThisItem.ID, DisplayMode.View, DisplayMode.Edit)
+                                                FocusedBorderThickness: =0
+                                                Font: =Font.'Open Sans'
+                                                Height: =35
+                                                HoverColor: =ColorFade(Self.Color, 25%)
+                                                Items: =Sequence(3)
+                                                Items.Value: =Value
+                                                Layout: =Layout.Horizontal
+                                                OnSelect: =
+                                                PaddingBottom: =0
+                                                PaddingTop: =0
+                                                RadioBackgroundFill: =Cor.BackgroundInput
+                                                RadioBorderColor: =Cor.Border
+                                                RadioSelectionFill: =Cor.Primary
+                                                RadioSize: =30
+                                                Size: =8
+                                                Visible: =(varAvaliacao.CodColaborador=Value(varColab.CodColaborador) || (varAvaliacao.AvaliacaoColabConcluida && varAvaliacao.AvaliacaoGestorConcluida)) && locEditColab && locItem.ID=ThisItem.ID
+                                                Width: =219
+                                                X: =383
+                                                Y: =120
+                                          - rd_gestor:
+                                              Control: Classic/Radio@2.3.0
+                                              Properties:
+                                                BorderColor: =Cor.Border
+                                                Color: =Cor.TextStandard
+                                                Default: =ThisItem.RespostaGestor
+                                                DisplayMode: =If(ico_edit_gestor.Visible || locItem.ID<>ThisItem.ID, DisplayMode.View, DisplayMode.Edit)
+                                                FocusedBorderThickness: =0
+                                                Font: =Font.'Open Sans'
+                                                Height: =35
+                                                HoverColor: =ColorFade(Self.Color, 25%)
+                                                Items: =Sequence(3)
+                                                Items.Value: =Value
+                                                Layout: =Layout.Horizontal
+                                                OnSelect: =
+                                                PaddingBottom: =0
+                                                PaddingTop: =0
+                                                RadioBackgroundFill: =Cor.BackgroundInput
+                                                RadioBorderColor: =Cor.Border
+                                                RadioSelectionFill: =Cor.Primary
+                                                RadioSize: =30
+                                                Size: =8
+                                                Visible: =(varAvaliacao.CodGestor=Value(varColab.CodColaborador) || (varAvaliacao.AvaliacaoColabConcluida && varAvaliacao.AvaliacaoGestorConcluida)) && locEditColab && locItem.ID=ThisItem.ID
+                                                Width: =219
+                                                X: =713
+                                                Y: =120
+                                          - ico_edit_colab:
+                                              Control: Classic/Icon@2.5.0
+                                              Properties:
+                                                BorderColor: =Cor.Border
+                                                Color: =Cor.Primary
+                                                DisabledBorderColor: =Cor.Disabled
+                                                DisabledColor: =Cor.Disabled
+                                                FocusedBorderThickness: =0
+                                                Height: =40
+                                                HoverColor: =ColorFade(Self.Color, 10%)
+                                                Icon: =Icon.Edit
+                                                OnSelect: |-
+                                                  =UpdateContext({locItem:ThisItem});
+                                                  UpdateContext({locEditColab:true});
+                                                PaddingBottom: =10
+                                                PaddingTop: =10
+                                                Visible: =!locEditColab && varAvaliacao.CodColaborador=Value(varColab.CodColaborador) && !varAvaliacao.AvaliacaoColabConcluida
+                                                Width: =40
+                                                X: =644
+                                                Y: =10
+                                          - ico_salv_colab:
+                                              Control: Classic/Icon@2.5.0
+                                              Properties:
+                                                BorderColor: =Cor.Border
+                                                Color: =Cor.Primary
+                                                DisabledBorderColor: =Cor.Disabled
+                                                DisabledColor: =Cor.Disabled
+                                                FocusedBorderThickness: =0
+                                                Height: =40
+                                                HoverColor: =ColorFade(Self.Color, 10%)
+                                                Icon: =Icon.Save
+                                                OnSelect: |-
+                                                  =Set(varCarregando,true);
+
+                                                  If(varAvaliacao.Status<40,
+                                                      Patch(colAvaliacoes,varAvaliacao,
+                                                          Patch(AvaliacoesColaboradores,{ID:varAvaliacao.ID},
+                                                              {
+                                                                  Status:40
+                                                              }
+                                                          )
+                                                      );
+                                                      Set(varAvaliacao,LookUp(colAvaliacoes,ID=varAvaliacao.ID))
+                                                  );
+
+                                                  Patch(colAvaliacoesColaboradoresRespostas,ThisItem,
+                                                      Patch(AvaliacoesColaboradoresRespostas,{ID:ThisItem.ID},
+                                                          {
+                                                              ComentarioColab:inpComentColab.Text,
+                                                              RespostaColab:rd_colab.Selected.Value
+                                                          }
+                                                      )
+                                                  );
+
+                                                  UpdateContext({locEditColab:false});
+                                                  UpdateContext({locItem:Blank()});
+
+                                                  Notify("Comentário registrado com sucesso!",NotificationType.Success,2000);
+
+
+                                                  Set(varCarregando,false);
+                                                PaddingBottom: =10
+                                                PaddingTop: =10
+                                                Visible: =locEditColab && locItem.ID=ThisItem.ID && varAvaliacao.CodColaborador=Value(varColab.CodColaborador)
+                                                Width: =40
+                                                X: =643
+                                                Y: =117
+                                          - ico_desf_colab:
+                                              Control: Classic/Icon@2.5.0
+                                              Properties:
+                                                BorderColor: =Cor.Border
+                                                Color: =Cor.Cancel
+                                                DisabledBorderColor: =Cor.Disabled
+                                                DisabledColor: =Cor.Disabled
+                                                FocusedBorderThickness: =0
+                                                Height: =40
+                                                HoverColor: =ColorFade(Self.Color, 10%)
+                                                Icon: =Icon.Undo
+                                                OnSelect: |-
+                                                  =UpdateContext({locEditColab:false});
+                                                  Reset(rd_colab);
+                                                  Reset(inpComentColab);
+                                                  UpdateContext({locItem:Blank()});
+                                                PaddingBottom: =10
+                                                PaddingTop: =10
+                                                Visible: =locEditColab && locItem.ID=ThisItem.ID && varAvaliacao.CodColaborador=Value(varColab.CodColaborador)
+                                                Width: =40
+                                                X: =603
+                                                Y: =117
+                                          - ico_edit_gestor:
+                                              Control: Classic/Icon@2.5.0
+                                              Properties:
+                                                BorderColor: =Cor.Border
+                                                Color: =Cor.Primary
+                                                DisabledBorderColor: =Cor.Disabled
+                                                DisabledColor: =Cor.Disabled
+                                                FocusedBorderThickness: =0
+                                                Height: =40
+                                                HoverColor: =ColorFade(Self.Color, 10%)
+                                                Icon: =Icon.Edit
+                                                OnSelect: |-
+                                                  =UpdateContext({locItem:ThisItem});
+                                                  UpdateContext({locEditColab:true});
+                                                PaddingBottom: =10
+                                                PaddingTop: =10
+                                                Visible: =!locEditColab && varAvaliacao.CodGestor=Value(varColab.CodColaborador) && !varAvaliacao.AvaliacaoGestorConcluida
+                                                Width: =40
+                                                X: =973
+                                                Y: =10
+                                          - ico_salv_gestor:
+                                              Control: Classic/Icon@2.5.0
+                                              Properties:
+                                                BorderColor: =Cor.Border
+                                                Color: =Cor.Primary
+                                                DisabledBorderColor: =Cor.Disabled
+                                                DisabledColor: =Cor.Disabled
+                                                FocusedBorderThickness: =0
+                                                Height: =40
+                                                HoverColor: =ColorFade(Self.Color, 10%)
+                                                Icon: =Icon.Save
+                                                OnSelect: |-
+                                                  =Set(varCarregando,true);
+
+                                                  If(varAvaliacao.Status<40,
+                                                      Patch(colAvaliacoes,varAvaliacao,
+                                                          Patch(AvaliacoesColaboradores,{ID:varAvaliacao.ID},
+                                                              {
+                                                                  Status:40
+                                                              }
+                                                          )
+                                                      );
+                                                      Set(varAvaliacao,LookUp(colAvaliacoes,ID=varAvaliacao.ID))
+                                                  );
+
+                                                  Patch(colAvaliacoesColaboradoresRespostas,ThisItem,
+                                                      Patch(AvaliacoesColaboradoresRespostas,{ID:ThisItem.ID},
+                                                          {
+                                                              ComentarioGestor:inpComentGestor.Text,
+                                                              RespostaGestor:rd_gestor.Selected.Value
+                                                          }
+                                                      )
+                                                  );
+
+                                                  UpdateContext({locEditColab:false});
+                                                  UpdateContext({locItem:Blank()});
+
+                                                  Notify("Comentário registrado com sucesso!",NotificationType.Success,2000);
+
+
+                                                  Set(varCarregando,false);
+                                                PaddingBottom: =10
+                                                PaddingTop: =10
+                                                Visible: =locEditColab && locItem.ID=ThisItem.ID && varAvaliacao.CodGestor=Value(varColab.CodColaborador)
+                                                Width: =40
+                                                X: =973
+                                                Y: =115
+                                          - ico_desf_gestor:
+                                              Control: Classic/Icon@2.5.0
+                                              Properties:
+                                                BorderColor: =Cor.Border
+                                                Color: =Cor.Cancel
+                                                DisabledBorderColor: =Cor.Disabled
+                                                DisabledColor: =Cor.Disabled
+                                                FocusedBorderThickness: =0
+                                                Height: =40
+                                                HoverColor: =ColorFade(Self.Color, 10%)
+                                                Icon: =Icon.Undo
+                                                OnSelect: |-
+                                                  =UpdateContext({locEditColab:false});
+                                                  Reset(rd_gestor);
+                                                  Reset(inpComentGestor);
+                                                  UpdateContext({locItem:Blank()});
+                                                PaddingBottom: =10
+                                                PaddingTop: =10
+                                                Visible: =locEditColab && locItem.ID=ThisItem.ID && varAvaliacao.CodGestor=Value(varColab.CodColaborador)
+                                                Width: =40
+                                                X: =933
+                                                Y: =115
+                                          - Rectangle1:
+                                              Control: Rectangle@2.3.0
+                                              Properties:
+                                                BorderColor: =Cor.Border
+                                                Fill: =Cor.NeutralL90
+                                                FocusedBorderThickness: =0
+                                                Height: =Rectangle9_11.Y
+                                                OnSelect: =Select(Parent)
+                                                Width: =1
+                                                X: =366
+                                          - Rectangle1_1:
+                                              Control: Rectangle@2.3.0
+                                              Properties:
+                                                BorderColor: =Cor.Border
+                                                Fill: =Cor.NeutralL90
+                                                FocusedBorderThickness: =0
+                                                Height: =Rectangle9_11.Y
+                                                OnSelect: =Select(Parent)
+                                                Width: =1
+                                                X: =698
+                                          - Rectangle1_2:
+                                              Control: Rectangle@2.3.0
+                                              Properties:
+                                                BorderColor: =Cor.Border
+                                                Fill: =Cor.NeutralL90
+                                                FocusedBorderThickness: =0
+                                                Height: =Rectangle9_11.Y
+                                                OnSelect: =Select(Parent)
+                                                Width: =1
+                                                X: =1028
+                                          - Rectangle1_3:
+                                              Control: Rectangle@2.3.0
+                                              Properties:
+                                                BorderColor: =Cor.Border
+                                                Fill: =Cor.NeutralL90
+                                                FocusedBorderThickness: =0
+                                                Height: =Rectangle9_11.Y
+                                                OnSelect: =Select(Parent)
+                                                Width: =1
+                                                X: =50
+                                          - rd_calibracao:
+                                              Control: Classic/Radio@2.3.0
+                                              Properties:
+                                                BorderColor: =Cor.Border
+                                                Color: =Cor.TextStandard
+                                                Default: =ThisItem.RespostaCalibrada
+                                                FocusedBorderThickness: =0
+                                                Font: =Font.'Open Sans'
+                                                Height: =35
+                                                HoverColor: =ColorFade(Self.Color, 25%)
+                                                Items: =Sequence(3)
+                                                Items.Value: =Value
+                                                Layout: =Layout.Horizontal
+                                                OnSelect: |-
+                                                  =Set(varCarregando,true);
+
+                                                  Patch(colAvaliacoesColaboradoresRespostas,ThisItem,
+                                                      Patch(AvaliacoesColaboradoresRespostas,{ID:ThisItem.ID},
+                                                          {
+
+                                                              RespostaCalibrada:Self.Selected.Value
+                                                          }
+                                                      )
+                                                  );
+
+
+                                                  Notify("Registrado com sucesso!",NotificationType.Success,2000);
+
+
+                                                  Set(varCarregando,false);
+                                                PaddingBottom: =0
+                                                PaddingTop: =0
+                                                RadioBackgroundFill: =Cor.BackgroundInput
+                                                RadioBorderColor: =Cor.Border
+                                                RadioSelectionFill: =Cor.Primary
+                                                RadioSize: =30
+                                                Size: =8
+                                                Visible: =varAvaliacao.AvaliacaoColabConcluida && varAvaliacao.AvaliacaoGestorConcluida && varAvaliacao.CodGestor=Value(varColab.CodColaborador)
+                                                Width: =219
+                                                X: =1047
+                                                Y: =20
+      - cmpLoading_14:
+          Control: CanvasComponent
+          ComponentName: cmpLoading
+          Properties:
+            Color1: ="#ffffff"
+            Color2: =
+            ColorBackground: =Cor.TransparentBlack
+            Fill: =Color.Transparent
+            Height: =Max(App.Height, App.MinScreenHeight)
+            SVGImage: ="<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><circle fill='"&Self.Color1&"' stroke='"&Self.Color1&"' stroke-width='15' r='15' cx='35' cy='100'><animate attributeName='cx' calcMode='spline' dur='2' values='35;165;165;35;35' keySplines='0 .1 .5 1;0 .1 .5 1;0 .1 .5 1;0 .1 .5 1' repeatCount='indefinite' begin='0'></animate></circle><circle fill='"&Self.Color1&"' stroke='"&Self.Color1&"' stroke-width='15' opacity='.8' r='15' cx='35' cy='100'><animate attributeName='cx' calcMode='spline' dur='2' values='35;165;165;35;35' keySplines='0 .1 .5 1;0 .1 .5 1;0 .1 .5 1;0 .1 .5 1' repeatCount='indefinite' begin='0.05'></animate></circle><circle fill='"&Self.Color1&"' stroke='"&Self.Color1&"' stroke-width='15' opacity='.6' r='15' cx='35' cy='100'><animate attributeName='cx' calcMode='spline' dur='2' values='35;165;165;35;35' keySplines='0 .1 .5 1;0 .1 .5 1;0 .1 .5 1;0 .1 .5 1' repeatCount='indefinite' begin='.1'></animate></circle><circle fill='"&Self.Color1&"' stroke='"&Self.Color1&"' stroke-width='15' opacity='.4' r='15' cx='35' cy='100'><animate attributeName='cx' calcMode='spline' dur='2' values='35;165;165;35;35' keySplines='0 .1 .5 1;0 .1 .5 1;0 .1 .5 1;0 .1 .5 1' repeatCount='indefinite' begin='.15'></animate></circle><circle fill='"&Self.Color1&"' stroke='"&Self.Color1&"' stroke-width='15' opacity='.2' r='15' cx='35' cy='100'><animate attributeName='cx' calcMode='spline' dur='2' values='35;165;165;35;35' keySplines='0 .1 .5 1;0 .1 .5 1;0 .1 .5 1;0 .1 .5 1' repeatCount='indefinite' begin='.2'></animate></circle></svg>"
+            ShowImage: =true
+            ShowText: =true
+            Text: ="carregando"
+            TextColor: ="#ffffff"
+            Visible: =varCarregando
+            Width: =Max(App.Width, App.MinScreenWidth)

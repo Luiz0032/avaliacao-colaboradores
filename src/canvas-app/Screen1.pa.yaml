@@ -1,0 +1,257 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+Screens:
+  Screen1:
+    Properties:
+      Fill: =Cor.BackgroundScreen
+      LoadingSpinnerColor: =Cor.Primary
+    Children:
+      - Gallery1:
+          Control: Gallery@2.15.0
+          Variant: Vertical
+          Properties:
+            BorderColor: =Cor.Border
+            Height: =424
+            Items: =GroupBy(colAvaliacoesColaboradoresRespostas,CategoriaPergunta,Grupo)
+            TemplateSize: =102
+            X: =12
+            Y: =344
+          Children:
+            - Label3:
+                Control: Label@2.5.1
+                Properties:
+                  BorderColor: =Cor.Border
+                  Color: =Cor.TextStandard
+                  DisabledColor: =Cor.DisabledText
+                  Font: =Font.'Open Sans'
+                  OnSelect: =Select(Parent)
+                  Size: =8
+                  Text: =ThisItem.CategoriaPergunta
+                  Y: =8
+            - Label3_1:
+                Control: Label@2.5.1
+                Properties:
+                  BorderColor: =Cor.Border
+                  Color: =Cor.TextStandard
+                  DisabledColor: =Cor.DisabledText
+                  Font: =Font.'Open Sans'
+                  OnSelect: =Select(Parent)
+                  Size: =8
+                  Text: =CountRows(ThisItem.Grupo)
+                  X: =150
+                  Y: =8
+            - Label3_2:
+                Control: Label@2.5.1
+                Properties:
+                  BorderColor: =Cor.Border
+                  Color: =Cor.TextStandard
+                  DisabledColor: =Cor.DisabledText
+                  Font: =Font.'Open Sans'
+                  OnSelect: =Select(Parent)
+                  Size: =8
+                  Text: =Sum(ThisItem.Grupo,RespostaCalibrada)
+                  X: =265
+                  Y: =8
+            - Label3_3:
+                Control: Label@2.5.1
+                Properties:
+                  BorderColor: =Cor.Border
+                  Color: =Cor.TextStandard
+                  DisabledColor: =Cor.DisabledText
+                  Font: =Font.'Open Sans'
+                  OnSelect: =Select(Parent)
+                  Size: =8
+                  Text: =Average(ThisItem.Grupo,RespostaCalibrada)
+                  X: =386
+                  Y: =8
+      - Image3_16:
+          Control: Image@2.2.3
+          Properties:
+            BorderColor: =Cor.Border
+            DisabledBorderColor: =Cor.Disabled
+            DisabledFill: =Cor.Disabled
+            FocusedBorderThickness: =0
+            Height: =367
+            Image: |-
+              =With({
+                  Label:Concat(GroupBy(colAvaliacoesColaboradoresRespostas,CategoriaPergunta,Grupo),"'" & CategoriaPergunta & "'",","),
+                  Value1:Concat(GroupBy(colAvaliacoesColaboradoresRespostas,CategoriaPergunta,Grupo),"'" & Average(Grupo,RespostaColab) & "'",","),
+                  Value2:Concat(GroupBy(colAvaliacoesColaboradoresRespostas,CategoriaPergunta,Grupo),"'" & Average(Grupo,RespostaGestor) & "'",","),
+                  Value3:Concat(GroupBy(colAvaliacoesColaboradoresRespostas,CategoriaPergunta,Grupo),"'" & Average(Grupo,RespostaCalibrada) & "'",",")
+                  },
+
+              "https://quickchart.io/chart?c=" & EncodeUrl("
+
+              {
+                type: 'radar',
+                data: {
+                  labels: [" & Label & "],
+                  datasets: [
+                    {
+                      backgroundColor: 'rgba(255, 205, 86, 0.0)',
+                      borderColor: 'rgb(255, 205, 86)',
+                      data: [" & Value1 & "],
+                      label: 'Colaborador',
+                    },
+                    {
+                      backgroundColor: 'rgba(153, 102, 255, 0.0)',
+                      borderColor: 'rgb(153, 102, 255)',
+                      data: [" & Value2 & "],
+                      label: 'Gestor',
+                    },
+                    {
+                      backgroundColor: 'transparent',
+                      borderColor: '#00C425',
+                      data: [" & Value3 & "],
+                      label: 'Calibrado',
+                    },
+                  ],
+                },
+                options: {
+                  scale: {
+                      ticks: {
+                          beginAtZero: true, // Garante que a escala comece em zero
+                          min: 0, // Define o valor mínimo para 0
+                      }
+                  },
+                  spanGaps: false,
+                  elements: {
+                    line: {
+                      tension: 0.000001,
+                    },
+                  },
+                },
+              }"
+              ))
+            Width: =633
+            X: =387
+            Y: =268
+      - Label4:
+          Control: Label@2.5.1
+          Properties:
+            BorderColor: =Cor.Border
+            Color: =Cor.TextStandard
+            DisabledColor: =Cor.DisabledText
+            Font: =Font.'Open Sans'
+            Height: =36
+            Size: =8
+            Text: |-
+              =//Label:Concat(SortByColumns(colResultadoMensal;"DataInicioMes");"'" & Text(DataInicioMes;"mmm") & "'";",");
+              Concat(GroupBy(colAvaliacoesColaboradoresRespostas,CategoriaPergunta,Grupo),"'" & CategoriaPergunta & "'",",")
+            Width: =450
+            X: =107
+            Y: =172
+      - Label4_1:
+          Control: Label@2.5.1
+          Properties:
+            BorderColor: =Cor.Border
+            Color: =Cor.TextStandard
+            DisabledColor: =Cor.DisabledText
+            Font: =Font.'Open Sans'
+            Height: =36
+            Size: =8
+            Text: |-
+              =//Label:Concat(SortByColumns(colResultadoMensal;"DataInicioMes");"'" & Text(DataInicioMes;"mmm") & "'";",");
+              Concat(GroupBy(colAvaliacoesColaboradoresRespostas,CategoriaPergunta,Grupo),Average(Grupo,RespostaCalibrada),",")
+            Width: =450
+            X: =107
+            Y: =232
+      - Image3_10:
+          Control: Image@2.2.3
+          Properties:
+            BorderColor: =Cor.Border
+            DisabledBorderColor: =Cor.Disabled
+            DisabledFill: =Cor.Disabled
+            FocusedBorderThickness: =0
+            Height: =238
+            Image: |-
+              =With({Max:3},
+                  With(
+                      {
+                          Value:Substitute(Average(colMetasAvaliacaoColaboradores,Peso*Resposta/100),",","."),
+                          Color:"getGradientFillHelper('horizontal', ['red', 'orange', 'green'])",
+                          Color2:
+                              Switch(Text(Max), 
+                                  "1", "['red']",
+                                  "2", "['red', 'green']",
+                                  "3", "['red', 'orange', 'green']",
+                                  "4", "['red', 'orange', 'orange','green']",
+                                  "5", "['red', 'red', 'orange','orange', 'green']",
+                                  "6", "['red', 'red', 'red','orange', 'orange', 'green']",
+                                  "7", "['red', 'red', 'red','orange', 'orange', 'orange','green']",
+                                  "8", "['red', 'red', 'red','red', 'orange', 'orange','orange', 'green']",
+                                  "9", "['red', 'red', 'red','red', 'orange', 'orange','orange', 'orange', 'green']",
+                                  "10", "['red', 'red', 'red','red', 'orange', 'orange','orange', 'orange', 'green','green']"
+                              )
+                      },
+
+              "https://quickchart.io/chart?c=" & EncodeUrl("
+
+              {
+                  type: 'gauge',
+                  data: {
+                      labels: [],
+                      datasets: [
+                      {
+                          data: ["&Concat(Sequence(Max),Value,",")&"],
+                          value: "&Value&",
+                          minValue: 0,
+                          backgroundColor: "&Color&",
+                          borderWidth: 1,
+                      },
+                      ],
+                  },
+                  options: {
+                      cutoutPercentage: 80,
+                      legend: {
+                      display: false,
+                      },
+                      title: {
+                          display: true,
+                          text: 'Title',
+                          'fontColor': '"&TCor.TextStandard &"',
+                          'fontSize': 20,
+                      },
+                      needle: {
+                      radiusPercentage: 1,
+                      widthPercentage: 1,
+                      lengthPercentage: 60,
+                      color: '"&TCor.TextStandard &"',
+                      },
+                      valueLabel: {
+                      fontSize: 32,
+                      backgroundColor: 'transparent',
+                      color: '"&TCor.TextStandard &"',
+                      formatter: function (value, context) {
+                          return value;
+                      },
+                      bottomMarginPercentage: 10,
+                      },
+                      plugins: {
+                      datalabels: {
+                          'align': 'center',
+                          'anchor': 'top',
+                          display: 'auto',
+                          formatter: function (value, context) {
+                          return context.chart.data.labels[context.dataIndex];
+                          },
+                          color: '#fff',
+                          font: {
+                          size: 18,
+                          weight: 'normal',
+                          },
+                      },
+                      },
+                  },
+                  }
+                  "
+              )))
+            Width: =382
+            X: =772
+            Y: =448
